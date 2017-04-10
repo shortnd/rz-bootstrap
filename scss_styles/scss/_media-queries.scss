@@ -1,3 +1,9 @@
+$desktop: 1200px;
+$tablet-before: 992px;
+$tablet: 991px;
+$mobile: 767px;
+$mobile-portrait-before: 480px;
+$mobile-portrait: 479px;
 /* -----------------------------------------
 #media queries
 -----------------------------------------*/
@@ -44,11 +50,9 @@
 
   #nav {
     display:none;
-
     li {
       float: none;
       display: block;
-
       a {
         padding: 20px 30px;
         line-height: 1;
@@ -56,27 +60,22 @@
         background: none;
         font-size: 14px;
       }
-
       &:hover > ul {
         display: none;
       }
-
       li:hover > a {
         background: none;
         color: #fff;
       }
     }
-
     ul {
       position: static;
       top: 0;
       padding: 0;
       background: rgba(0, 0, 0, .2);
-
       a {
         width: 100%;
       }
-
       ul {
         left: 0;
       }
@@ -96,9 +95,7 @@
 
   #flyout {
     display:none;
-
     li {
-
       a {
         padding: 20px 30px;
         line-height: 1;
@@ -106,18 +103,15 @@
         background: none;
         font-size: 14px
       }
-
       &:hover > ul {
         display: none;
       }
     }
-
     ul {
       position: static;
       left: 0;
       padding: 0;
       background:rgba(0,0,0,.2);
-
       a {
         width:100%;
       }
@@ -136,12 +130,10 @@
     padding-left: 15px;
     padding-right: 15px;
     font-size: 12px;
-
     h4 {
       margin-bottom: 10px;
       font-size: 14px;
     }
-
     .btn {
       font-size: 10px;
       padding: 7px 12px !important;
@@ -149,7 +141,6 @@
   }
 
   .share-btns {
-
     a {
       height: auto;
       padding: 10px;
@@ -158,7 +149,6 @@
       white-space: nowrap;
       overflow: hidden;
     }
-
     i {
       display: block;
       line-height: 50px !important;
@@ -177,7 +167,6 @@
   .nav-wrap, .sidebar, #flyout-wrap, .breadcrumbs, .e-notify {
     display:none!important;
   }
-
   a[href]:after {
     content:none!important;
   }

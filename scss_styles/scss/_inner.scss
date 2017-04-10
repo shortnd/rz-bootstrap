@@ -4,7 +4,12 @@
 #flyout {
   margin:0;
   padding:0;
-
+  a {
+    text-decoration:none;
+    padding:15px 20px;
+    display:block;
+    border-bottom:1px solid #000;
+  }
   li {
     margin:0;
     display:block;
@@ -14,14 +19,6 @@
       display:block;
     }
   }
-
-  a {
-    text-decoration:none;
-    padding:15px 20px;
-    display:block;
-    border-bottom:1px solid #000;
-  }
-
   ul {
     display:none;
     position:absolute;
@@ -42,15 +39,12 @@
 .breadcrumbs {
   font-size:13px;
   text-transform:capitalize;
-
   p {
     margin:0;
   }
-
   a {
     text-decoration: none;
   }
-
   i {
     font-size: 13px;
     margin: 0 4px;

@@ -25,14 +25,12 @@ body {
   column-count: 4;
   column-gap: 40px;
   padding:40px;
-
+  a {
+    display:block;
+  }
   li {
     display: inline-block;
     width: 100%;
-  }
-
-  a {
-    display:block;
   }
 }
 /* for mega menu adjust as needed */
