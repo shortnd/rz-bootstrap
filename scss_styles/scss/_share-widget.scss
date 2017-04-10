@@ -1,0 +1,117 @@
+/* -----------------------------------------
+#share widget
+-----------------------------------------*/
+.modal-content {
+  overflow:hidden;
+  box-shadow:none!important;
+  border-radius:3px;
+}
+
+.modal-header {
+  background:#fff;
+  border-color:#F4F9FD;
+  text-align:center;
+  padding:30px 60px;
+
+  h4 {
+    font-size:30px;
+  }
+
+  button {
+    margin-top: 2px !important;
+    position: relative;
+    font-size: 25px;
+    color: #000 !important;
+    background: none;
+
+    &:hover {
+      color: #000 !important;
+      background: none;
+    }
+  }
+}
+
+.modal-body {
+  padding:40px 60px;
+}
+
+.copylink {
+  margin-bottom:40px;
+
+  pre {
+    border: 1px solid #DBE7F0;
+    background: #F4F9FD;
+  }
+}
+
+.share-btns {
+  margin:0 0 20px;
+
+  a {
+    display: block;
+    border: 1px solid #DBE7F0;
+    text-align: center;
+    height: 170px;
+    border-radius: 3px;
+    vertical-align: top;
+    overflow: hidden;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+
+  i {
+    display: block;
+    line-height: 170px !important;
+    font-size: 60px;
+  }
+}
+
+
+.btn-facebook {
+  color:#3b5998!important;
+  &:hover {
+    color:#3b5998;
+  }
+}
+.btn-twitter {
+  color:#00ACED!important;
+  &:hover {
+    color:#00ACED;
+  }
+}
+.btn-google {
+  color:#D34836!important;
+  &:hover {
+    border-color:#D34836;
+  }
+}
+.btn-reddit {
+  color:#ff5700!important;
+  &:hover {
+    border-color:#ff5700;
+  }
+}
+
+.btn-lg {
+  font-size: 16px;
+  padding: 14px 30px;
+  border: 0;
+  border-radius: 3px;
+}
+
+.floating-share-btn {
+  position: fixed;
+  z-index: 99999;
+  top: 40%;
+  right: 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 0;
+  border: 0;
+  background: #F26A39 !important;
+  color: #fff !important;
+  line-height: 50px;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  text-align: center;
+}

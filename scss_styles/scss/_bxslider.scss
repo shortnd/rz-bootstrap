@@ -1,0 +1,135 @@
+/* -----------------------------------------
+#bxslider
+-----------------------------------------*/
+.bxslider, .bx-viewport, .bx-wrapper {
+  height:100%!important;
+}
+
+.bxslider {
+  li {
+    height:100%!important;
+  }
+}
+
+.bx-wrapper {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+  overflow: hidden;
+
+  * {
+    margin:0;
+    padding:0;
+  }
+
+  img {
+    max-width:100%;
+    display:block;
+  }
+}
+
+.bxslider{list-style:none}
+.bxslider > li:nth-child(n+1){display:none}
+
+.bx-wrapper {
+
+  // pager
+  .bx-pager {
+    text-align: center;
+
+    .bx-pager-item {
+      display: inline-block;
+      *zoom: 1;
+      *display: inline;
+    }
+  }
+
+  // controls
+  .bx-controls-auto {
+
+    .bx-controls-auto-item {
+      display: inline-block;
+      *zoom: 1;
+      *display: inline;
+    }
+  }
+
+  &.bx-pager-default-pager {
+
+    a {
+      background: #666;
+      text-indent: -9999px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      outline: 0;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+
+      &:hover {
+        background:#000;
+      }
+
+      &:active {
+        background:#000;
+      }
+    }
+  }
+
+  // direction controls
+  .bx-controls-direction {
+    a {
+      width: 32px;
+      height: 32px;
+      margin: -20px 0 0;
+      display: block;
+      background: url('../images/slider-nav.png') no-repeat 0 0;
+      position: absolute;
+      z-index: 51;
+      top: 50%;
+      cursor: pointer;
+      text-indent: -9999px;
+      opacity: 0;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+
+      &.disabled {
+        display:none;
+      }
+    }
+  }
+
+  .bx-prev {
+    left:-40px;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+
+  .bx-next {
+    right: -40px;
+    background-position: 100% 0 !important;
+
+    &:hover {
+      opacity:1;
+    }
+  }
+
+  &:hover {
+    .bx-prev {
+      opacity: 0.6;
+      left: 20px;
+    }
+
+    .bx-next {
+      opacity: 0.6;
+      right: 20px;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+/* -----------------------------------------
+#images
+-----------------------------------------*/
+img {
+  max-width:100%;
+  height:auto;
+}
+
+a {
+  img {
+    border: none;
+  }
+}
+
+.alignleft {
+  float:left;
+  clear:left;
+  margin:0 20px 20px;
+}
+
+.alignright {
+  float:right;
+  margin:0 0 20px 20px;
+}
+
+.alignnone {margin:0 auto 20px;
+  display:block;
+}
+
+img[align="right"], img[style*="float: right"], img[style*="float:right"] {
+  margin: 0 0 20px 20px;
+}
+
+img[align="left"], img[style*="float: left"], img[style*="float:left"]{
+  margin: 0 20px 20px 0;
+}

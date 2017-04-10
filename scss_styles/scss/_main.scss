@@ -1,0 +1,77 @@
+/* -----------------------------------------
+#main
+-----------------------------------------*/
+body {
+  overflow-x:hidden;
+}
+
+.text-overflow {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+#nav-toggle, .toggle, .toggle2 {
+  display:none;
+}
+
+
+/* for mega menu adjust as needed */
+.nav > li > ul {
+  -moz-column-count: 4;
+  -moz-column-gap: 40px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 40px;
+  column-count: 4;
+  column-gap: 40px;
+  padding:40px;
+
+  li {
+    display: inline-block;
+    width: 100%;
+  }
+
+  a {
+    display:block;
+  }
+}
+/* for mega menu adjust as needed */
+
+// ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
+
+#nav {
+  float: right;
+  a {
+    width: 150px;
+  }
+  li {
+    position: relative;
+    float: left;
+
+    &:hover > ul {
+      display: block;
+    }
+    a {
+      display: block;
+      padding: 15px 30px;
+      background: #ededed;
+      color: #222;
+      text-decoration: none;
+
+      &:hover {
+        background: #222;
+        color: #ededed;
+      }
+    }
+  }
+  ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    ul {
+      left: 100%;
+      top: 0;
+    }
+  }
+}

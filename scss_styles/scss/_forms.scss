@@ -1,0 +1,83 @@
+/* -----------------------------------------
+#forms
+-----------------------------------------*/
+form {
+  margin-bottom:30px;
+}
+
+fieldset {
+  margin-bottom:30px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea, select {
+  border:1px solid #e9eaec;
+  padding:10px 14px;
+  outline:none;
+  font-size:13px;
+  font-family:sans-serif;
+  color:#777;
+  margin:0;
+  display:inline-block;
+  background:#fff;
+  border-radius:0;
+  box-shadow:none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="search"]:focus, textarea:focus {
+  color:#63686c;
+  border:1px solid #0F95E9;
+}
+
+label, legend {
+  display:block;
+  font-weight:bold;
+  font-size:13px;
+}
+
+input[type="checkbox"] {
+  display:inline;
+}
+
+label {
+  span {
+    font-weight:normal;
+    font-size:13px;
+    color:#444;
+  }
+}
+
+legend {
+  span {
+    font-weight:normal;
+    font-size:13px;
+    color:#444;
+  }
+}
+
+.form-control:focus {
+  border-color:inherit;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+}
+
+::-webkit-input-placeholder {
+  color:#777;
+}
+
+:-moz-placeholder {
+  color:#777;
+}
+
+::-moz-placeholder {
+  color:#777;
+}
+
+:-ms-input-placeholder {
+  color:#777;
+}
+
+.gsc-control-cse {
+  * {
+    box-sizing:content-box;
+  }
+}

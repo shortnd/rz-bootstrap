@@ -1,0 +1,58 @@
+/* -----------------------------------------
+#buttons
+-----------------------------------------*/
+.button,
+a.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.btn {
+  padding:10px 20px;
+  background:#0f99ee;
+  color:#fff!important;
+  border:0;
+  border-radius:0;
+  display:inline-block;
+  font-size:12px;
+  font-weight:900!important;
+  text-decoration:none;
+  cursor:pointer;
+  line-height:normal;
+  vertical-align:top;
+  font-family:sans-serif;
+  text-transform:uppercase;
+  transition:background .3s;
+}
+
+.button:hover,
+a.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.btn:hover {
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  -o-box-shadow:none;
+  box-shadow:none;
+  background:#0e8cda;
+}
+
+.button:active,
+a.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active,
+.btn:active {
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  -o-box-shadow:none;
+  box-shadow:none;
+  background:#0e8cda;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border:0;padding:0;
+}

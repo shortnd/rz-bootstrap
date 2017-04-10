@@ -1,0 +1,60 @@
+/* -----------------------------------------
+#inner
+-----------------------------------------*/
+#flyout {
+  margin:0;
+  padding:0;
+
+  li {
+    margin:0;
+    display:block;
+    position:relative;
+
+    &:hover > ul {
+      display:block;
+    }
+  }
+
+  a {
+    text-decoration:none;
+    padding:15px 20px;
+    display:block;
+    border-bottom:1px solid #000;
+  }
+
+  ul {
+    display:none;
+    position:absolute;
+    top:0;
+    left:100%;
+    margin:0;
+    padding:0;
+    background:#aaa;
+
+    a {
+      font-size: 13px;
+      padding: 10px 15px;
+      width: 180px;
+    }
+  }
+}
+
+.breadcrumbs {
+  font-size:13px;
+  text-transform:capitalize;
+
+  p {
+    margin:0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 13px;
+    margin: 0 4px;
+  }
+}
+
+// ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
