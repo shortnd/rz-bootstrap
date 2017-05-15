@@ -17,23 +17,23 @@ $mobile-portrait: 479px;
 
 @media only screen and (max-width:$tablet) {
 
-  // rz citizens request center
-  #formwizziwmorf {
-    tr {
-      display:block!important;
-
-      td {
-        display:block!important;
-      }
-
-      table {
-
-        tr {
-          display:table-row!important
-        }
-
+  /* rz form tables - without page scope this targets editforms and makes
+  * editing confusing
+  */
+  #freeform {
+    #formwizziwmorf {
+      tr {
+        display: block!important;
         td {
-          display:table-cell!important
+          display: block!important;
+        }
+        table {
+          tr {
+            display: table-row!important;
+          }
+          td {
+            display: table-cell!important;
+          }
         }
       }
     }
@@ -53,7 +53,7 @@ $mobile-portrait: 479px;
     li {
       float: none;
       display: block;
-      a {
+      a, span {
         padding: 20px 30px;
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -73,7 +73,7 @@ $mobile-portrait: 479px;
       top: 0;
       padding: 0;
       background: rgba(0, 0, 0, .2);
-      a {
+      a, span {
         width: 100%;
       }
       ul {
@@ -96,7 +96,7 @@ $mobile-portrait: 479px;
   #flyout {
     display:none;
     li {
-      a {
+      a, span {
         padding: 20px 30px;
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -112,7 +112,7 @@ $mobile-portrait: 479px;
       left: 0;
       padding: 0;
       background:rgba(0,0,0,.2);
-      a {
+      a, span {
         width:100%;
       }
     }

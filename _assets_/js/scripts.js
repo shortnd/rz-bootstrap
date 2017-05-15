@@ -63,11 +63,11 @@
 		});
 
 		// Menu Arrows
-		$("#nav > li:has(ul)").addClass('first-parent').find("a:first").append('<i class="fa fa-angle-down down-arrow">');
+        $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 
 		// Menu Toggles 
-		$("#nav >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle">');
-		$("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2">');
+        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle">');
+        $("#nav li li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle2">');
 
 		function addNavClass() {
 			if ($window.width() < 992) {
@@ -103,13 +103,13 @@
 		});
 
 		// Add Class To Nav Items + Icons if Needed 
-		$('#nav> li:nth-child(1) >a').addClass('nav-item-one').prepend();
-		$('#nav> li:nth-child(2) >a').addClass('nav-item-two').prepend();
-		$('#nav> li:nth-child(3) >a').addClass('nav-item-three').prepend();
-		$('#nav> li:nth-child(4) >a').addClass('nav-item-four').prepend();
-		$('#nav> li:nth-child(5) >a').addClass('nav-item-five').prepend();
-		$('#nav> li:nth-child(6) >a').addClass('nav-item-six').prepend();
-		$('#nav> li:nth-child(7) >a').addClass('nav-item-seven').prepend();
+		$('#nav> li:nth-child(1) >a, #nav> li:nth-child(1) >span').addClass('nav-item-one').prepend();
+		$('#nav> li:nth-child(2) >a, #nav> li:nth-child(2) >span').addClass('nav-item-two').prepend();
+		$('#nav> li:nth-child(3) >a, #nav> li:nth-child(3) >span').addClass('nav-item-three').prepend();
+		$('#nav> li:nth-child(4) >a, #nav> li:nth-child(4) >span').addClass('nav-item-four').prepend();
+		$('#nav> li:nth-child(5) >a, #nav> li:nth-child(5) >span').addClass('nav-item-five').prepend();
+		$('#nav> li:nth-child(6) >a, #nav> li:nth-child(6) >span').addClass('nav-item-six').prepend();
+		$('#nav> li:nth-child(7) >a, #nav> li:nth-child(7) >span').addClass('nav-item-seven').prepend();
 
 		// Flyout
 		var flyout = $('#flyout'),
@@ -124,7 +124,7 @@
 			$(this).toggleClass("active");
 		});
 
-		$("#flyout li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle-children">');
+        $("#flyout li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle-children">');
 		$("#flyout ul").addClass('flyout-children');
 		
 		var flyoutChildren = $('.flyout-children');
@@ -140,18 +140,23 @@
 		});
 
 		// simpleWeather
-		if( typeof $.simpleWeather !== "undefined" ){
-			$.simpleWeather({
-				location: 'Arkansas City, KS',
+		if( typeof $.revizeWeather !== "undefined" ){
+			$.fn.revizeWeather({
+				zip: '48326',
+				city_name: '',
 				unit: 'f',
 				success: function(weather) {
-					var html = '<span>'+weather.forecast[0].day+', '+weather.forecast[0].date+'</span>&nbsp;&nbsp;&nbsp;<span class="forecast">'+weather.temp+' '+weather.forecast[0].text+'&deg;</span>';
-					html += '<i class="icon-'+weather.code+'"></i>';
+					var date = new Date();
+					date = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+					var html = '<span>' + date + '</span> <span class="forecast">' + weather.temp +'$deg; ' + weather.forecast +'</span>';
+					html += '<i class="' + weather.icon + '"></i>';
 
 					$("#weather").html(html);
 				},
 				error: function(error) {
-					$("#weather").html("<p>"+error+"</p>");
+					// better to just hide the section if there is an error
+					$('.weather').hide();
+					console.log(error);
 				}
 			});
 		}

@@ -88,16 +88,30 @@
 								<li><a href="">Photos</a></li>
 							</ul>
 						</li>
-						<li><a href="">Information</a>
-							<ul>
-								<li><a href="">Contact Us</a></li>
-								<li><a href="">News</a></li>
-								<li><a href="">Announcements</a></li>
-								<li><a href="">Jobs</a></li>
-								<li><a href="">Minutes</a></li>
-								<li><a href="">RFP's</a></li>
-							</ul>					
-						</li>
+                        <li><span>Information</span>
+                            <ul>
+                                <li><span>How Do I?</span>
+                                    <ul>
+                                        <li><a href="">Management</a></li>
+                                        <li><a href="">Finance</a></li>
+                                        <li><a href="">Planning</a></li>
+                                        <li><a href="">Public Works</a></li>
+                                        <li><a href="">Police</a></li>
+                                        <li><a href="">Fire / EMS</a></li>
+                                        <li><a href="">Libraries</a></li>
+                                        <li><a href="">Education</a></li>
+                                        <li><a href="">Parks &amp; Recreation</a></li>
+                                        <li><a href="">Information Technology</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="">Contact Us</a></li>
+                                <li><a href="">News</a></li>
+                                <li><a href="">Announcements</a></li>
+                                <li><a href="">Jobs</a></li>
+                                <li><a href="">Minutes</a></li>
+                                <li><a href="">RFP's</a></li>
+                            </ul>
+                        </li>
 					</ul>			
 
 					<div id="search">
@@ -223,7 +237,7 @@
 <script src="_assets_/plugins/instafeed/instafeed.min.js"></script>
 <script src="_assets_/plugins/sticky/jquery.sticky.js"></script>
 <script src="_assets_/plugins/matchHeight/dist/jquery.matchHeight-min.js"></script>
-<script src="_assets_/plugins/simpleWeather/jquery.simpleWeather.min.js"></script>
+<script src="_assets_/plugins/revizeWeather/js/revizeWeather.min.js"></script>
 <script src="_assets_/plugins/waypoints/waypoints.min.js"></script>
 <script src="_assets_/js/scripts.js"></script>
 

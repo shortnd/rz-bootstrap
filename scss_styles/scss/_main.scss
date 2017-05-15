@@ -15,7 +15,7 @@ body {
   display:none;
 }
 
-
+/* Don't forget to account for span being used in space of a tag for nav items that are not links */
 /* for mega menu adjust as needed */
 .nav > li > ul {
   -moz-column-count: 4;
