@@ -9,9 +9,8 @@ $mobile-portrait: 479px;
 -----------------------------------------*/
 @media only screen and (max-width:$desktop) {}
 @media only screen and (min-width:$tablet-before) {
-
   #flyout ,#nav {
-    display:block!important
+    display: block!important
   }
 }
 
@@ -23,16 +22,16 @@ $mobile-portrait: 479px;
   #freeform {
     #formwizziwmorf {
       tr {
-        display: block!important;
+        display: block !important;
         td {
-          display: block!important;
+          display: block !important;
         }
         table {
           tr {
-            display: table-row!important;
+            display: table-row !important;
           }
           td {
-            display: table-cell!important;
+            display: table-cell !important;
           }
         }
       }
@@ -49,16 +48,16 @@ $mobile-portrait: 479px;
   }
 
   #nav {
-    display:none;
+    display: none;
     li {
       float: none;
       display: block;
       a, span {
         padding: 20px 30px;
+        font-size: 14px;
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
         background: none;
-        font-size: 14px;
       }
       &:hover > ul {
         display: none;
@@ -69,9 +68,9 @@ $mobile-portrait: 479px;
       }
     }
     ul {
+      padding: 0;
       position: static;
       top: 0;
-      padding: 0;
       background: rgba(0, 0, 0, .2);
       a, span {
         width: 100%;
@@ -85,23 +84,25 @@ $mobile-portrait: 479px;
       position: absolute;
       right: 0;
       top: 0;
-      background: rgba(0, 0, 0, .2);
-      height: 55px;
       width: 55px;
-      line-height: 55px;
+      height: 55px;
       text-align: center;
+      line-height: 55px;
+      background: rgba(0, 0, 0, .2);
     }
   }
 
   #flyout {
     display:none;
+    margin: 0;
+    padding: 0;
     li {
       a, span {
         padding: 20px 30px;
+        font-size: 14px
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
         background: none;
-        font-size: 14px
       }
       &:hover > ul {
         display: none;
@@ -121,38 +122,38 @@ $mobile-portrait: 479px;
 // All Mobile Sizes (devices and browser)
 @media only screen and (max-width:$mobile) {
   .floating-alert {
-    width: auto;
-    right: 0;
-    left: 0;
-    border: 0;
-    bottom: 0;
-    border-radius: 0;
     padding-left: 15px;
     padding-right: 15px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: auto;
     font-size: 12px;
+    border-radius: 0;
+    border: 0;
     h4 {
       margin-bottom: 10px;
       font-size: 14px;
     }
     .btn {
-      font-size: 10px;
       padding: 7px 12px !important;
+      font-size: 10px;
     }
   }
 
   .share-btns {
     a {
-      height: auto;
       padding: 10px;
       width: 100%;
+      height: auto;
       font-size: 12px;
       white-space: nowrap;
       overflow: hidden;
     }
     i {
       display: block;
-      line-height: 50px !important;
       font-size: 20px;
+      line-height: 50px !important;
     }
   }
 }
@@ -165,9 +166,9 @@ $mobile-portrait: 479px;
 
 @media print {
   .nav-wrap, .sidebar, #flyout-wrap, .breadcrumbs, .e-notify {
-    display:none!important;
+    display: none !important;
   }
   a[href]:after {
-    content:none!important;
+    content: none !important;
   }
 }

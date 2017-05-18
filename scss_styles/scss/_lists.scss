@@ -3,33 +3,31 @@
 -----------------------------------------*/
 // first level
 ul, ol {
-  margin-bottom:20px;
-  margin-left:10px;
+  margin: 0 0 20px 10px;
 }
 
 ul {
-  list-style:disc;
+  list-style: disc;
 }
 
 ol {
-  list-style:decimal;
+  list-style :decimal;
 }
 
 // first level
 ul {
   // second level
   ul {
-    margin:4px 0 5px 30px;
+    margin: 4px 0 5px 30px;
     li {
-      margin-bottom:6px;
+      margin-bottom: 6px;
     }
   }
-
   // second level
   ol {
-    margin:4px 0 5px 30px;
+    margin: 4px 0 5px 30px;
     li {
-      margin-bottom:6px;
+      margin-bottom: 6px;
     }
   }
 } // end ul
@@ -38,27 +36,26 @@ ul {
 ol {
   // second level
   ol {
-    margin:4px 0 5px 30px;
+    margin: 4px 0 5px 30px;
     li {
-      margin-bottom:6px;
+      margin-bottom: 6px;
     }
   }
 
   // second level
   ul {
-    margin:4px 0 5px 30px;
+    margin: 4px 0 5px 30px;
     li {
-      margin-bottom:6px;
+      margin-bottom: 6px;
     }
   }
 } // end ol
 
 
 li {
-  line-height:1.3;
-  margin-bottom:7px;
-
+  line-height: 1.3;
+  margin-bottom: 7px;
   p {
-    line-height:1.3;
+    line-height: 1.3;
   }
 }

@@ -2,59 +2,60 @@
 #main
 -----------------------------------------*/
 body {
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .text-overflow {
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #nav-toggle, .toggle, .toggle2 {
-  display:none;
+  display: none;
 }
 
 /* Don't forget to account for span being used in space of a tag for nav items that are not links */
 /* for mega menu adjust as needed */
-.nav > li > ul {
-  -moz-column-count: 4;
-  -moz-column-gap: 40px;
-  -webkit-column-count: 4;
-  -webkit-column-gap: 40px;
-  column-count: 4;
-  column-gap: 40px;
-  padding:40px;
-  a {
-    display:block;
-  }
-  li {
-    display: inline-block;
-    width: 100%;
-  }
-}
+//.nav > li > ul {
+//  padding: 40px;
+//  -moz-column-count: 4;
+//  -moz-column-gap: 40px;
+//  -webkit-column-count: 4;
+//  -webkit-column-gap: 40px;
+//  column-count: 4;
+//  column-gap: 40px;
+//  a {
+//    display: block;
+//  }
+//  li {
+//    display: inline-block;
+//    width: 100%;
+//  }
+//}
 /* for mega menu adjust as needed */
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
 
 #nav {
   float: right;
+  margin: 0;
+  padding: 0;
   a {
     width: 150px;
   }
   li {
-    position: relative;
     float: left;
-
+    position: relative;
     &:hover > ul {
       display: block;
     }
     a {
       display: block;
       padding: 15px 30px;
+      text-decoration: none;
       background: #ededed;
       color: #222;
-      text-decoration: none;
 
       &:hover {
         background: #222;
@@ -64,10 +65,14 @@ body {
   }
   ul {
     display: none;
+    margin: 0;
+    padding: 0;
     position: absolute;
     top: 100%;
     left: 0;
     ul {
+      margin: 0;
+      padding: 0;
       left: 100%;
       top: 0;
     }

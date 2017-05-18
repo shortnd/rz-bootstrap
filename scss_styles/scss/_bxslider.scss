@@ -2,12 +2,12 @@
 #bxslider
 -----------------------------------------*/
 .bxslider, .bx-viewport, .bx-wrapper {
-  height:100%!important;
+  height: 100% !important;
 }
 
 .bxslider {
   li {
-    height:100%!important;
+    height: 100% !important;
   }
 }
 
@@ -19,13 +19,13 @@
   overflow: hidden;
 
   * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
 
   img {
-    max-width:100%;
-    display:block;
+    max-width: 100%;
+    display: block;
   }
 }
 
@@ -33,7 +33,6 @@
 .bxslider > li:nth-child(n+1){display:none}
 
 .bx-wrapper {
-
   // pager
   .bx-pager {
     text-align: center;
@@ -86,7 +85,7 @@
       height: 32px;
       margin: -20px 0 0;
       display: block;
-      background: url('../images/slider-nav.png') no-repeat 0 0;
+      background: url('../../_assets_/images/slider-nav.png') no-repeat 0 0;
       position: absolute;
       z-index: 51;
       top: 50%;
@@ -105,7 +104,7 @@
   }
 
   .bx-prev {
-    left:-40px;
+    left: -40px;
 
     &:hover {
       opacity:1;
@@ -117,7 +116,7 @@
     background-position: 100% 0 !important;
 
     &:hover {
-      opacity:1;
+      opacity: 1;
     }
   }
 
