@@ -3,7 +3,7 @@
 	Theme Name: SiteName
 	Author Design: Samir Alley @samiralley | Tom Gooden @good3n
 	Author URI: http://www.revize.com/
-	Date: MONTH DAY, 2015
+	Date: MONTH DAY, 2017
 	
 -----------------------------------------------------------------------------------*/		
 

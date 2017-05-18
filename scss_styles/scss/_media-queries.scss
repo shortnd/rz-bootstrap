@@ -13,10 +13,9 @@ $mobile-portrait: 479px;
     display: block!important
   }
 }
-
 @media only screen and (max-width:$tablet) {
 
-  /* rz form tables - without page scope this targets editforms and makes
+  /* rz form tables - without page scope this targets edit forms and makes
   * editing confusing
   */
   #freeform {
@@ -79,7 +78,6 @@ $mobile-portrait: 479px;
         left: 0;
       }
     }
-
     .toggle, .toggle2 {
       position: absolute;
       right: 0;
@@ -99,7 +97,7 @@ $mobile-portrait: 479px;
     li {
       a, span {
         padding: 20px 30px;
-        font-size: 14px
+        font-size: 14px;
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
         background: none;
