@@ -1,3 +1,4 @@
+$desktop-bore: 1201px;
 $desktop: 1200px;
 $tablet-before: 992px;
 $tablet: 991px;
@@ -7,13 +8,20 @@ $mobile-portrait: 479px;
 /* -----------------------------------------
 #media queries
 -----------------------------------------*/
-@media only screen and (max-width:$desktop) {}
-@media only screen and (min-width:$tablet-before) {
+// For Wider Page Designs
+@media only screen and (min-width: $desktop-before) {
+  //.container {
+  //  width: 1620px; // whatever value reflects the design
+  //  max-width: 100%; // fail-safe
+  //}
+}
+@media only screen and (max-width: $desktop) {}
+@media only screen and (min-width: $tablet-before) {
   #flyout ,#nav {
     display: block!important
   }
 }
-@media only screen and (max-width:$tablet) {
+@media only screen and (max-width: $tablet) {
 
   /* rz form tables - without page scope this targets edit forms and makes
   * editing confusing
@@ -116,9 +124,15 @@ $mobile-portrait: 479px;
       }
     }
   }
+
+  footer {
+    .text-right {
+      text-align: left;
+    }
+  }
 }
 // All Mobile Sizes (devices and browser)
-@media only screen and (max-width:$mobile) {
+@media only screen and (max-width: $mobile) {
   .floating-alert {
     padding-left: 15px;
     padding-right: 15px;
@@ -138,7 +152,6 @@ $mobile-portrait: 479px;
       font-size: 10px;
     }
   }
-
   .share-btns {
     a {
       padding: 10px;
@@ -154,13 +167,17 @@ $mobile-portrait: 479px;
       line-height: 50px !important;
     }
   }
+  .floating-share-btn {
+    top: auto;
+    bottom: 0;
+  }
 }
 
 // Mobile Landscape Size to Tablet Portrait (devices and browsers)
-@media only screen and (min-width:$mobile-portrait-before) and (max-width:$mobile) {}
+@media only screen and (min-width: $mobile-portrait-before) and (max-width: $mobile) {}
 
 // Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
-@media only screen and (max-width:$mobile-portrait) {}
+@media only screen and (max-width: $mobile-portrait) {}
 
 @media print {
   .nav-wrap, .sidebar, #flyout-wrap, .breadcrumbs, .e-notify {

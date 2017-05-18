@@ -11,7 +11,9 @@ body {
   overflow: hidden;
 }
 
-#nav-toggle, .toggle, .toggle2 {
+#nav-toggle, .toggle
+//, .toggle2
+{
   display: none;
 }
 
@@ -36,6 +38,9 @@ body {
 /* for mega menu adjust as needed */
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
+.top-bar {
+  background: #fff;
+}
 
 #nav {
   float: right;
@@ -75,6 +80,67 @@ body {
       padding: 0;
       left: 100%;
       top: 0;
+    }
+  }
+}
+
+#search {
+  //display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 255px;
+  background: #fff;
+  form {
+    margin: 0;
+    position: relative;
+  }
+  input {
+    height: 40px;
+    width: 100%;
+  }
+  button {
+    position: absolute;
+    height: 40px;
+    border-radius: 0;
+    background: $red;
+    i {
+      margin-top: 0;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  height: 0;
+  z-index: 1;
+}
+
+.foot-info {
+  background: #000;
+  font-size: 13px;
+  color: #fff;
+  p {
+    margin: 35px 0;
+  }
+}
+
+footer {
+  font-size: 12px;
+  background: #fff;
+  p {
+    margin: 15px 0;
+    color: #fff;
+    a {
+      text-decoration: none;
+      color: #fff;
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+      &.color {
+        color: #000;
+      }
     }
   }
 }

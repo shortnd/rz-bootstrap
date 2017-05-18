@@ -66,7 +66,7 @@
         $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 
 		// Menu Toggles 
-        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle">');
+        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-right toggle">');
         $("#nav li li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle2">');
 
 		function addNavClass() {
@@ -129,15 +129,17 @@
 		
 		var flyoutChildren = $('.flyout-children');
 
-		$(".toggle-children").click(function(e) {
-				e.preventDefault();
-			if($(this).parent().next(flyoutChildren).is(":visible")){
-				$(this).parent().next(flyoutChildren).slideUp();
-			} else {
-				$(flyoutChildren).slideUp("slow");
-				$(this).parent().next(flyoutChildren).slideToggle();
-			}
-		});
+        $(".toggle-children").click(function(e) {
+            e.preventDefault();
+            if (window.matchMedia('(max-width: 991px)').matches) {
+                if($(this).parent().next(flyoutChildren).is(":visible")){
+                    $(this).parent().next(flyoutChildren).slideUp();
+                } else {
+                    $(flyoutChildren).slideUp("slow");
+                    $(this).parent().next(flyoutChildren).slideToggle();
+                }
+            }
+        });
 
 		// simpleWeather
 		if( typeof $.revizeWeather !== "undefined" ){
