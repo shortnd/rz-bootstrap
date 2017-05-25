@@ -46,10 +46,12 @@ body {
   float: right;
   margin: 0;
   padding: 0;
+  list-style: none;
   a {
     width: 150px;
   }
   li {
+    margin: 0;
     float: left;
     position: relative;
     &:hover > ul {
@@ -75,6 +77,12 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
+    list-style: none;
+    text-align: left;
+    li {
+      margin: 0;
+      padding: 0;
+    }
     ul {
       margin: 0;
       padding: 0;
@@ -97,13 +105,18 @@ body {
   }
   input {
     height: 40px;
-    width: 100%;
+    //width: 100%;
+    border: none;
+    &:focus {
+      outline: none;
+      border: none;
+    }
   }
   button {
     position: absolute;
     height: 40px;
     border-radius: 0;
-    background: $red;
+    background: #fff;
     i {
       margin-top: 0;
     }
@@ -113,6 +126,7 @@ body {
 .slider {
   position: relative;
   height: 0;
+  background: #000;
   z-index: 1;
 }
 

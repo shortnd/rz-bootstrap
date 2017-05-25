@@ -1,6 +1,9 @@
 /* -----------------------------------------
 #inner
 -----------------------------------------*/
+#flyout-toggle {
+  float: right;
+}
 #flyout {
   margin: 0;
   padding: 0;
@@ -51,3 +54,23 @@
 }
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
+
+.slider-inner {
+  position: relative;
+  height: 0;
+  background: #000;
+  z-index: 1;
+}
+.page-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 52;
+}
+
+.post {
+  p,img,ul {
+    margin: 0 0 30px 0;
+  }
+}
