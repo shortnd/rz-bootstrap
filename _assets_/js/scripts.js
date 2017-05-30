@@ -66,7 +66,7 @@
         $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 
 		// Menu Toggles 
-        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-right toggle">');
+        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle">');
         $("#nav li li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle2">');
 
 		function addNavClass() {
@@ -233,7 +233,8 @@
 				resolution:'standard_resolution',
 				limit:9,
 				userId: 223202806,
-				accessToken: '303202123.f7e9b72.27c687fbd9c24ecbb29dc92951cdf724'
+				accessToken: '303202123.f7e9b72.27c687fbd9c24ecbb29dc92951cdf724',
+				target: ''
 			});
 			userFeed.run();
 		}

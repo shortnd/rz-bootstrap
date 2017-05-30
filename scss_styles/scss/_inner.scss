@@ -2,7 +2,9 @@
 #inner
 -----------------------------------------*/
 #flyout-toggle {
+  display: none;
   float: right;
+  color: #fff;
 }
 #flyout {
   margin: 0;
@@ -12,12 +14,15 @@
     padding: 15px 20px;
     text-decoration: none;
     border-bottom: 1px solid #000;
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
   }
   li {
     margin: 0;
     display: block;
     position: relative;
-
     &:hover > ul {
       display: block;
     }
@@ -30,7 +35,6 @@
     margin: 0;
     padding: 0;
     background: #aaa;
-
     a, span {
       font-size: 13px;
       padding: 10px 15px;
@@ -54,6 +58,10 @@
 }
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
+#main-content {
+  padding: 0;
+  background: #fff;
+}
 
 .slider-inner {
   position: relative;
@@ -67,9 +75,15 @@
   left: 0;
   width: 100%;
   z-index: 52;
+  .title {
+    font-weight: 400;
+    font-size: 30px;
+    color: #fff;
+  }
 }
 
 .post {
+  padding: 0;
   p,img,ul {
     margin: 0 0 30px 0;
   }
