@@ -1,5 +1,28 @@
 // Mixins functions for easier styling
 
+@mixin mega-menu($col: 4, $gap: 30px) {
+  -moz-column-count: $col;
+  -moz-column-gap: $gap;
+  -webkit-column-count: $col;
+  -webkit-column-gap: $gap;
+  column-count: $col;
+  column-gap: $gap;
+}
+
+@mixin break-inside($break: avoid) {
+  -webkit-column-break-inside: $break;
+  page-break-inside: $break;
+  break-inside: $break;
+}
+
+// default border radius
+@mixin border-radius($radius: 5px, $webkit: true, $moz: true, $ms: true) {
+  @if $webkit { -webkit-border-radius: $radius; }
+  @if $moz    { -moz-border-radius: $radius; }
+  @if $ms     { -ms-border-radius: $radius; }
+  border-radius: $radius;
+}
+
 // shades with black
 @function shade($color, $percent) {
   // should be used for things like shading colors of a button on hover

@@ -11,31 +11,11 @@ body {
   overflow: hidden;
 }
 
-#nav-toggle, .toggle
+#nav-toggle, #search-toggle, .toggle
 //, .toggle2
 {
   display: none;
 }
-
-/* Don't forget to account for span being used in space of a tag for nav items that are not links */
-/* for mega menu adjust as needed */
-//.nav > li > ul {
-//  padding: 40px;
-//  -moz-column-count: 4;
-//  -moz-column-gap: 40px;
-//  -webkit-column-count: 4;
-//  -webkit-column-gap: 40px;
-//  column-count: 4;
-//  column-gap: 40px;
-//  a {
-//    display: block;
-//  }
-//  li {
-//    display: inline-block;
-//    width: 100%;
-//  }
-//}
-/* for mega menu adjust as needed */
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
 .top-bar {
@@ -77,6 +57,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
+    //@include mega-menu(3, 20px);
     list-style: none;
     text-align: left;
     li {
@@ -88,6 +69,9 @@ body {
       padding: 0;
       left: 100%;
       top: 0;
+      a {
+        color: #000;
+      }
     }
   }
 }

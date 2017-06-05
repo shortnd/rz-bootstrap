@@ -46,7 +46,7 @@ $mobile-portrait: 479px;
   }
 
   // nav
-  .toggle, .toggle2, #nav-toggle {
+  .toggle, .toggle2, #nav-toggle, #search-toggle {
     display: inline-block;
     cursor: pointer;
   }
@@ -63,7 +63,7 @@ $mobile-portrait: 479px;
         padding: 20px 30px;
         font-size: 14px;
         line-height: 1;
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
+        border-bottom: 1px solid rgba(#000, .2);
         background: none;
       }
       &:hover > ul {
@@ -78,12 +78,29 @@ $mobile-portrait: 479px;
       padding: 0;
       position: static;
       top: 0;
+      width: auto;
+      -moz-column-count: 1;
+      -moz-column-gap: 0;
+      -webkit-column-count: 1;
+      -webkit-column-gap: 0;
+      column-count: 1;
+      column-gap: 0;
       background: rgba(0, 0, 0, .2);
       a, span {
+        margin: 0;
+        padding: 20px;
         width: 100%;
       }
       ul {
+        display: none;
+        margin: 0;
+        padding: 0;
         left: 0;
+        background: rgba(#000, .2);
+        a, span {
+          margin: 0;
+          padding: 20px 30px;
+        }
       }
     }
     .toggle, .toggle2 {

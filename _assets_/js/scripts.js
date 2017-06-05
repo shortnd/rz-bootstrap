@@ -49,12 +49,12 @@
 			 $body.addClass("user-not-logged-in");
 		 }
 		}
-		 
-		// Search Toggle
-		$('#search-toggle').on('click',function(e){
-			$('#search').stop().slideToggle(200);
-			$(this).toggleClass('fa-search fa-close');
-		});
+
+        // Search Toggle
+        $('#search-toggle').on('click',function(e){
+            $('#search').stop().slideToggle(200);
+            $(this).find('i').toggleClass('fa-search fa-close');
+        });
 
 		// Navigation Toggle
 		$("#nav-toggle").on("click", function(){

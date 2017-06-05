@@ -12,7 +12,7 @@ input[type="button"],
   background: #0f99ee;
   color: #fff !important;
   border: 0;
-  border-radius: 0;
+  @include border-radius(5px);
   display: inline-block;
   font-size: 12px;
   font-weight: 900 !important;
