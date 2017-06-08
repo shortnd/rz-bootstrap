@@ -28,7 +28,16 @@ body {
   padding: 0;
   list-style: none;
   a {
-    width: 150px;
+    display: block;
+    padding: 15px 30px;
+    text-decoration: none;
+    background: #ededed;
+    color: #222;
+
+    &:hover {
+      background: #222;
+      color: #ededed;
+    }
   }
   li {
     margin: 0;
@@ -36,18 +45,6 @@ body {
     position: relative;
     &:hover > ul {
       display: block;
-    }
-    a {
-      display: block;
-      padding: 15px 30px;
-      text-decoration: none;
-      background: #ededed;
-      color: #222;
-
-      &:hover {
-        background: #222;
-        color: #ededed;
-      }
     }
   }
   ul {
@@ -101,6 +98,10 @@ body {
     height: 40px;
     border-radius: 0;
     background: #fff;
+    &:focus {
+      outline: none;
+      border: none;
+    }
     i {
       margin-top: 0;
     }
@@ -139,6 +140,29 @@ footer {
       &.color {
         color: #000;
       }
+    }
+  }
+}
+
+iframe {
+  border: none;
+}
+.dropdown-menu {
+  a {
+    text-decoration: none;
+  }
+}
+.goog-te-gadget-simple {
+  border: none!important;
+}
+.skiptranslate {
+  padding: 0 20px!important;
+}
+.goog-te-menu-value {
+  span {
+    display: none;
+    &:first-child {
+      display: inline-block;
     }
   }
 }

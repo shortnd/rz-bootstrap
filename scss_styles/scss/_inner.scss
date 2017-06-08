@@ -4,7 +4,9 @@
 #flyout-toggle {
   display: none;
   float: right;
+  position: relative;
   color: #fff;
+  z-index: 9;
 }
 #flyout {
   margin: 0;
@@ -41,6 +43,10 @@
       width: 180px;
     }
   }
+  .toggle-children {
+    display: none;
+    float: right;
+  }
 }
 
 .breadcrumbs {
@@ -48,12 +54,14 @@
   text-transform: capitalize;
   p {
     margin: 0;
+    color: $black;
   }
   a {
     text-decoration: none;
+    color: $black;
   }
   span {
-    color: #fff;
+    color: $black;
   }
 }
 

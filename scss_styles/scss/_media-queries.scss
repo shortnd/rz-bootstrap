@@ -23,30 +23,8 @@ $mobile-portrait: 479px;
 }
 @media only screen and (max-width: $tablet) {
 
-  /* rz form tables - without page scope this targets edit forms and makes
-  * editing confusing
-  */
-  #freeform {
-    #formwizziwmorf {
-      tr {
-        display: block !important;
-        td {
-          display: block !important;
-        }
-        table {
-          tr {
-            display: table-row !important;
-          }
-          td {
-            display: table-cell !important;
-          }
-        }
-      }
-    }
-  }
-
   // nav
-  .toggle, .toggle2, #nav-toggle, #search-toggle {
+  .toggle, .toggle2, #nav-toggle, #search-toggle, #flyout-toggle {
     display: inline-block;
     cursor: pointer;
   }
@@ -56,16 +34,17 @@ $mobile-portrait: 479px;
 
   #nav {
     display: none;
+    a, span {
+      padding: 20px 10px;
+      font-size: 14px;
+      line-height: 1;
+      text-align: left;
+      border-bottom: 1px solid rgba(#000, .2);
+      background: none;
+    }
     li {
       float: none;
       display: block;
-      a, span {
-        padding: 20px 30px;
-        font-size: 14px;
-        line-height: 1;
-        border-bottom: 1px solid rgba(#000, .2);
-        background: none;
-      }
       &:hover > ul {
         display: none;
       }
@@ -120,8 +99,9 @@ $mobile-portrait: 479px;
     margin: 0;
     padding: 0;
     li {
+      padding: 0;
       a, span {
-        padding: 20px 30px;
+        padding: 20px 10px;
         font-size: 14px;
         line-height: 1;
         border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -137,14 +117,40 @@ $mobile-portrait: 479px;
       padding: 0;
       background:rgba(0,0,0,.2);
       a, span {
+        padding: 20px;
         width:100%;
       }
+    }
+    .toggle-children {
+      display: block;
     }
   }
 
   footer {
     .text-right {
       text-align: left;
+    }
+  }
+
+  /* rz form tables - without page scope this targets edit forms and makes
+ * editing confusing
+ */
+  #freeform {
+    #formwizziwmorf {
+      tr {
+        display: block !important;
+        td {
+          display: block !important;
+        }
+        table {
+          tr {
+            display: table-row !important;
+          }
+          td {
+            display: table-cell !important;
+          }
+        }
+      }
     }
   }
 }
