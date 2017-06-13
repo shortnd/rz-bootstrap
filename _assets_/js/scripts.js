@@ -141,6 +141,12 @@
             }
         });
 
+        // inView.js
+        $('li.first-parent:has(ul)').hover(function(){
+            // Can pass top, flyout, side
+        	$(this).find('ul').inView('top');
+        });
+
 		// simpleWeather
 		if( typeof $.revizeWeather !== "undefined" ){
 			$.fn.revizeWeather({
