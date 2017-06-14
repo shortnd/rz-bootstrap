@@ -11,10 +11,10 @@ body {
   overflow: hidden;
 }
 
-#nav-toggle, #search-toggle, .toggle
-//, .toggle2
-{
-  display: none;
+.search-open {
+  #nav {
+    margin-top: 40px;
+  }
 }
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
@@ -27,13 +27,12 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  a {
+  a, span {
     display: block;
     padding: 15px 30px;
     text-decoration: none;
     background: #ededed;
     color: #222;
-
     &:hover {
       background: #222;
       color: #ededed;
@@ -57,6 +56,9 @@ body {
     //@include mega-menu(3, 20px);
     list-style: none;
     text-align: left;
+    a, span {
+
+    }
     li {
       margin: 0;
       padding: 0;
@@ -66,7 +68,8 @@ body {
       padding: 0;
       left: 100%;
       top: 0;
-      a {
+      //@include mega-menu(1, 0);
+      a, span {
         color: #000;
       }
     }

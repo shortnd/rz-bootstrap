@@ -8,20 +8,20 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 .btn {
+  display: inline-block;
   padding: 10px 20px;
-  background: #0f99ee;
-  color: #fff !important;
+  font-family: sans-serif;
+  font-weight: 900 !important;
+  font-size: 12px;
+  text-decoration: none;
+  line-height: normal;
+  text-transform: uppercase;
+  vertical-align: top;
   border: 0;
   @include border-radius(5px);
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 900 !important;
-  text-decoration: none;
+  background: $btn-bg;
+  color: $btn-text !important;
   cursor: pointer;
-  line-height: normal;
-  vertical-align: top;
-  font-family: sans-serif;
-  text-transform: uppercase;
   transition: background .3s;
 }
 
@@ -35,8 +35,9 @@ input[type="button"]:hover,
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -o-box-shadow: none;
+  -ms-box-shadow: none;
   box-shadow: none;
-  background: #0e8cda;
+  background: shade($btn-bg, 10);
 }
 
 .button:active,
@@ -49,8 +50,9 @@ input[type="button"]:active,
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -o-box-shadow: none;
+  -ms-box-shadow: none;
   box-shadow: none;
-  background: #0e8cda;
+  background: shade($btn-bg, 10);
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {

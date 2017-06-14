@@ -2,11 +2,11 @@
 #basic styles
 -----------------------------------------*/
 body{
-  background: #fff; // don't touch
+  font-family: sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  font-family: sans-serif;
-  color: #444;
+  background: #fff; // don't touch
+  color: $text;
 //  -webkit-font-smoothing: antialiased;
 //  -moz-osx-font-smoothing: grayscale;
 //  -webkit-text-size-adjust: 100%;

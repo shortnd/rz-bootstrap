@@ -28,6 +28,11 @@
     &:hover > ul {
       display: block;
     }
+    &:last-of-type {
+      a, span {
+        border: none;
+      }
+    }
   }
   ul {
     display: none;
@@ -50,7 +55,9 @@
 }
 
 .breadcrumbs {
+  font-weight: 400;
   font-size: 13px;
+  line-height: 1;
   text-transform: capitalize;
   p {
     margin: 0;
@@ -82,6 +89,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  text-align: center;
   z-index: 52;
   .title {
     margin: 0;

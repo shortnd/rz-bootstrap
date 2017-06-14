@@ -20,6 +20,10 @@ $mobile-portrait: 479px;
   #flyout ,#nav {
     display: block!important
   }
+  .down-arrow,
+  .toggle, .toggle2, #nav-toggle, #search-toggle, #flyout-toggle {
+    display: none;
+  }
 }
 @media only screen and (max-width: $tablet) {
 
@@ -58,12 +62,7 @@ $mobile-portrait: 479px;
       position: static;
       top: 0;
       width: auto;
-      -moz-column-count: 1;
-      -moz-column-gap: 0;
-      -webkit-column-count: 1;
-      -webkit-column-gap: 0;
-      column-count: 1;
-      column-gap: 0;
+      @include mega-menu(1, 0);
       background: rgba(0, 0, 0, .2);
       a, span {
         margin: 0;
@@ -98,15 +97,15 @@ $mobile-portrait: 479px;
     display:none;
     margin: 0;
     padding: 0;
+    a, span {
+      padding: 20px 10px;
+      font-size: 14px;
+      line-height: 1;
+      border-bottom: 1px solid rgba(0, 0, 0, .2);
+      background: none;
+    }
     li {
       padding: 0;
-      a, span {
-        padding: 20px 10px;
-        font-size: 14px;
-        line-height: 1;
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
-        background: none;
-      }
       &:hover > ul {
         display: none;
       }

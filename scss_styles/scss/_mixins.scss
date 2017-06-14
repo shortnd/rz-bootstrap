@@ -1,5 +1,6 @@
 // Mixins functions for easier styling
 
+// mega menu helpers
 @mixin mega-menu($col: 4, $gap: 30px) {
   -moz-column-count: $col;
   -moz-column-gap: $gap;
@@ -8,11 +9,21 @@
   column-count: $col;
   column-gap: $gap;
 }
-
 @mixin break-inside($break: avoid) {
   -webkit-column-break-inside: $break;
   page-break-inside: $break;
   break-inside: $break;
+}
+
+// clear to next line (slider text helper)
+@mixin new-line($display: inline, $z-index: 55, $content: '\A', $white-space: pre) {
+  display: $display;
+  position: relative;
+  z-index: $z-index;
+  &:after {
+    content: $content;
+    white-space: $white-space;
+  }
 }
 
 // default border radius

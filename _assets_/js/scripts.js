@@ -2,6 +2,7 @@
 
 	Theme Name: SiteName
 	Author Design: Samir Alley @samiralley | Tom Gooden @good3n
+	Developer:
 	Author URI: http://www.revize.com/
 	Date: MONTH DAY, 2017
 	
@@ -54,6 +55,7 @@
         $('#search-toggle').on('click',function(e){
             $('#search').stop().slideToggle(200);
             $(this).find('i').toggleClass('fa-search fa-close');
+            // $('body').toggleClass('search-open');
         });
 
 		// Navigation Toggle
