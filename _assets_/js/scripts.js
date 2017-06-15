@@ -350,6 +350,19 @@
 		};
 		$('.v-align').flexVerticalCenter();
 
+        // Remove matchHeight on document center pages
+        if($('#RZdocument_center').length){
+            $('.aside,.entry').matchHeight({remove:true});
+
+            if(window.matchMedia("(min-width: 992px)").matches){
+                setInterval(function(){
+                    if($('.post').outerHeight() + 300 > $('.entry').outerHeight()){
+                        $('.aside').css('height',$('.entry').outerHeight() + 'px');
+                    }
+                }, 200);
+            }
+        }
+
 	}); // Ready
   
 })(jQuery);
