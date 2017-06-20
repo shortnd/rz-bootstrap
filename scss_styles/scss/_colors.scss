@@ -1,7 +1,5 @@
 $white: #fff;
 $black: #000;
-$text: $black;
-$links: #0f99ee;
 
 // UI Colors
 
@@ -11,6 +9,8 @@ $links: #0f99ee;
 // Make sure that the colors in here stay below the fold of UI colors.
 // Otherwise it could cause variable order definition issues.
 // ===================================================================
+$text: $black;
+$links: #0f99ee;
 $btn-bg: $black;
 $btn-text: $white;
 $share-btn-color: $black;

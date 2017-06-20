@@ -144,10 +144,12 @@
         });
 
         // inView.js
-        $('li.first-parent:has(ul)').hover(function(){
-            // Can pass top, flyout, side
-        	$(this).find('ul').inView('top');
-        });
+        if (window.matchMedia('(min-width: 992px)').matches) {
+            $('li.first-parent:has(ul)').hover(function(){
+                // Can pass top, flyout, side
+                $(this).find('ul').inView('top');
+            });
+        }
 
 		// simpleWeather
 		if( typeof $.revizeWeather !== "undefined" ){
@@ -194,7 +196,10 @@
 
 		// Owl Slider
 		if(typeof $.fn.owlCarousel !== "undefined"){
-			$("#owl-slider").owlCarousel();
+			$("#owl-slider").owlCarousel({
+				items: 5,
+				autoPlay: 5000
+			});
 		}
 
 		// matchHeight
