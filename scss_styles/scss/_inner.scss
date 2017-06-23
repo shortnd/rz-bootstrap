@@ -5,7 +5,7 @@
   display: none;
   float: right;
   position: relative;
-  color: #fff;
+  color: $white;
   z-index: 9;
 }
 #flyout {
@@ -15,10 +15,10 @@
     display: block;
     padding: 15px 20px;
     text-decoration: none;
-    border-bottom: 1px solid #000;
-    color: #fff;
+    border-bottom: 1px solid $black;
+    color: $white;
     &:hover {
-      color: #fff;
+      color: $white;
     }
   }
   li {
@@ -66,6 +66,10 @@
   a {
     text-decoration: none;
     color: $black;
+    &:hover, &:focus, &:visited, &:active {
+      text-decoration: none;
+      color: $black;
+    }
   }
   span {
     color: $black;
@@ -75,13 +79,13 @@
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
 #main-content {
   padding: 0;
-  background: #fff;
+  background: $white;
 }
 
 .slider-inner {
   position: relative;
   height: 0;
-  background: #000;
+  background: $black;
   z-index: 1;
 }
 .page-info {
@@ -96,7 +100,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 1;
-    color: #fff;
+    color: $white;
   }
 }
 

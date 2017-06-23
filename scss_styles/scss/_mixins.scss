@@ -37,11 +37,11 @@
 // shades with black
 @function shade($color, $percent) {
   // should be used for things like shading colors of a button on hover
-  @return mix(#000, $color, $percent);
+  @return mix($black, $color, $percent);
 }
 
 // lightens with white
 @function lighten($color, $percent) {
   // should be used for things like lightening colors of a button on hover
-  @return mix(#fff, $color, $percent);
+  @return mix($white, $color, $percent);
 }

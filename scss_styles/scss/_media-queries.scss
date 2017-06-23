@@ -43,7 +43,7 @@ $mobile-portrait: 479px;
       font-size: 14px;
       line-height: 1;
       text-align: left;
-      border-bottom: 1px solid rgba(#000, .2);
+      border-bottom: 1px solid rgba($black, .2);
       background: none;
     }
     li {
@@ -54,7 +54,7 @@ $mobile-portrait: 479px;
       }
       li:hover > a {
         background: none;
-        color: #fff;
+        color: $white;
       }
     }
     ul {
@@ -74,7 +74,7 @@ $mobile-portrait: 479px;
         margin: 0;
         padding: 0;
         left: 0;
-        background: rgba(#000, .2);
+        background: rgba($black, .2);
         a, span {
           margin: 0;
           padding: 20px 30px;

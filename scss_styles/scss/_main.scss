@@ -19,11 +19,15 @@ body {
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
 .top-bar {
-  background: #fff;
+  background: transparent;
 }
 
+nav {
+  position: relative;
+  z-index: 60;
+}
 #nav {
-  float: right;
+  float: none;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -31,14 +35,15 @@ body {
     display: block;
     padding: 15px 30px;
     text-decoration: none;
-    background: #ededed;
-    color: #222;
+    background: $gray;
+    color: $black;
     &:hover {
-      background: #222;
-      color: #ededed;
+      background: $black;
+      color: $gray;
     }
   }
   li {
+    //display: inline-block; // for centered nav
     margin: 0;
     float: left;
     position: relative;
@@ -70,7 +75,7 @@ body {
       top: 0;
       //@include mega-menu(1, 0);
       a, span {
-        color: #000;
+        color: $black;
       }
     }
   }
@@ -80,9 +85,9 @@ body {
   //display: none;
   position: absolute;
   top: 0;
-  left: 100%;
+  left: 0;
   width: 255px;
-  background: #fff;
+  background: $white;
   form {
     margin: 0;
     position: relative;
@@ -100,7 +105,7 @@ body {
     position: absolute;
     height: 40px;
     border-radius: 0;
-    background: #fff;
+    background: $white;
     &:focus {
       outline: none;
       border: none;
@@ -114,14 +119,14 @@ body {
 .slider {
   position: relative;
   height: 0;
-  background: #000;
+  background: $black;
   z-index: 1;
 }
 
 .foot-info {
-  background: #000;
+  background: $black;
   font-size: 13px;
-  color: #fff;
+  color: $white;
   p {
     margin: 35px 0;
   }
@@ -129,19 +134,19 @@ body {
 
 footer {
   font-size: 12px;
-  background: #fff;
+  background: transparent;
   p {
     margin: 15px 0;
-    color: #fff;
+    color: $black;
     a {
       text-decoration: none;
-      color: #fff;
-      &:hover {
+      color: $white;
+      &:hover, &:focus, &:visited {
         text-decoration: none;
-        color: #fff;
+        color: $white;
       }
       &.color {
-        color: #000;
+        color: $black;
       }
     }
   }

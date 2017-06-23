@@ -9,10 +9,10 @@
   bottom: 10px;
   width: 350px;
   font-size: 14px;
-  box-shadow: 0 0 10px rgba(#000,.2);
-  border: 3px solid #fff;
-  background: rgba(#000,.9);
-  color: #fff;
+  box-shadow: 0 0 10px rgba($black,.2);
+  border: 3px solid $white;
+  background: rgba($black,.9);
+  color: $white;
   z-index: 99999;
   h1 {
     margin: 0 0 10px;
@@ -30,7 +30,7 @@
     margin-right: 20px;
     padding: 0;
     background: none !important;
-    color: #fff !important;
+    color: $white !important;
     opacity: 1;
   }
 }

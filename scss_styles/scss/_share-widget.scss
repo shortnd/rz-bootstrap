@@ -10,7 +10,7 @@
   padding: 30px 60px;
   text-align: center;
   border-color: #F4F9FD;
-  background: #fff;
+  background: $white;
   h4 {
     font-size: 30px;
   }
@@ -19,10 +19,10 @@
     position: relative;
     font-size: 25px;
     background: none;
-    color: #000 !important;
+    color: $black !important;
     &:hover {
       background: none;
-      color: #000 !important;
+      color: $black !important;
     }
   }
 }
@@ -101,6 +101,6 @@
   border-radius: 0;
   border: 0;
   background: $share-btn-color !important;
-  color: #fff !important;
+  color: $white !important;
   z-index: 99999;
 }
