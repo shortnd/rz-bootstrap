@@ -83,28 +83,34 @@ nav {
 
 #search {
   //display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //top: 0;
+  //left: 0;
+  //float: right;
   width: 255px;
-  background: $white;
+  background: transparent;
   form {
     margin: 0;
     position: relative;
+    width: 100%;
   }
   input {
     height: 40px;
-    //width: 100%;
+    width: 100%;
     border: none;
+    //@include border-radius();
     &:focus {
       outline: none;
       border: none;
     }
   }
   button {
+    padding: 0;
     position: absolute;
+    top: 0;
+    right: 0;
     height: 40px;
-    border-radius: 0;
+    //@include border-radius();
     background: $white;
     &:focus {
       outline: none;

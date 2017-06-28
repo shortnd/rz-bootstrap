@@ -54,7 +54,7 @@
         // Search Toggle
         $('#search-toggle').on('click',function(e){
             $('#search').stop().slideToggle(200);
-            $(this).find('i').toggleClass('fa-search fa-close');
+            $(this).toggleClass('fa-search fa-close');
             // $('body').toggleClass('search-open');
         });
 
@@ -152,7 +152,7 @@
         }
 
 		// simpleWeather
-		if( typeof $.revizeWeather !== "undefined" ){
+		if( typeof $.fn.revizeWeather !== "undefined" ){
 			$.fn.revizeWeather({
 				zip: '48326',
 				city_name: '',
@@ -160,10 +160,10 @@
 				success: function(weather) {
 					var date = new Date();
 					date = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
-					var html = '<span>' + date + '</span> <span class="forecast">' + weather.temp +'$deg; ' + weather.forecast +'</span>';
+					var html = '<span>' + date + '</span> <span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span>';
 					html += '<i class="' + weather.icon + '"></i>';
 
-					$("#weather").html(html);
+					$(".weather").html(html);
 				},
 				error: function(error) {
 					// better to just hide the section if there is an error
