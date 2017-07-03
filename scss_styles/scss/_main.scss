@@ -65,8 +65,10 @@ nav {
 
     }
     li {
+      //display: block; // if mega
       margin: 0;
       padding: 0;
+      //@include break-inside();
     }
     ul {
       margin: 0;
@@ -118,6 +120,7 @@ nav {
     }
     i {
       margin-top: 0;
+      color: $black;
     }
   }
 }

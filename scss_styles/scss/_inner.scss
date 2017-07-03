@@ -36,16 +36,16 @@
   }
   ul {
     display: none;
+    margin: 0;
+    padding: 0;
     position: absolute;
     top: 0;
     left: 100%;
-    margin: 0;
-    padding: 0;
     background: $black;
     z-index: 9;
     a, span {
-      font-size: 13px;
       padding: 10px 15px;
+      font-size: 13px;
       width: 180px;
     }
   }
