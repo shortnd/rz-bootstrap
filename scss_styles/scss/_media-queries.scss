@@ -11,7 +11,7 @@ $mobile-portrait: 479px;
 // For Wider Page Designs
 @media only screen and (min-width: $desktop-before) {
   //.container {
-  //  width: 1620px; // whatever value reflects the design
+  //  width: 1200px; // whatever value reflects the design
   //  max-width: 100%; // fail-safe
   //}
 }
@@ -47,8 +47,9 @@ $mobile-portrait: 479px;
       background: none;
     }
     li {
-      float: none;
       display: block;
+      float: none;
+      position: relative;
       &:hover > ul {
         display: none;
       }
@@ -62,7 +63,7 @@ $mobile-portrait: 479px;
       position: static;
       top: 0;
       width: auto;
-      @include mega-menu(1, 0);
+      @include mega-reset();
       background: rgba(0, 0, 0, .2);
       a, span {
         margin: 0;

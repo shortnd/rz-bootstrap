@@ -1,7 +1,7 @@
 // Mixin functions for easier styling
 
 // mega menu helpers
-@mixin mega-menu($col: 4, $gap: 30px) {
+@mixin mega-reset($col: 1, $gap: 0) {
   -moz-column-count: $col;
   -moz-column-gap: $gap;
   -webkit-column-count: $col;
@@ -9,10 +9,38 @@
   column-count: $col;
   column-gap: $gap;
 }
-@mixin break-inside($break: avoid) {
-  -webkit-column-break-inside: $break;
-  page-break-inside: $break;
-  break-inside: $break;
+
+@mixin mega($col: 3, $gap: 30px, $mega-width: 900px, $break: avoid) {
+  #nav {
+    ul {
+      -moz-column-count: $col;
+      -moz-column-gap: $gap;
+      -webkit-column-count: $col;
+      -webkit-column-gap: $gap;
+      column-count: $col;
+      column-gap: $gap;
+      width: $mega-width;
+      li {
+        display: block;
+        float: none;
+        -webkit-column-break-inside: $break;
+        page-break-inside: $break;
+        break-inside: $break;
+      }
+      ul {
+        display: block;
+        position: static;
+        top: 100%;
+        left: 0;
+        -moz-column-count: 1;
+        -moz-column-gap: 0;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0;
+        column-count: 1;
+        column-gap: 0;
+      }
+    }
+  }
 }
 
 // clear to next line (slider text helper)

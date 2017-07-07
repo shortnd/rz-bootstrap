@@ -58,30 +58,27 @@ nav {
     position: absolute;
     top: 100%;
     left: 0;
-    //@include mega-menu(3, 20px);
     list-style: none;
     text-align: left;
     a, span {
 
     }
     li {
-      //display: block; // if mega
       margin: 0;
       padding: 0;
-      //@include break-inside();
     }
     ul {
       margin: 0;
       padding: 0;
       left: 100%;
       top: 0;
-      //@include mega-menu(1, 0);
       a, span {
         color: $black;
       }
     }
   }
 }
+//@include mega($mega-columns, $mega-gap, $mega-width);
 
 #search {
   //display: none;
