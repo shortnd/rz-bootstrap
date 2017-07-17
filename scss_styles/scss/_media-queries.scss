@@ -35,9 +35,13 @@ $mobile-portrait: 479px;
   .down-arrow {
     display: none; // if not hidden above
   }
+  #nav-toggle, #search-toggle {
+    font-size: 20px;
+  }
 
   #nav {
     display: none;
+    transition: margin .2s ease-in-out;
     a, span {
       padding: 20px 10px;
       font-size: 14px;

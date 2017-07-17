@@ -26,6 +26,9 @@ nav {
   position: relative;
   z-index: 60;
 }
+#nav-toggle {
+  font-size: 20px;
+}
 #nav {
   float: none;
   margin: 0;
@@ -101,6 +104,9 @@ nav {
     &:focus {
       outline: none;
       border: none;
+    }
+    &::placeholder {
+
     }
   }
   button {
