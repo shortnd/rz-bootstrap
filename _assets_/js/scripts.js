@@ -78,6 +78,7 @@
             } else{
                 $("#nav >li>ul").removeClass('first-level').css('display','');
                 $("#nav  li ul ul").removeClass('second-level').css('display','');
+                $('#nav').css('display','');
                 $('#search').css('display','');
             }
         }
@@ -144,12 +145,12 @@
         });
 
         // inView.js
-        if (window.matchMedia('(min-width: 992px)').matches) {
-            $('li.first-parent:has(ul)').hover(function(){
-                // Can pass top, flyout, side
-                $(this).find('ul').inView('top');
-            });
-        }
+        // if (window.matchMedia('(min-width: 992px)').matches) {
+        //     $('li.first-parent:has(ul)').hover(function(){
+        //         // Can pass top, flyout, side
+        //         $(this).find('ul').inView('top');
+        //     });
+        // }
 
         // simpleWeather
         if( typeof $.fn.revizeWeather !== "undefined" ){
