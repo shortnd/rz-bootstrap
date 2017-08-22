@@ -160,9 +160,14 @@
                 unit: 'f',
                 success: function(weather) {
                     var date = new Date();
-                    date = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
-                    var html = '<span>' + date + '</span> <span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span>';
-                    html += '<i class="' + weather.icon + '"></i>';
+                    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    var day = days[date.getDay()];
+                    var month = months[date.getMonth()];
+                    var year = date.getFullYear();
+                    var date = date.getDate();
+                    var dateInfo = '<span class="date">'+ day +', '+ month +' '+ date +', '+ year +'</span>';
+                    var html = '<i class="' + weather.icon + '"></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><img src="_assets_/images/divider.png" class="weather-divider">' + dateInfo;
 
                     $(".weather").html(html);
                 },
@@ -368,6 +373,13 @@
                 }, 200);
             }
         }
+
+        // finds all edit buttons - not full-proof but it works ¯\_(ツ)_/¯
+        var editBtns = $('script[language="JavaScript"]').next('a').has('img').parent();
+        editBtns.each(function (index) {
+            var editBtnConsole = `.${$(this).attr('class')} {}`; // string templates like a boss
+            console.log(editBtnConsole);
+        });
 
     }); // Ready
 
