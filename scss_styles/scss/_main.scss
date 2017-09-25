@@ -26,9 +26,6 @@ nav {
   position: relative;
   z-index: 60;
 }
-#nav-toggle {
-  font-size: 20px;
-}
 #nav {
   float: none;
   margin: 0;
@@ -84,11 +81,6 @@ nav {
 //@include mega($mega-columns, $mega-gap, $mega-width);
 
 #search {
-  //display: none;
-  //position: absolute;
-  //top: 0;
-  //left: 0;
-  //float: right;
   width: 255px;
   background: transparent;
   form {
@@ -100,7 +92,7 @@ nav {
     height: 40px;
     width: 100%;
     border: none;
-    //@include border-radius();
+    //border-radius: 5px;
     &:focus {
       outline: none;
       border: none;
@@ -115,7 +107,7 @@ nav {
     top: 0;
     right: 0;
     height: 40px;
-    //@include border-radius();
+    border-radius: 0;
     background: $white;
     &:focus {
       outline: none;
@@ -167,22 +159,23 @@ footer {
 iframe {
   border: none;
 }
-.dropdown-menu {
-  a {
-    text-decoration: none;
-  }
-}
-.goog-te-gadget-simple {
-  border: none!important;
-}
-.skiptranslate {
-  padding: 0!important;
-}
-.goog-te-menu-value {
-  span {
-    display: none;
-    &:first-child {
-      display: inline-block;
-    }
-  }
-}
+// Google Translate Styles
+//.dropdown-menu {
+//  a {
+//    text-decoration: none;
+//  }
+//}
+//.goog-te-gadget-simple {
+//  border: none!important;
+//}
+//.skiptranslate {
+//  padding: 0!important;
+//}
+//.goog-te-menu-value {
+//  span {
+//    display: none;
+//    &:first-child {
+//      display: inline-block;
+//    }
+//  }
+//}

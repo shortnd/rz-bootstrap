@@ -4,6 +4,7 @@
 body{
   font-family: sans-serif;
   font-size: 14px;
+  //@include font-family(); // use instead of above syntax
   line-height: 1.6;
   background: $white; // don't touch
   color: $text;

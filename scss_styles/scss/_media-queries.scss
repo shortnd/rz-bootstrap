@@ -37,11 +37,32 @@ $mobile-portrait: 479px;
   }
   #nav-toggle, #search-toggle {
     font-size: 20px;
+    color: $white;
+  }
+  #nav-toggle {
+    margin: 0;
+    padding: 0 0 0 15px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: rgba($black, .2);
+    }
+  }
+  #search-toggle {
+    margin: 0;
+    padding: 0 15px;
   }
 
   #nav {
     display: none;
+    //margin: 0 -15px;
     transition: margin .2s ease-in-out;
+    clear: both;
     a, span {
       padding: 20px 10px;
       font-size: 14px;

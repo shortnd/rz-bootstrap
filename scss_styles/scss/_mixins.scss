@@ -1,5 +1,13 @@
 // Mixin functions for easier styling
 
+// fonts
+@mixin font-family($font-weight: 400, $font-size: 16px, $transform: none) {
+  font-family: 'FontFamHere', sans-serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  text-transform: $transform;
+}
+
 // mega menu helpers
 @mixin mega-reset($col: 1, $gap: 0) {
   -moz-column-count: $col;
@@ -53,14 +61,6 @@
     content: $content;
     white-space: $white-space;
   }
-}
-
-// default border radius
-@mixin border-radius($radius: 5px, $webkit: true, $moz: true, $ms: true) {
-  @if $webkit { -webkit-border-radius: $radius; }
-  @if $moz    { -moz-border-radius: $radius; }
-  @if $ms     { -ms-border-radius: $radius; }
-  border-radius: $radius;
 }
 
 // shades with black

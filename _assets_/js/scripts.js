@@ -1,8 +1,8 @@
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: SiteName
-	Author Design: Samir Alley @samiralley | Tom Gooden @good3n
-	Developer:
+	Author Design: Designer
+	Developer: Developer
 	Author URI: http://www.revize.com/
 	Date: MONTH DAY, 2017
 

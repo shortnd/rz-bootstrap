@@ -18,7 +18,7 @@ input[type="button"],
   text-transform: uppercase;
   vertical-align: top;
   border: 0;
-  @include border-radius(5px);
+  border-radius: 5px;
   background: $btn-bg;
   color: $btn-text !important;
   cursor: pointer;
