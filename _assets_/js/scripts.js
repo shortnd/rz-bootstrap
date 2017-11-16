@@ -32,19 +32,53 @@
         ); document.querySelector('head').appendChild(msViewportStyle);
     }
 
+    // Elements to declare a role
+    var header = $('header'),
+        navigation = $('nav'),
+        search = $('#search');
+    // Role declaration
+    header.attr('role', 'banner');
+    navigation.attr('role', 'navigation');
+    search.attr('role', 'search');
+
+    // Skip to content
+    $('<a class="skip" href="' + window.location.href.split("#")[0] + '#content" alt="Skip to Content">Skip to Content</a>').insertBefore('header').click(function(e) {
+        $("#content").focus();
+    });
+    $('<a name="content" tabIndex="-1" id="content">&nbsp;</a>').insertBefore('.entry');
+
+    // Keyboard Navigation: Nav, flyout
+    var isClick = false;
+    $("#nav li a, #flyout li a, a, button, .toggle, .toggle2").on('focusin', function(e) {
+        // console.log(isClick);
+        if (isClick === false) {
+            $(".focused").removeClass("focused");
+            $(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
+            $(".opened:not(.focused) ul:visible, .opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
+        } else {
+            $(".focused").removeClass("focused");
+            isClick = false;
+        }
+    });
+
+    // prevent focused class changes on click - This way arrows wont pop when clicking nav links
+    $("#nav a, #flyout a").on('mousedown',function() {
+        isClick = true;
+    });
+
     // Preloader
     $window.load(function() {
-        setTimeout(function(){
+        setTimeout(function() {
             $body.addClass('loaded');
             $('#loader-wrapper').fadeOut();
         }, 600);
     });
 
-    $window.ready(function(){
+    $window.ready(function() {
 
         // RZ Class
-        if(typeof $.fn.RZ !== "undefined"){
-            if(RZ.login){
+        if (typeof $.fn.RZ !== "undefined") {
+            if (RZ.login) {
                 $body.addClass("user-logged-in");
             } else{
                 $body.addClass("user-not-logged-in");
@@ -52,14 +86,14 @@
         }
 
         // Search Toggle
-        $('#search-toggle').on('click',function(e){
+        $('#search-toggle').on('click',function(e) {
             $('#search').stop().slideToggle(200);
             $(this).toggleClass('fa-search fa-close');
             // $('body').toggleClass('search-open');
         });
 
         // Navigation Toggle
-        $("#nav-toggle").on("click", function(){
+        $("#nav-toggle").on("click", function() {
             $("#nav").stop().slideToggle();
             $(this).toggleClass("active");
         });
@@ -68,61 +102,77 @@
         $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 
         // Menu Toggles
-        $("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle">');
-        $("#nav li li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle2">');
+        $("#nav > li > ul, #flyout > li > ul").addClass('first-level');
+        $("#nav ul ul").addClass('second-level');
+        $("#nav > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+        $("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2" tabindex="0">');
+        $("#flyout > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
 
         function addNavClass() {
             if ($window.width() < 992) {
-                $("#nav >li>ul").addClass('first-level');
-                $("#nav  li ul ul").addClass('second-level');
-            } else{
-                $("#nav >li>ul").removeClass('first-level').css('display','');
-                $("#nav  li ul ul").removeClass('second-level').css('display','');
-                $('#nav').css('display','');
-                $('#search').css('display','');
+                $body.addClass('mobile');
+                $body.removeClass('desktop');
+
+            } else {
+                $body.addClass('mobile');
+                $body.removeClass('desktop');
             }
         }
         addNavClass();
         $window.resize(addNavClass);
 
-        $(".toggle").click(function(e) {
+        $(".toggle").on("click keypress",function(e) {
             e.preventDefault();
-            if($(this).parent().next('.first-level').is(":visible")){
-                $(this).parent().next('.first-level').slideUp();
+            var parent = $(this).parent();
+            var parentLi = parent.parent();
+            parentLi.toggleClass('opened');
+            if (parent.addClass('active').next('.first-level').is(":visible")) {
+                parent.next('.first-level').slideUp();
             } else {
                 $(".first-level").slideUp("slow");
-                $(this).parent().next('.first-level').slideToggle();
+                parent.removeClass('active').next('.first-level').slideToggle();
             }
         });
 
-        $(".toggle2").click(function(e) {
+        $(".toggle2").on("click keypress",function(e) {
             e.preventDefault();
-            if($(this).parent().next('.second-level').is(":visible")){
-                $(this).parent().next('.second-level').slideUp();
+            var parent = $(this).parent();
+            var parentLi = parent.parent();
+            parentLi.toggleClass('opened2');
+            if (parent.next('.second-level').is(":visible")) {
+                parent.next('.second-level').slideUp();
             } else {
                 $(".second-level").slideUp("slow");
-                $(this).parent().next('.second-level').slideToggle();
+                parent.next('.second-level').slideToggle();
             }
         });
 
-        // Add Class To Nav Items + Icons if Needed
-        $('#nav> li:nth-child(1) >a, #nav> li:nth-child(1) >span').addClass('nav-item-one').prepend();
-        $('#nav> li:nth-child(2) >a, #nav> li:nth-child(2) >span').addClass('nav-item-two').prepend();
-        $('#nav> li:nth-child(3) >a, #nav> li:nth-child(3) >span').addClass('nav-item-three').prepend();
-        $('#nav> li:nth-child(4) >a, #nav> li:nth-child(4) >span').addClass('nav-item-four').prepend();
-        $('#nav> li:nth-child(5) >a, #nav> li:nth-child(5) >span').addClass('nav-item-five').prepend();
-        $('#nav> li:nth-child(6) >a, #nav> li:nth-child(6) >span').addClass('nav-item-six').prepend();
-        $('#nav> li:nth-child(7) >a, #nav> li:nth-child(7) >span').addClass('nav-item-seven').prepend();
+        // collapse nav if left
+        $(".desktop *").focus(function() {
+            var opened = $(".opened");
+            var opened2 = $(".opened2");
+            if (opened.length > 0 || opened2.length > 0) {
+                if ($(".opened :focus").length < 1) {
+                    opened.children("ul").slideUp();
+                    opened.removeClass("opened");
+                    opened2.removeClass("opened2");
+                }
+                if ($(".opened2 :focus").length < 1) {
+                    opened2.children("ul").slideUp();
+                    opened2.removeClass("opened2");
+                }
+            }
+        });
 
         // Flyout
         var flyout = $('#flyout'),
             flyoutwrap = $('#flyout-wrap');
 
-        if (flyout.text().length){
-            flyoutwrap.prepend('<div id="flyout-toggle"><i class="fa fa-bars"></i> Sub Menu</div>');
+        if (flyout.text().length) {
+            flyoutwrap.prepend('<div id="flyout-toggle"><em class="fa fa-bars"></em> <span class="sr-only">Sub Menu</span></div>');
         }
 
-        $("#flyout-toggle").on("click", function(){
+        $("#flyout-toggle").on("click", function() {
             flyout.slideToggle();
             $(this).toggleClass("active");
         });
@@ -135,7 +185,7 @@
         $(".toggle-children").click(function(e) {
             e.preventDefault();
             if (window.matchMedia('(max-width: 991px)').matches) {
-                if($(this).parent().next(flyoutChildren).is(":visible")){
+                if ($(this).parent().next(flyoutChildren).is(":visible")) {
                     $(this).parent().next(flyoutChildren).slideUp();
                 } else {
                     $(flyoutChildren).slideUp("slow");
@@ -146,14 +196,14 @@
 
         // inView.js
         // if (window.matchMedia('(min-width: 992px)').matches) {
-        //     $('li.first-parent:has(ul)').hover(function(){
+        //     $('li.first-parent:has(ul)').hover(function() {
         //         // Can pass top, flyout, side
         //         $(this).find('ul').inView('top');
         //     });
         // }
 
         // simpleWeather
-        if( typeof $.fn.revizeWeather !== "undefined" ){
+        if ( typeof $.fn.revizeWeather !== "undefined" ) {
             $.fn.revizeWeather({
                 zip: '48326',
                 city_name: '',
@@ -190,7 +240,7 @@
         });
 
         // Tabs
-        $('#tabs li a').click(function(e){
+        $('#tabs li a').click(function(e) {
             $('#tabs li, #tabs-content .current').removeClass('current').removeClass('fadeInLeft');
             $(this).parent().addClass('current');
 
@@ -201,15 +251,78 @@
         });
 
         // Owl Slider
-        if(typeof $.fn.owlCarousel !== "undefined"){
-            $("#owl-slider").owlCarousel({
+        var owlSlider = $('.owl-slider');
+        if (typeof $.fn.owlCarousel !== "undefined") {
+            owlSlider.owlCarousel({
                 items: 5,
-                autoPlay: 5000
+                responsive: {
+                    0: {items: 2},
+                    767: {items: 3},
+                    991: {items: 4},
+                    1200: {items: 5},
+                },
+                margin: 0,
+                stagePadding: 0,
+                nav: false,
+                navText: ['',''],
+                loop: false,
+                rewind: true,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                onInitialized: function () {
+                    $(".owl-slider .owl-prev, .owl-slider .owl-next")
+                        .attr("role", "button")
+                        .attr("tabIndex", "0");
+                }
             });
         }
 
+        // enables keyboard actions on owl slider
+        $(document).on('keydown', function(e) {
+            var sliderTarget = (owlSlider.find(':focus').length > 0) ? owlSlider : null;
+
+            var target = $(e.target),
+                owl = sliderTarget,
+                type;
+
+            switch (e.which) {
+                case 39:
+                    type = 'next';
+                    break;
+                case 37:
+                    type = 'prev';
+                    break;
+                case 13:
+                    type = 'enter';
+                    break;
+                default:
+                    type = null;
+            }
+
+            // log out for debugging arrow controls
+            // console.log(target, owl, type);
+
+            if (type === 'enter') {
+                // owl controls
+                if (target.hasClass('owl-next')) {
+                    owl.trigger('next.owl.carousel');
+                } else if (target.hasClass('owl-prev')) {
+                    owl.trigger('prev.owl.carousel');
+                }
+            }
+
+            if (sliderTarget && sliderTarget.find(':focus').length > 0) {
+                if (type === 'next') {
+                    sliderTarget.find('.owl-next').click();
+                } else if  (type === 'prev') {
+                    sliderTarget.find('.owl-prev').click();
+                }
+            }
+        });
+
         // matchHeight
-        if(typeof $.fn.matchHeight !== "undefined"){
+        if (typeof $.fn.matchHeight !== "undefined") {
             $('.equal').matchHeight({
                 //defaults
                 byRow: true,
@@ -220,7 +333,7 @@
         }
 
         // bxSlider
-        if(typeof $.fn.bxSlider !== "undefined"){
+        if (typeof $.fn.bxSlider !== "undefined") {
             $('.bxslider').bxSlider({
                 mode:'fade',
                 auto:($('.bxslider').children().length < 2) ? false : true,
@@ -229,7 +342,7 @@
         }
 
         // Twitter Feed
-        if(typeof $.fn.tweet !== "undefined"){
+        if (typeof $.fn.tweet !== "undefined") {
             $("#twitterfeed").tweet({
                 modpath: '_assets_/plugins/twitter/',
                 username: "RevizeSoftware",
@@ -246,7 +359,7 @@
         }
 
         // Instafeed Feed
-        if(typeof $.fn.Instafeed !== "undefined"){
+        if (typeof $.fn.Instafeed !== "undefined") {
             var userFeed = new Instafeed({
                 get: 'user',
                 resolution:'standard_resolution',
@@ -259,7 +372,7 @@
         }
 
         // Sticky
-        if(typeof $.fn.sticky !== "undefined"){
+        if (typeof $.fn.sticky !== "undefined") {
             $("#sticky").sticky({
                 topSpacing:0
             });
@@ -280,7 +393,7 @@
 
                 var osTrigger = ( trigger ) ? trigger : osElement;
 
-                if(typeof $.fn.waypoint !== "undefined"){
+                if (typeof $.fn.waypoint !== "undefined") {
                     osTrigger.waypoint(function() {
                         osElement.addClass('animated').addClass(osAnimationClass);
                     },{
@@ -325,7 +438,7 @@
                 deferTilWindowLoad: false     // if true, nothing will take effect until the $(window).load event
             }, options || {});
 
-            return this.each(function(){
+            return this.each(function() {
                 var $this   = $(this); // store the object
                 var debounce;
 
@@ -362,12 +475,12 @@
         $('.v-align').flexVerticalCenter();
 
         // Remove matchHeight on document center pages
-        if($('#RZdocument_center').length){
+        if ($('#RZdocument_center').length) {
             $('.aside,.entry').matchHeight({remove:true});
 
-            if(window.matchMedia("(min-width: 992px)").matches){
-                setInterval(function(){
-                    if($('.post').outerHeight() + 300 > $('.entry').outerHeight()){
+            if (window.matchMedia("(min-width: 992px)").matches) {
+                setInterval(function() {
+                    if ($('.post').outerHeight() + 300 > $('.entry').outerHeight()) {
                         $('.aside').css('height',$('.entry').outerHeight() + 'px');
                     }
                 }, 200);
