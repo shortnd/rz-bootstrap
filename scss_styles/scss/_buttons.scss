@@ -20,7 +20,7 @@ input[type="button"],
   border: 0;
   border-radius: 5px;
   background: $btn-bg;
-  color: $btn-text !important;
+  color: $btn-text;
   cursor: pointer;
   transition: background .3s;
 }
@@ -58,4 +58,13 @@ input[type="button"]:active,
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
+}
+
+.btn-share-close {
+  background: $btn-share-close-bg;
+  color: $btn-share-close-color;
+  &:hover {
+    background: shade($btn-share-close-bg, 10);
+    color: $btn-share-close-color;
+  }
 }

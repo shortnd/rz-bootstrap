@@ -179,3 +179,45 @@ iframe {
 //    }
 //  }
 //}
+
+/* Accessibility */
+a, button, i, em {
+  &:focus {
+    box-shadow: 0 0 5px rgba(#51cbee, 1);
+    outline: 2px solid rgba(#51cbee, 1);
+    outline-offset: -2px;
+  }
+}
+
+#content {
+  display: block;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+.skip {
+  display: block;
+  padding: 15px;
+  position: fixed;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  top: 30px;
+  left: -50%;
+  text-decoration: none;
+  background: $black;
+  color: $white;
+  z-index: 9999;
+  transition: left .3s ease-in-out;
+  &:hover, &:active, &:visited {
+    text-decoration: none;
+    background: shade($black, 10);
+    color: $white;
+  }
+  &:focus {
+    left: 30px;
+    text-decoration: none;
+    color: $white;
+  }
+}
+/* End Accessibility */

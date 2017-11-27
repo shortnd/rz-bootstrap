@@ -35,11 +35,15 @@
     // Elements to declare a role
     var header = $('header'),
         navigation = $('nav'),
-        search = $('#search');
+        search = $('#search'),
+        navToggle = $('#nav-toggle'),
+        searchToggle = $('search-toggle');
     // Role declaration
     header.attr('role', 'banner');
     navigation.attr('role', 'navigation');
     search.attr('role', 'search');
+    navToggle.attr('role', 'button');
+    searchToggle.attr('role', 'button');
 
     // Skip to content
     $('<a class="skip" href="' + window.location.href.split("#")[0] + '#content" alt="Skip to Content">Skip to Content</a>').insertBefore('header').click(function(e) {
@@ -64,14 +68,6 @@
     // prevent focused class changes on click - This way arrows wont pop when clicking nav links
     $("#nav a, #flyout a").on('mousedown',function() {
         isClick = true;
-    });
-
-    // Preloader
-    $window.load(function() {
-        setTimeout(function() {
-            $body.addClass('loaded');
-            $('#loader-wrapper').fadeOut();
-        }, 600);
     });
 
     $window.ready(function() {
@@ -177,22 +173,8 @@
             $(this).toggleClass("active");
         });
 
-        $("#flyout li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle-children">');
         $("#flyout ul").addClass('flyout-children');
-
         var flyoutChildren = $('.flyout-children');
-
-        $(".toggle-children").click(function(e) {
-            e.preventDefault();
-            if (window.matchMedia('(max-width: 991px)').matches) {
-                if ($(this).parent().next(flyoutChildren).is(":visible")) {
-                    $(this).parent().next(flyoutChildren).slideUp();
-                } else {
-                    $(flyoutChildren).slideUp("slow");
-                    $(this).parent().next(flyoutChildren).slideToggle();
-                }
-            }
-        });
 
         // inView.js
         // if (window.matchMedia('(min-width: 992px)').matches) {
@@ -217,7 +199,7 @@
                     var year = date.getFullYear();
                     var date = date.getDate();
                     var dateInfo = '<span class="date">'+ day +', '+ month +' '+ date +', '+ year +'</span>';
-                    var html = '<i class="' + weather.icon + '"></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><img src="_assets_/images/divider.png" class="weather-divider">' + dateInfo;
+                    var html = '<i class="' + weather.icon + '"><span class="sr-only">Weather Icon</span></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><img src="_assets_/images/divider.png" class="weather-divider">' + dateInfo;
 
                     $(".weather").html(html);
                 },
@@ -250,6 +232,13 @@
             $(currentTab).addClass('current animated fadeInLeft');
         });
 
+        var attachOwlBtnRoles = function (slider) {
+            slider.find('.owl-prev').attr('role', 'button').attr('tabIndex', '0');
+            slider.find('.owl-next').attr('role', 'button').attr('tabIndex', '0');
+        };
+        var attachOwlDotRoles = function (slider) {
+            slider.find('.owl-dot').attr('role', 'button').attr('tabIndex', '0')
+        };
         // Owl Slider
         var owlSlider = $('.owl-slider');
         if (typeof $.fn.owlCarousel !== "undefined") {
@@ -269,18 +258,24 @@
                 rewind: true,
                 autoplay: false,
                 autoplayTimeout: 5000,
+                autoHeight: false,
                 autoplayHoverPause: true,
                 onInitialized: function () {
-                    $(".owl-slider .owl-prev, .owl-slider .owl-next")
-                        .attr("role", "button")
-                        .attr("tabIndex", "0");
+                    attachOwlBtnRoles(owlSlider);
+                    attachOwlDotRoles(owlSlider);
                 }
             });
         }
 
         // enables keyboard actions on owl slider
+        var owlCarousels = $('.owl-carousel');
         $(document).on('keydown', function(e) {
-            var sliderTarget = (owlSlider.find(':focus').length > 0) ? owlSlider : null;
+            var sliderTarget;
+            owlCarousels.each(function () {
+                if ($(this).find(':focus').length > 0) {
+                    sliderTarget = $(this) || null;
+                }
+            });
 
             var target = $(e.target),
                 owl = sliderTarget,
@@ -309,6 +304,8 @@
                     owl.trigger('next.owl.carousel');
                 } else if (target.hasClass('owl-prev')) {
                     owl.trigger('prev.owl.carousel');
+                } else if (target.hasClass('owl-dot')) {
+                    target.click();
                 }
             }
 
