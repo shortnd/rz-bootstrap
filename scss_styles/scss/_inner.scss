@@ -44,6 +44,12 @@
     left: 100%;
     background: $black;
     z-index: 9;
+    &.showUl {
+      display: block;
+    }
+    &.hideUL {
+      display: none;
+    }
     a, span {
       padding: 10px 15px;
       font-size: 13px;
