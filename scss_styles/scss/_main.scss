@@ -181,7 +181,7 @@ iframe {
 //}
 
 /* Accessibility */
-a, button, i, em {
+a, button, *[role="button"], i, em {
   &:focus {
     box-shadow: 0 0 5px rgba(#51cbee, 1);
     outline: 2px solid rgba(#51cbee, 1);
@@ -203,7 +203,7 @@ a, button, i, em {
   font-weight: 700;
   font-size: 18px;
   top: 30px;
-  left: -50%;
+  left: -70%;
   text-decoration: none;
   background: $black;
   color: $white;

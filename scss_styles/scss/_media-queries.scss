@@ -79,17 +79,21 @@ $mobile-portrait: 479px;
 
   #nav {
     display: none;
-    //margin: 0 -15px;
+    margin: 0 -15px;
     background: $mobile-nav-bg;
     transition: margin .2s ease-in-out;
     clear: both;
     a, span {
-      padding: 20px 10px;
+      padding: 20px 25px;
       font-size: 14px;
       line-height: 1;
       text-align: left;
       border-bottom: 1px solid rgba($black, .2);
       background: none;
+      color: $black;
+      &:hover {
+        color: $black;
+      }
     }
     li {
       display: block;
@@ -111,9 +115,13 @@ $mobile-portrait: 479px;
       background: shade($mobile-nav-bg, 20);
       a, span {
         margin: 0;
-        padding: 20px;
+        padding: 20px 35px;
         width: 100%;
         background: none;
+        color: $black;
+        &:hover {
+          color: $black;
+        }
       }
       ul {
         display: none;
@@ -123,8 +131,12 @@ $mobile-portrait: 479px;
         background: shade($mobile-nav-bg, 40);
         a, span {
           margin: 0;
-          padding: 20px 30px;
+          padding: 20px 45px;
           background: none;
+          color: $black;
+          &:hover {
+            color: $black;
+          }
         }
       }
     }
@@ -166,6 +178,16 @@ $mobile-portrait: 479px;
         padding: 20px;
         width:100%;
       }
+    }
+    .toggle {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      line-height: 55px;
+      background: rgba(0, 0, 0, .2);
     }
   }
 

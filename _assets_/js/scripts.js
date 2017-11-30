@@ -37,7 +37,7 @@
         navigation = $('nav'),
         search = $('#search'),
         navToggle = $('#nav-toggle'),
-        searchToggle = $('search-toggle');
+        searchToggle = $('#search-toggle');
     // Role declaration
     header.attr('role', 'banner');
     navigation.attr('role', 'navigation');
@@ -51,23 +51,35 @@
     });
     $('<a name="content" tabIndex="-1" id="content">&nbsp;</a>').insertBefore('.entry');
 
-    // Keyboard Navigation: Nav, flyout
-    var isClick = false;
-    $("#nav li a, #flyout li a, a, button, .toggle, .toggle2").on('focusin', function(e) {
-        // console.log(isClick);
-        if (isClick === false) {
-            $(".focused").removeClass("focused");
-            $(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
-            $(".opened:not(.focused) ul:visible, .opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
-        } else {
-            $(".focused").removeClass("focused");
-            isClick = false;
+    // if tabbing into the li that has a sub menu
+    $('#nav li:has("ul"), #flyout li:has("ul")').on('keyup', function (e) {
+        // console.log(e);
+        if (e.keyCode === 9) {
+            $(this).children('ul').removeClass('hideUl');
+            $(this).children('ul').addClass('showUl');
         }
     });
 
-    // prevent focused class changes on click - This way arrows wont pop when clicking nav links
-    $("#nav a, #flyout a").on('mousedown',function() {
-        isClick = true;
+    // if tabbing backwards through menus, remove appropriate classes to hide menus
+    $('#nav a, #flyout a').on('focus', function (e) {
+        $(this).parent('li').next().find('ul').removeClass('showUl').addClass('hideUl');
+    });
+
+    // if key is pressed while on the last link in a sub menu
+    $('#nav li > ul > li:last-child > a, #flyout li > ul > li:last-child > a').on('keydown', function (e) {
+        if ((e.keyCode === 9) && $(this).parent('li').children('ul').length === 0) {
+            // close this sub menu
+            $(this).parent('li').parent('ul').removeClass('showUl').addClass('hideUl');
+
+            // if also tabbing out of a third level sub menu
+            // AND there are no other links in the parent (level 2) sub menu
+            if ($(this).parent('li').parent('ul').parent('li').parent('ul').parent('li').children('ul').length > 0
+                && $(this).parent('li').parent('ul').parent('li').is(':last-child')) {
+
+                // Close the parent sub menu (level 2) as well
+                $(this).parent('li').parent('ul').parent('li').parent('ul').removeClass('showUl').addClass('hideUl');
+            }
+        }
     });
 
     $window.ready(function() {
@@ -254,6 +266,7 @@
                 stagePadding: 0,
                 nav: false,
                 navText: ['',''],
+                dots: false,
                 loop: false,
                 rewind: true,
                 autoplay: false,
