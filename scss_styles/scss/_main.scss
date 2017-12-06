@@ -37,7 +37,7 @@ nav {
     text-decoration: none;
     background: $gray;
     color: $black;
-    &:hover {
+    &:hover, &:focus {
       background: $black;
       color: $gray;
     }
@@ -60,14 +60,10 @@ nav {
     left: 0;
     list-style: none;
     text-align: left;
-    &.showUl {
-      display: block;
-    }
-    &.hideUL {
-      display: none;
-    }
+    &.showUl { display: block; }
+    &.hideUL { display: none; }
     a, span {
-
+      &:hover, &:focus {}
     }
     li {
       margin: 0;
@@ -78,15 +74,9 @@ nav {
       padding: 0;
       left: 100%;
       top: 0;
-      &.showUl {
-        display: block;
-      }
-      &.hideUL {
-        display: none;
-      }
-      a, span {
-        color: $black;
-      }
+      &.showUl { display: block; }
+      &.hideUL { display: none; }
+      a, span {}
     }
   }
 }
@@ -193,7 +183,7 @@ iframe {
 //}
 
 /* Accessibility */
-a, button, *[role="button"], i, em {
+a, button, *[role="button"] {
   &:focus {
     box-shadow: 0 0 5px rgba(#51cbee, 1);
     outline: 2px solid rgba(#51cbee, 1);
@@ -211,9 +201,7 @@ a, button, *[role="button"], i, em {
   display: block;
   padding: 15px;
   position: fixed;
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 18px;
+  @include sans-serif(700, 18px);
   top: 30px;
   left: -70%;
   text-decoration: none;

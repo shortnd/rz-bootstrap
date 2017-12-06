@@ -1,6 +1,13 @@
 // Mixin functions for easier styling
 
 // fonts
+@mixin sans-serif($font-weight: 400, $font-size: 16px, $transform: none) {
+  font-family: sans-serif;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  text-transform: $transform;
+}
+
 @mixin font-family($font-weight: 400, $font-size: 16px, $transform: none) {
   font-family: 'FontFamHere', sans-serif;
   font-weight: $font-weight;
@@ -49,17 +56,6 @@
         column-gap: 0;
       }
     }
-  }
-}
-
-// clear to next line (slider text helper)
-@mixin new-line($display: inline, $z-index: 55, $content: '\A', $white-space: pre) {
-  display: $display;
-  position: relative;
-  z-index: $z-index;
-  &:after {
-    content: $content;
-    white-space: $white-space;
   }
 }
 

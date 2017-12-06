@@ -42,8 +42,8 @@
     header.attr('role', 'banner');
     navigation.attr('role', 'navigation');
     search.attr('role', 'search');
-    navToggle.attr('role', 'button');
-    searchToggle.attr('role', 'button');
+    navToggle.attr('role', 'button').attr('tabindex', '0');
+    searchToggle.attr('role', 'button').attr('tabindex', '0');
 
     // Skip to content
     $('<a class="skip" href="' + window.location.href.split("#")[0] + '#content" alt="Skip to Content">Skip to Content</a>').insertBefore('header').click(function(e) {
@@ -106,69 +106,43 @@
             $(this).toggleClass("active");
         });
 
-        // Menu Arrows
-        $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
-
         // Menu Toggles
         $("#nav > li > ul, #flyout > li > ul").addClass('first-level');
         $("#nav ul ul").addClass('second-level');
-        $("#nav > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
-        $("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2" tabindex="0">');
-        $("#flyout > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+        $("#nav > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle">');
+        $("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2">');
+        $("#flyout > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle">');
 
         function addNavClass() {
             if ($window.width() < 992) {
-                $body.addClass('mobile');
-                $body.removeClass('desktop');
+                $("#nav > li > ul").addClass('first-level');
+                $("#nav li ul ul").addClass('second-level');
 
-            } else {
-                $body.addClass('mobile');
-                $body.removeClass('desktop');
+            } else{
+                $("#nav > li >ul").removeClass('first-level').css('display','');
+                $("#nav li ul ul").removeClass('second-level').css('display','');
             }
         }
         addNavClass();
         $window.resize(addNavClass);
 
-        $(".toggle").on("click keypress",function(e) {
+        $(".toggle").click(function(e) {
             e.preventDefault();
-            var parent = $(this).parent();
-            var parentLi = parent.parent();
-            parentLi.toggleClass('opened');
-            if (parent.addClass('active').next('.first-level').is(":visible")) {
-                parent.next('.first-level').slideUp();
+            if($(this).parent().next('.first-level').is(":visible")){
+                $(this).parent().next('.first-level').slideUp();
             } else {
                 $(".first-level").slideUp("slow");
-                parent.removeClass('active').next('.first-level').slideToggle();
+                $(this).parent().next('.first-level').slideToggle();
             }
         });
 
-        $(".toggle2").on("click keypress",function(e) {
+        $(".toggle2").click(function(e) {
             e.preventDefault();
-            var parent = $(this).parent();
-            var parentLi = parent.parent();
-            parentLi.toggleClass('opened2');
-            if (parent.next('.second-level').is(":visible")) {
-                parent.next('.second-level').slideUp();
+            if($(this).parent().next('.second-level').is(":visible")){
+                $(this).parent().next('.second-level').slideUp();
             } else {
                 $(".second-level").slideUp("slow");
-                parent.next('.second-level').slideToggle();
-            }
-        });
-
-        // collapse nav if left
-        $(".desktop *").focus(function() {
-            var opened = $(".opened");
-            var opened2 = $(".opened2");
-            if (opened.length > 0 || opened2.length > 0) {
-                if ($(".opened :focus").length < 1) {
-                    opened.children("ul").slideUp();
-                    opened.removeClass("opened");
-                    opened2.removeClass("opened2");
-                }
-                if ($(".opened2 :focus").length < 1) {
-                    opened2.children("ul").slideUp();
-                    opened2.removeClass("opened2");
-                }
+                $(this).parent().next('.second-level').slideToggle();
             }
         });
 
@@ -189,12 +163,12 @@
         var flyoutChildren = $('.flyout-children');
 
         // inView.js
-        // if (window.matchMedia('(min-width: 992px)').matches) {
-        //     $('li.first-parent:has(ul)').hover(function() {
-        //         // Can pass top, flyout, side
-        //         $(this).find('ul').inView('top');
-        //     });
-        // }
+        $('#nav > li:has(ul)').hover(function(){
+            $window.width() > 991 ? $(this).find('ul').inView('top') : '';
+        });
+        $('#nav > li > ul > li:has(ul)').hover(function(){
+            $window.width() > 991 ? $(this).find('ul').inView('flyout') : '';
+        });
 
         // simpleWeather
         if ( typeof $.fn.revizeWeather !== "undefined" ) {
@@ -211,7 +185,7 @@
                     var year = date.getFullYear();
                     var date = date.getDate();
                     var dateInfo = '<span class="date">'+ day +', '+ month +' '+ date +', '+ year +'</span>';
-                    var html = '<i class="' + weather.icon + '"><span class="sr-only">Weather Icon</span></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><img src="_assets_/images/divider.png" class="weather-divider">' + dateInfo;
+                    var html = '<i class="' + weather.icon + '"><span class="sr-only">Weather Icon</span></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><span class="weather-divider">|</span>' + dateInfo;
 
                     $(".weather").html(html);
                 },
@@ -222,16 +196,6 @@
                 }
             });
         }
-
-        // Mega Footer Toggle
-        $('.header-toggle').click(function () {
-            var inner = $(this).next('.inner-toggle');
-            if (inner.is(':hidden')) {
-                inner.slideDown('200');
-            } else {
-                inner.slideUp('200');
-            }
-        });
 
         // Tabs
         $('#tabs li a').click(function(e) {
@@ -244,6 +208,7 @@
             $(currentTab).addClass('current animated fadeInLeft');
         });
 
+        // Owl Slider Helper Functions
         var attachOwlBtnRoles = function (slider) {
             slider.find('.owl-prev').attr('role', 'button').attr('tabIndex', '0');
             slider.find('.owl-next').attr('role', 'button').attr('tabIndex', '0');
@@ -251,6 +216,7 @@
         var attachOwlDotRoles = function (slider) {
             slider.find('.owl-dot').attr('role', 'button').attr('tabIndex', '0')
         };
+
         // Owl Slider
         var owlSlider = $('.owl-slider');
         if (typeof $.fn.owlCarousel !== "undefined") {
@@ -499,7 +465,7 @@
 
         // finds all edit buttons - not full-proof but it works ¯\_(ツ)_/¯
         var editBtns = $('script[language="JavaScript"]').next('a').has('img').parent();
-        editBtns.each(function (index) {
+        editBtns.each(function (i) {
             var editBtnConsole = `.${$(this).attr('class')} {}`; // string templates like a boss
             console.log(editBtnConsole);
         });

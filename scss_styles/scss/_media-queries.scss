@@ -15,15 +15,10 @@ $mobile-portrait: 479px;
 
 @media only screen and (min-width: $tablet-before) {
   #nav, #flyout {
-    display: block !important;
-    .focused {
-      .toggle, .toggle2 {
-        display: inline-block;
-        margin-left: 8px;
-      }
+    .toggle, .toggle2 {
+      display: none;
     }
   }
-  .down-arrow,
   .toggle, .toggle2, #nav-toggle, #search-toggle, #flyout-toggle {
     display: none;
   }
@@ -51,9 +46,7 @@ $mobile-portrait: 479px;
     display: inline-block;
     cursor: pointer;
   }
-  .down-arrow {
-    display: none; // if not hidden above
-  }
+
   #nav-toggle, #search-toggle {
     font-size: 20px;
     color: $white;
@@ -79,6 +72,7 @@ $mobile-portrait: 479px;
 
   #nav {
     display: none;
+    float: none;
     margin: 0 -15px;
     background: $mobile-nav-bg;
     transition: margin .2s ease-in-out;

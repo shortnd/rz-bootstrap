@@ -16,9 +16,9 @@
     display: block;
     padding: 15px 20px;
     text-decoration: none;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid rgba($black, .2);
     color: $white;
-    &:hover {
+    &:hover, &:focus {
       color: $white;
     }
   }
@@ -54,9 +54,10 @@
       padding: 10px 15px;
       font-size: 13px;
       width: 180px;
+      &:hover, &:focus {}
     }
   }
-  .toggle-children {
+  .toggle {
     display: none;
     float: right;
   }
@@ -66,7 +67,6 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 1;
-  text-transform: capitalize;
   p {
     margin: 0;
     color: $black;
@@ -80,6 +80,7 @@
     }
   }
   span {
+    margin: 0 0;
     color: $black;
   }
 }

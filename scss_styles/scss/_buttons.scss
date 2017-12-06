@@ -38,6 +38,7 @@ input[type="button"]:hover,
   -ms-box-shadow: none;
   box-shadow: none;
   background: shade($btn-bg, 10);
+  color: $btn-text;
 }
 
 .button:active,
