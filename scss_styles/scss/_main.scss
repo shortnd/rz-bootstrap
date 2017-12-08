@@ -18,9 +18,10 @@ body {
 }
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
-.top-bar {
-  background: transparent;
-}
+header {}
+
+.top-bar { background: transparent; }
+.main-bar { background: transparent; }
 
 nav {
   position: relative;
@@ -127,6 +128,9 @@ nav {
   height: 0;
   background: $black;
   z-index: 1;
+  .bx-controls {
+    display: none;
+  }
 }
 
 .foot-info {
@@ -139,7 +143,7 @@ nav {
 }
 
 footer {
-  font-size: 12px;
+  @include sans-serif(400, 12px);
   background: transparent;
   p {
     margin: 15px 0;
@@ -155,6 +159,9 @@ footer {
         color: $black;
       }
     }
+    .color {
+      color: $black;
+    }
   }
 }
 
@@ -168,16 +175,45 @@ iframe {
 //  }
 //}
 //.goog-te-gadget-simple {
-//  border: none!important;
+//  padding: 0 !important;
+//  background: transparent !important;
+//  border: none !important;
+//  .goog-te-menu-value {
+//    color: $white !important;
+//  }
 //}
-//.skiptranslate {
-//  padding: 0!important;
+//.goog-te-gadget-icon {
+//  display: none !important;
+//}
+//.goog-te-gadget {
+//  display: inline !important;
+//  font-family: sans-serif !important;
+//  font-size: 12px !important;
 //}
 //.goog-te-menu-value {
+//  margin: 0 !important;
+//  text-decoration: none;
+//  &:hover, &:active, &:visited, &:focus {
+//    text-decoration: none;
+//  }
+//  img {
+//    display: none !important;
+//  }
 //  span {
-//    display: none;
-//    &:first-child {
-//      display: inline-block;
+//    display: none !important;
+//    &:first-of-type {
+//      display: inline !important;
+//      position: relative;
+//      font-size: 0;
+//      &:before {
+//        content: 'ICON';
+//        display: inline;
+//      }
+//      &:after {
+//        content: 'Translate';
+//        display: inline;
+//        @include sans-serif(400, 14px);
+//      }
 //    }
 //  }
 //}

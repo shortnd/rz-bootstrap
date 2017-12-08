@@ -64,8 +64,7 @@
 }
 
 .breadcrumbs {
-  font-weight: 400;
-  font-size: 13px;
+  @include sans-serif(400, 13px);
   line-height: 1;
   p {
     margin: 0;
@@ -96,19 +95,7 @@
   height: 0;
   background: $black;
   z-index: 1;
-}
-.page-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 52;
-  .title {
-    margin: 0;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 1;
-    color: $white;
+  .bx-controls {
+    display: none;
   }
 }

@@ -94,16 +94,20 @@
         }
 
         // Search Toggle
-        $('#search-toggle').on('click',function(e) {
-            $('#search').stop().slideToggle(200);
-            $(this).toggleClass('fa-search fa-close');
-            // $('body').toggleClass('search-open');
+        $('#search-toggle').on('click keyup',function(e) {
+            if (e.type === 'keyup' && e.keyCode === 13 || e.type === 'click') {
+                $('#search').stop().slideToggle(200);
+                $(this).toggleClass('fa-search fa-close');
+                // $('body').toggleClass('search-open');
+            }
         });
 
         // Navigation Toggle
-        $("#nav-toggle").on("click", function() {
-            $("#nav").stop().slideToggle();
-            $(this).toggleClass("active");
+        $("#nav-toggle").on("click keyup", function(e) {
+            if (e.type === 'keyup' && e.keyCode === 13 || e.type === 'click') {
+                $("#nav").stop().slideToggle();
+                $(this).toggleClass("active");
+            }
         });
 
         // Menu Toggles
