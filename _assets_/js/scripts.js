@@ -4,7 +4,7 @@
 	Author Design: Designer
 	Developer: Developer
 	Author URI: http://www.revize.com/
-	Date: MONTH DAY, 2017
+	Date: MONTH DAY, 2018
 
 -----------------------------------------------------------------------------------*/
 
@@ -32,18 +32,45 @@
         ); document.querySelector('head').appendChild(msViewportStyle);
     }
 
+    // Preloader
+    $window.load(function() {
+        setTimeout(function(){
+            $body.addClass('loaded');
+            $('#loader-wrapper').fadeOut();
+        }, 600);
+
+
+        // E-Notify Auto Submit
+        $.urlParam=function(n){var e=new RegExp("[?&]"+n+"=([^]*)").exec(window.location.href);return null==e?null:e[1]||0};
+        var $enotify = $('iframe[src*="/revize/plugins/notify/notify.jsp"');
+        if( $enotify.length > 0 ){
+            var $emailField = $enotify.contents().find('input[name="email"]');
+            var emailStr = $.urlParam("email");
+            if( emailStr != null ){
+                $emailField.val( decodeURIComponent(emailStr) );
+                var $signIn = $($enotify.contents().find("form input[title='Sign In']")[0]);
+                if( $signIn.length > 0 ){
+                    $signIn.trigger("click");
+                }
+            }
+        }
+
+    });
+
     // Elements to declare a role
     var header = $('header'),
         navigation = $('nav'),
         search = $('#search'),
         navToggle = $('#nav-toggle'),
-        searchToggle = $('#search-toggle');
+        searchToggle = $('#search-toggle'),
+        flyoutToggle = $('#flyout-toggle');
     // Role declaration
     header.attr('role', 'banner');
     navigation.attr('role', 'navigation');
     search.attr('role', 'search');
     navToggle.attr('role', 'button').attr('tabindex', '0');
     searchToggle.attr('role', 'button').attr('tabindex', '0');
+    flyoutToggle.attr('role', 'button').attr('tabindex', '0');
 
     // Skip to content
     $('<a class="skip" href="' + window.location.href.split("#")[0] + '#content" alt="Skip to Content">Skip to Content</a>').insertBefore('header').click(function(e) {
@@ -113,18 +140,22 @@
         // Menu Toggles
         $("#nav > li > ul, #flyout > li > ul").addClass('first-level');
         $("#nav ul ul").addClass('second-level');
-        $("#nav > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle">');
-        $("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2">');
-        $("#flyout > li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle">');
+        $("#nav > li:has(ul)").find("a:first").append('<em class="fa fa-angle-down toggle"><span class="sr-only">Second Level Navigation Toggle</span></em>');
+        $("#nav li li:has(ul)").find("a:first").append('<em class="fa fa-angle-down toggle2"><span class="sr-only">Third Level Navigation Toggle</span></em>');
+        $("#flyout > li:has(ul)").find("a:first").append('<em class="fa fa-angle-down toggle"><span class="sr-only">Second Level Flyout Toggle</span></em>');
 
         function addNavClass() {
             if ($window.width() < 992) {
                 $("#nav > li > ul").addClass('first-level');
                 $("#nav li ul ul").addClass('second-level');
+                $('.toggle').attr('tabindex','1');
+                $('.toggle2').attr('tabindex','1');
 
-            } else{
+            } else {
                 $("#nav > li >ul").removeClass('first-level').css('display','');
                 $("#nav li ul ul").removeClass('second-level').css('display','');
+                $('.toggle').removeAttr('tabindex');
+                $('.toggle2').removeAttr('tabindex');
             }
         }
         addNavClass();
@@ -132,7 +163,7 @@
 
         $(".toggle").click(function(e) {
             e.preventDefault();
-            if($(this).parent().next('.first-level').is(":visible")){
+            if ($(this).parent().next('.first-level').is(":visible")){
                 $(this).parent().next('.first-level').slideUp();
             } else {
                 $(".first-level").slideUp("slow");
@@ -142,7 +173,7 @@
 
         $(".toggle2").click(function(e) {
             e.preventDefault();
-            if($(this).parent().next('.second-level').is(":visible")){
+            if ($(this).parent().next('.second-level').is(":visible")){
                 $(this).parent().next('.second-level').slideUp();
             } else {
                 $(".second-level").slideUp("slow");
@@ -167,10 +198,10 @@
         var flyoutChildren = $('.flyout-children');
 
         // inView.js
-        $('#nav > li:has(ul)').hover(function(){
+        $('#nav > li:has(ul)').hover(function() {
             $window.width() > 991 ? $(this).find('ul').inView('top') : '';
         });
-        $('#nav > li > ul > li:has(ul)').hover(function(){
+        $('#nav > li > ul > li:has(ul)').hover(function() {
             $window.width() > 991 ? $(this).find('ul').inView('flyout') : '';
         });
 
@@ -186,10 +217,11 @@
                     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                     var day = days[date.getDay()];
                     var month = months[date.getMonth()];
+                    var monthShort = month.substring(0, 3);
                     var year = date.getFullYear();
                     var date = date.getDate();
                     var dateInfo = '<span class="date">'+ day +', '+ month +' '+ date +', '+ year +'</span>';
-                    var html = '<i class="' + weather.icon + '"><span class="sr-only">Weather Icon</span></i><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><span class="weather-divider">|</span>' + dateInfo;
+                    var html = '<em class="' + weather.icon + '"><span class="sr-only">Weather Icon</span></em><span class="forecast">' + weather.temp +'&deg; ' + weather.forecast +'</span><span class="weather-divider">|</span>' + dateInfo;
 
                     $(".weather").html(html);
                 },
@@ -203,13 +235,13 @@
 
         // Tabs
         $('#tabs li a').click(function(e) {
-            $('#tabs li, #tabs-content .current').removeClass('current').removeClass('fadeInLeft');
+            $('#tabs li, #tabs-content .current').removeClass('current');
             $(this).parent().addClass('current');
 
             var currentTab = $(this).attr('href');
 
             e.preventDefault();
-            $(currentTab).addClass('current animated fadeInLeft');
+            $(currentTab).addClass('current');
         });
 
         // Owl Slider Helper Functions
@@ -470,7 +502,7 @@
         // finds all edit buttons - not full-proof but it works ¯\_(ツ)_/¯
         var editBtns = $('script[language="JavaScript"]').next('a').has('img').parent();
         editBtns.each(function (i) {
-            var editBtnConsole = `.${$(this).attr('class')} {}`; // string templates like a boss
+            var editBtnConsole = '.' + $(this).attr('class') + ' {}'; // string templates like a boss
             console.log(editBtnConsole);
         });
 

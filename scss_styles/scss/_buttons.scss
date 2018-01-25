@@ -56,6 +56,16 @@ input[type="button"]:active,
   background: shade($btn-bg, 10);
 }
 
+.button:visited,
+a.button:visited,
+button:visited,
+input[type="submit"]:visited,
+input[type="reset"]:visited,
+input[type="button"]:visited,
+.btn:visited {
+  background: shade($btn-bg, 10);
+}
+
 .button:focus,
 a.button:focus,
 button:focus,

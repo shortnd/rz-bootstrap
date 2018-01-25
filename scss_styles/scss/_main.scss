@@ -17,13 +17,22 @@ body {
   }
 }
 
+#calendarEvent {
+  margin: 0 auto;
+  left: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
 header {}
 
 .top-bar { background: transparent; }
 .main-bar { background: transparent; }
 
-nav {
+// ALWAYS MAKE SURE THAT THIS IS A CLASS AND NOT AN ELEMENT STYLE DECLARATION,
+// OTHERWISE IT CONFLICTS WITH STYLES INSIDE EDITFORMS ON THE REST OF THE SITE
+.nav {
   position: relative;
   z-index: 60;
 }
@@ -116,7 +125,7 @@ nav {
       outline: none;
       border: none;
     }
-    i {
+    em {
       margin-top: 0;
       color: $black;
     }
@@ -202,16 +211,16 @@ iframe {
 //  span {
 //    display: none !important;
 //    &:first-of-type {
-//      display: inline !important;
+//      display: inline-block !important;
 //      position: relative;
 //      font-size: 0;
 //      &:before {
 //        content: 'ICON';
-//        display: inline;
+//        display: inline-block;
 //      }
 //      &:after {
 //        content: 'Translate';
-//        display: inline;
+//        display: inline-block;
 //        @include sans-serif(400, 14px);
 //      }
 //    }
@@ -219,7 +228,7 @@ iframe {
 //}
 
 /* Accessibility */
-a, button, *[role="button"] {
+a, button, *[role="button"], .toggle[tabindex], .toggle2[tabindex] {
   &:focus {
     box-shadow: 0 0 5px rgba(#51cbee, 1);
     outline: 2px solid rgba(#51cbee, 1);

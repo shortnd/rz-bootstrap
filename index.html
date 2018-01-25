@@ -4,7 +4,7 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>SiteName</title>
 	<meta name="description" content="">
@@ -153,16 +153,34 @@
 			</div><!-- /.col-md-12 -->
 		</div><!-- /.row -->
 
+		<div class="row ">
+			<div class="col-md-6 col1">
+				<h2>City Newsletter</h2>
+				<form class="signup submission" id="newletter-signup"  action="optin.php" enctype="application/x-www-form-urlencoded" method="post">
+					<input type="email" name="femail" placeholder="Enter your email address" required>
+					<button>Sign Up</button>
+				</form>
+			</div><!-- /.col-md-6 -->
+
+			<div class="col-md-6">
+				<h2>Stay Updated</h2>
+				<form action="enotify/index.php" id="enotify-signup" class="signup clearfix">
+					<input type="email" name="email" placeholder="Enter your email address" required>
+					<button>Sign Up</button>
+				</form>
+			</div><!-- /.col-md-6 -->
+		</div><!-- /.row -->
+
 	</div><!-- /.container -->
 
 	<footer id="footer">
 
-	<span id="revize-login">
-		<span class="powered-by-revize">
-			Powered By <a id="powered-by-revize-link" target="_blank" href="http://www.revize.com">Revize</a>
+		<span id="revize-login">
+			<span class="powered-by-revize">
+				Powered By <a id="powered-by-revize-link" target="_blank" href="http://www.revize.com">Revize</a>
+			</span>
+			<a id="revize-login-link" href="">Login</a>
 		</span>
-		<a id="revize-login-link" href="">Login</a>
-	</span>
 
 	</footer><!-- /#footer -->
 
@@ -241,7 +259,6 @@
 <script src="_assets_/plugins/matchHeight/dist/jquery.matchHeight-min.js"></script>
 <script src="_assets_/plugins/revizeWeather/js/revizeWeather.min.js"></script>
 <script src="_assets_/plugins/waypoints/waypoints.min.js"></script>
-<script src="_assets_/plugins/inView/inView.js"></script>
 <script src="_assets_/js/scripts.js"></script>
 
 </body>

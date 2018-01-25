@@ -52,8 +52,8 @@ $mobile-portrait: 479px;
     color: $white;
   }
   #nav-toggle {
-    margin: 0;
-    padding: 0 0 0 15px;
+    margin: 0 -15px 0 0;
+    padding: 0 15px;
     position: relative;
     &:after {
       content: '';
@@ -151,7 +151,7 @@ $mobile-portrait: 479px;
     margin: 0;
     padding: 0;
     a, span {
-      padding: 20px 10px;
+      padding: 20px 15px;
       font-size: 14px;
       line-height: 1;
       border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -169,7 +169,7 @@ $mobile-portrait: 479px;
       padding: 0;
       background:rgba(0,0,0,.2);
       a, span {
-        padding: 20px;
+        padding: 20px 30px;
         width:100%;
       }
     }
@@ -253,7 +253,10 @@ $mobile-portrait: 479px;
   }
   .floating-share-btn {
     top: auto;
-    bottom: 0;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 0 rgba($black, .4);
   }
 }
 
