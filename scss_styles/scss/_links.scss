@@ -2,7 +2,7 @@
 #links
 -----------------------------------------*/
 a, a:visited {
-  color: shade($links, 10);
+  color: $links;
   text-decoration: underline;
   //-webkit-transition: color .3s ease, background .3s ease;
   //-moz-transition: color .3s ease, background .3s ease;
@@ -11,7 +11,7 @@ a, a:visited {
 }
 
 a:hover, a:focus {
-  color: $links;
+  color: lighten($links, 10);
 }
 
 p a, p a:visited {
