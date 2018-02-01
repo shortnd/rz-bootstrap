@@ -34,27 +34,25 @@
 
     // Preloader
     $window.load(function() {
-        setTimeout(function(){
+        setTimeout(function() {
             $body.addClass('loaded');
             $('#loader-wrapper').fadeOut();
         }, 600);
 
-
         // E-Notify Auto Submit
-        $.urlParam=function(n){var e=new RegExp("[?&]"+n+"=([^]*)").exec(window.location.href);return null==e?null:e[1]||0};
-        var $enotify = $('iframe[src*="/revize/plugins/notify/notify.jsp"');
-        if( $enotify.length > 0 ){
+        $.urlParam = function(n) {var e = new RegExp("[?&]"+n+"=([^]*)").exec(window.location.href); return null == e ? null : e[1] || 0};
+        var $enotify = $('iframe[src*="/revize/plugins/notify/notify.jsp"]');
+        if ( $enotify.length > 0 ) {
             var $emailField = $enotify.contents().find('input[name="email"]');
             var emailStr = $.urlParam("email");
-            if( emailStr != null ){
+            if ( emailStr != null ) {
                 $emailField.val( decodeURIComponent(emailStr) );
                 var $signIn = $($enotify.contents().find("form input[title='Sign In']")[0]);
-                if( $signIn.length > 0 ){
+                if ( $signIn.length > 0 ) {
                     $signIn.trigger("click");
                 }
             }
         }
-
     });
 
     // Elements to declare a role
@@ -502,7 +500,7 @@
         // finds all edit buttons - not full-proof but it works ¯\_(ツ)_/¯
         var editBtns = $('script[language="JavaScript"]').next('a').has('img').parent();
         editBtns.each(function (i) {
-            var editBtnConsole = '.' + $(this).attr('class') + ' {}'; // string templates like a boss
+            var editBtnConsole = '.' + $(this).attr('class') + ' {}';
             console.log(editBtnConsole);
         });
 

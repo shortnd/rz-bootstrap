@@ -25,16 +25,17 @@ body {
 }
 
 // ALWAYS START HERE WITH NEW STYLES. ADJUST OTHER FILES AS NEEDED FOR DESIRED STYLES
-header {}
+header {
+  z-index: 60;
+}
 
 .top-bar { background: transparent; }
 .main-bar { background: transparent; }
 
 // ALWAYS MAKE SURE THAT THIS IS A CLASS AND NOT AN ELEMENT STYLE DECLARATION,
 // OTHERWISE IT CONFLICTS WITH STYLES INSIDE EDITFORMS ON THE REST OF THE SITE
-.nav {
+.nav-bar {
   position: relative;
-  z-index: 60;
 }
 #nav {
   float: none;
