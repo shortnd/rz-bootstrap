@@ -78,7 +78,6 @@
 
     // if tabbing into the li that has a sub menu
     $('#nav li:has("ul"), #flyout li:has("ul")').on('keyup', function (e) {
-        // console.log(e);
         if (e.keyCode === 9) {
             $(this).children('ul').removeClass('hideUl');
             $(this).children('ul').addClass('showUl');
@@ -346,7 +345,7 @@
         if (typeof $.fn.bxSlider !== "undefined") {
             $('.bxslider').bxSlider({
                 mode:'fade',
-                auto:($('.bxslider').children().length < 2) ? false : true,
+                auto: $('.bxslider').children().length >= 2,
                 pager: false
             });
         }

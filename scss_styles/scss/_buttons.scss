@@ -10,12 +10,9 @@ input[type="button"],
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  font-family: sans-serif;
-  font-weight: 900 !important;
-  font-size: 12px;
+  @include sans-serif(700, 12px, uppercase);
   text-decoration: none;
   line-height: normal;
-  text-transform: uppercase;
   vertical-align: top;
   border: 0;
   border-radius: 5px;

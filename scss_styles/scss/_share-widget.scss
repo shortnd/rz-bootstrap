@@ -17,7 +17,9 @@
   button {
     margin-top: 2px !important;
     position: relative;
+    width: auto;
     font-size: 25px;
+    box-shadow: none;
     background: none;
     color: $black !important;
     &:hover {

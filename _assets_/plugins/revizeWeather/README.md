@@ -71,7 +71,9 @@ $response = $weatherWidget->getData();
 // error checking would have to be done by hand
 ```
 
-v1.0.1
+# Changes
+
+## v1.0.1
 ---------------------------------------------------
 - Fix thrown exception in main.php if API_KEY has not been defined in php. This should help developers remember to defnine the constant.
 - Move JS instructions to to as they will be most helpful for users of the plugin. The php notes or for plugin devs.

@@ -78,14 +78,14 @@ $mobile-portrait: 479px;
     transition: margin .2s ease-in-out;
     clear: both;
     a, span {
-      padding: 20px 25px;
+      padding: 20px 15px;
       font-size: 14px;
       line-height: 1;
       text-align: left;
       border-bottom: 1px solid rgba($black, .2);
       background: none;
       color: $black;
-      &:hover {
+      &:hover, &:focus {
         color: $black;
       }
     }
@@ -109,11 +109,11 @@ $mobile-portrait: 479px;
       background: shade($mobile-nav-bg, 20);
       a, span {
         margin: 0;
-        padding: 20px 35px;
+        padding: 20px 25px;
         width: 100%;
         background: none;
         color: $black;
-        &:hover {
+        &:hover, &:focus {
           color: $black;
         }
       }
@@ -125,10 +125,10 @@ $mobile-portrait: 479px;
         background: shade($mobile-nav-bg, 40);
         a, span {
           margin: 0;
-          padding: 20px 45px;
+          padding: 20px 35px;
           background: none;
           color: $black;
-          &:hover {
+          &:hover, &:focus {
             color: $black;
           }
         }
