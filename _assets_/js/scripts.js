@@ -194,7 +194,7 @@
         $("#flyout ul").addClass('flyout-children');
         var flyoutChildren = $('.flyout-children');
 
-        // inView.js
+        // inView.js - values can be 'top', 'side' or 'flyout'
         $('#nav > li:has(ul)').hover(function() {
             $window.width() > 991 ? $(this).find('ul').inView('top') : '';
         });
@@ -247,7 +247,11 @@
             slider.find('.owl-next').attr('role', 'button').attr('tabIndex', '0');
         };
         var attachOwlDotRoles = function (slider) {
-            slider.find('.owl-dot').attr('role', 'button').attr('tabIndex', '0')
+            slider.find('.owl-dot').attr('role', 'button').attr('tabIndex', '0');
+            slider.find('.owl-dot').each(function(i) {
+                var index = i + 1;
+                $(this).find('span').html('<span class="sr-only">Slide ' + index + '</span>');
+            });
         };
 
         // Owl Slider

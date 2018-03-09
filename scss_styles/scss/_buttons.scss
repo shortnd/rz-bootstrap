@@ -61,6 +61,7 @@ input[type="reset"]:visited,
 input[type="button"]:visited,
 .btn:visited {
   background: $btn-bg;
+  color: $btn-text;
 }
 
 .button:focus,

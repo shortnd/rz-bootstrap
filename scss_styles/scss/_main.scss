@@ -238,6 +238,13 @@ a, button, *[role="button"], .toggle[tabindex], .toggle2[tabindex] {
   }
 }
 
+//a[name="content"] {
+//  display: block;
+//  position: relative;
+//  top: [negativeHeightOfFixedNavigation]px;
+//  visibility: hidden;
+//}
+
 #content {
   display: block;
   height: 0;
