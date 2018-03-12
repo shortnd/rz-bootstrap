@@ -81,6 +81,12 @@
         if (e.keyCode === 9) {
             $(this).children('ul').removeClass('hideUl');
             $(this).children('ul').addClass('showUl');
+
+            // only uncomment for designs that use inView script
+            // hasn't been tested fully, only values that should be necessary are 'side' or ''flyout
+            // if (!$(this).children('ul').attr('style')) {
+            //     $(this).children('ul').inView('side');
+            // }
         }
     });
 
