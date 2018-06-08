@@ -1,0 +1,74 @@
+/* -----------------------------------------
+
+#media queries
+
+-----------------------------------------*/
+@media only screen and (min-width:992px) {
+
+  #flyout,#nav{display:block!important}
+
+}
+
+@media only screen and (max-width:991px) {
+
+/* rz form tables - without page scope this targets editforms and makes
+ * editing confusing
+ */
+#freeform #formwizziwmorf tr,#freeform #formwizziwmorf tr td{display:block!important}
+#freeform #formwizziwmorf tr table tr{display:table-row!important}
+#freeform #formwizziwmorf tr table td{display:table-cell!important}
+
+.toggle,
+.toggle2,
+#nav-toggle{display:inline-block;cursor:pointer}
+.down-arrow{display:none} /* if not hidden above */
+#nav{display:none}
+#nav li{float:none;display:block}
+#nav li a,
+#nav li span{padding:20px 30px;line-height:1;border-bottom:1px solid rgba(0,0,0,.2);background:none;font-size:14px}
+#nav ul{position:static;top:0;padding:0;background:rgba(0,0,0,.2)}
+#nav li:hover > ul{display:none}
+#nav ul a,
+#nav ul span{width:100%}
+#nav ul ul{left:0}
+#nav .toggle,
+#nav .toggle2{position:absolute;right:0;top:0;background:rgba(0,0,0,.2);height:55px;width:55px;line-height:55px;text-align:center}
+#nav li li:hover > a{background:none;color:#fff}
+
+#flyout{display:none}
+#flyout li{}
+#flyout li a,
+#flyout li span{padding:20px 30px;line-height:1;border-bottom:1px solid rgba(0,0,0,.2);background:none;font-size:14px}
+#flyout ul{position:static;left:0;padding:0;background:rgba(0,0,0,.2)}
+#flyout ul a,
+#flyout ul span{width:100%}
+#flyout li:hover > ul{display:none}
+
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width:767px) {
+
+.floating-alert{width:auto;right:0;left:0;border:0;bottom:0;border-radius:0;padding-left:15px;padding-right:15px}
+.floating-alert{font-size:12px}
+.floating-alert h1{margin-bottom:10px;font-size:14px}
+.floating-alert .btn{font-size:10px;padding:7px 12px!important}
+.share-btns a{height:auto;padding:10px;width:100%;font-size:12px;white-space:nowrap;overflow:hidden}
+.share-btns i{display:block;line-height:50px!important;font-size:20px}
+
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width:480px) and (max-width:767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width:479px) {}
+
+@media print {
+.nav-wrap,
+.sidebar,
+#flyout-wrap,
+.breadcrumbs
+.e-notify{display:none!important}
+a[href]:after{content:none!important}
+}

@@ -1,0 +1,25 @@
+/* -----------------------------------------
+#main
+-----------------------------------------*/
+body{overflow-x:hidden}
+.text-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#nav-toggle,
+.toggle,
+.toggle2{display:none}
+
+/* Don't forget to accout for span being used in space of a tag for nav items that are not links */
+/*for mega menu addjust as needed*/
+.nav>li>ul {
+    -moz-column-count: 4;
+    -moz-column-gap: 40px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 40px;
+    column-count: 4;
+    column-gap: 40px;
+    padding:40px
+}
+.nav>li>ul li{display:inline-block;width:100%}
+.nav>li>ul li a{display:block}
+/*for mega menu addjust as needed*/
+
+#calendarEvent{left:0px;max-height:500px;overflow-y:auto;margin:0 auto}
