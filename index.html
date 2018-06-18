@@ -39,158 +39,152 @@
 <div id="loader-wrapper"><img src="_assets_/images/ripple.gif" alt="Loading..."></div><!-- /.loader-wrapper -->
 
 <div class="main-wrap">
-	<div class="container">
-
-		<header>
-			<div class="row">
-
-				<div class="col-md-12">
-					<div class="page-header"><h2>Sample Header plus nav</h2></div><!-- /.page-header -->
-				</div><!-- /.col-md-12 -->
-
-				<div id="header" class="col-md-12 clearfix">
-
-					<a href="" class="logo"><h1 class="h4">Logo</h1></a>
-
-					<ul id="nav">
-						<li><a href="">Home</a></li>
-						<li><a href="">Departments</a>
-							<ul>
-								<li><a href="">Management</a>
-									<ul>
-										<li><a href="">Management</a></li>
-										<li><a href="">Finance</a></li>
-										<li><a href="">Planning</a></li>
-										<li><a href="">Public Works</a></li>
-										<li><a href="">Police</a></li>
-										<li><a href="">Fire / EMS</a></li>
-										<li><a href="">Libraries</a></li>
-										<li><a href="">Education</a></li>
-										<li><a href="">Parks &amp; Recreation</a></li>
-										<li><a href="">Information Technology</a></li>
-									</ul>
-								</li>
-								<li><a href="">Finance</a></li>
-								<li><a href="">Planning</a></li>
-								<li><a href="">Public Works</a></li>
-								<li><a href="">Police</a></li>
-								<li><a href="">Fire / EMS</a></li>
-								<li><a href="">Libraries</a></li>
-								<li><a href="">Education</a></li>
-								<li><a href="">Parks &amp; Recreation</a></li>
-								<li><a href="">Information Technology</a></li>
-							</ul>
-						</li>
-						<li><a href="">About</a>
-							<ul>
-								<li><a href="">About The Area</a></li>
-								<li><a href="">Maps</a></li>
-								<li><a href="">Links</a></li>
-								<li><a href="">Photos</a></li>
-							</ul>
-						</li>
-						<li><span>Information</span>
-							<ul>
-								<li><span>How Do I?</span>
-									<ul>
-										<li><a href="">Management</a></li>
-										<li><a href="">Finance</a></li>
-										<li><a href="">Planning</a></li>
-										<li><a href="">Public Works</a></li>
-										<li><a href="">Police</a></li>
-										<li><a href="">Fire / EMS</a></li>
-										<li><a href="">Libraries</a></li>
-										<li><a href="">Education</a></li>
-										<li><a href="">Parks &amp; Recreation</a></li>
-										<li><a href="">Information Technology</a></li>
-									</ul>
-								</li>
-								<li><a href="">Contact Us</a></li>
-								<li><a href="">News</a></li>
-								<li><a href="">Announcements</a></li>
-								<li><a href="">Jobs</a></li>
-								<li><a href="">Minutes</a></li>
-								<li><a href="">RFP's</a></li>
-							</ul>
-						</li>
-					</ul>
-
-					<div id="search">
-						<form class="search-form" method="get" action="search.php">
-							<label class="fa fa-search" for="search-input"></label>
-							<input name="q" class="form-control search-input" placeholder="Enter search terms..." type="search" id="search-input">
-							<button>Go</button>
-						</form>
-					</div><!-- /#search -->
-
-				</div><!-- /#header -->
-			</div><!-- /.row -->
-		</header>
-
-		<div class="weather">
-			<div id="weather"></div><!-- /#weather -->
-		</div><!-- /.weather -->
-
-		<div class="row">
-			<div class="col-md-12">
-
-				<div id="slider">
-					<ul class="bxslider">
-					  <li style="background:url('_assets_/images/slide1.jpg') center no-repeat;background-size:cover"></li>
-					  <li style="background:url('_assets_/images/slide2.jpg') center no-repeat;background-size:cover"></li>
-					</ul>
-				</div><!-- /#slider -->
-
-			</div><!-- /.col-md-12 -->
-		</div><!-- /.row -->
-
-		<div class="row">
-			<div class="col-md-6">
-				<div id="instafeed"></div>
-			</div><!-- /.col-md-12 -->
-			<div class="col-md-6">
-				<div id="twitterfeed"></div>
-			</div><!-- /.col-md-12 -->
-		</div><!-- /.row -->
-
-		<div class="row ">
-			<div class="col-md-6 col1">
-				<h2>City Newsletter</h2>
-                <form class="signup submission" id="newletter-signup"  action="optin.php" enctype="application/x-www-form-urlencoded" method="post">
-					<input type="email" name="femail" placeholder="Enter your email address" required>
-					<button>Sign Up</button>
-				</form>
-			</div><!-- /.col-md-6 -->
-
-			<div class="col-md-6">
-				<h2>Stay Updated</h2>
-				<form action="enotify/index.php" id="enotify-signup" class="signup clearfix">
-					<input type="email" name="email" placeholder="Enter your email address" required>
-					<button>Sign Up</button>
-				</form>
-			</div><!-- /.col-md-6 -->
-		</div><!-- /.row -->
-
-	</div><!-- /.container -->
-
-	<footer id="footer">
-
-		<span id="revize-login">
-			<span class="powered-by-revize">
-				Powered By <a id="powered-by-revize-link" target="_blank" href="http://www.revize.com">Revize</a>
-			</span>
-			<a id="revize-login-link" href="">Login</a>
-		</span>
-
-	</footer><!-- /#footer -->
-
+	<header id="header">
+		<a href="#main" id="skip">SKIP TO CONTENT</a>
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="weather-wrap pull-right">
+						<span id="weather" class="weather"></span><!--/#weather.weather-->
+					</div><!--/.weather-wrap.pull-right-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</div><!--/.top-bar-->
+		<div class="bottom-bar">
+			<div class="container">
+				<div class="row">
+					<div class="navbar-header col-md-2">
+						<a href="./" class="navbar-brand" id="logo">
+							<h1 class="sr-only">Navbar Logo</h1>
+							<img src="_assets_/images/logo.png" alt="logo" />
+						</a><!--/.navbar-brand-->
+					</div><!--/.navbar-header-->
+					<nav id="navbar" class="col-md-8">
+						<ul class="nav navbar-nav text-center">
+							<li>
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="#">Government</a>
+							</li>
+							<li>
+								<a href="#">Departments</a>
+							</li>
+							<li>
+								<a href="#">Residents</a>
+							</li>
+							<li>
+								<a href="#">Visitors</a>
+							</li>
+							<li>
+								<a href="#">How Do I?...</a>
+							</li>
+						</ul><!--/.nav.navbar-nav-->
+					</nav><!--/#navbar.navbar-collapse.collapse-->
+					<div class="controls navbar-right col-md-2">
+						<form action="search.php" class="form-group">
+							<label for="search"></label>
+							<input name="q" class="form-control" type="search" id="search" placeholder="Search..." aria-placeholder="Search...">
+							<button>Search</button>
+						</form><!--/.form-group-->
+					</div><!--/.controls.navbar-right.col-md-2-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</div><!--/.bottom-bar-->
+	</header><!--/#header-->
+	<section id="slider">
+		<ul class="bxslider">
+			<li style="background:url('_assets_/images/slide-1.jpg') center no-repeat; background-size:cover;"></li>
+			<li style="background:url(_assets_/images/slide-2.jpg) center no-repeat; background-size:cover;"></li>
+		</ul><!--/.bxslider-->
+		<div class="slider-caption">
+			<div class="container">
+				<div class="row">
+					<div class="text-center">
+							<h2>Slider Caption (H2)</h2>
+							<h3>Sub Caption (H3)</h3>
+					</div><!--/.text-center-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</div><!--/.slider-caption-->
+	</section><!--/#slider-->
+	<main id="main">
+		<section class="quick-link-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="quick-links">
+						<a href="#" class="quick-link">
+							<img src="_assets_/images/qlink-1.png" alt="Employee Icon">
+							<span>Employee</span>
+						</a><!--/.quick-link-->
+						<a href="#" class="quick-link">
+							<img src="_assets_/images/qlink-2.png" alt="Documents Icon">
+							<span>Documents</span>
+						</a><!--/.quick-link-->
+						<a href="#" class="quick-link">
+							<img src="_assets_/images/qlink-3.png" alt="Photo Gallery">
+							<span>Photo Gallery</span>
+						</a><!--/.quick-link-->
+						<a href="#" class="quick-link">
+							<img src="_assets_/images/qlink-4.png" alt="Notify Me Icon">
+							<span>Notify Me</span>
+						</a><!--/.quick-link-->
+						<a href="#" class="quick-link">
+							<img src="_assets_/images/qlink-1.png" alt="Contact Us Icon">
+							<span>Contact Us</span>
+						</a><!--/.quick-link-->
+					</div><!--/.quick-links-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</section><!--/.quick-link-wrap-->
+		<section class="news-section-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="news-background">
+						<div class="news-cards">
+							<div class="news-card">
+								<img src="" alt="news card image 1">
+								<div class="news-card-body">
+									<span class="date">FEB 26, 2018</span>
+									<a href="#">
+										Praesent commodo cursus magna, vel
+									</a>
+								</div><!--/.news-card-body-->
+							</div><!--/.news-card-->
+							<div class="news-card">
+								<img src="" alt="news card image 2">
+								<div class="news-card-body">
+									<span class="date">feb 26, 2018</span>
+									<a href="#">
+										Praesent commodo cursus magna, vel
+									</a>
+								</div><!--/.news-card-body-->
+							</div><!--/.news-card-->
+							<div class="news-card">
+								<img src="" alt="news card image 3">
+								<div class="news-card-body">
+									<span class="date">feb 26, 2018</span>
+									<a href="#">
+										Present commodo cursus magna, vel
+									</a>
+								</div><!--/.news-card-body-->
+							</div><!--/.news-card-->	
+						</div><!--/.news-cards-->
+					</div><!--/.news-background-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</section><!--/.news-section-wrap-->
+		<section class="calendar-and-events">
+			
+		</section>
+	</main><!--/#main-->
+	
 	<div class="alert alert-dismissible floating-alert fade in os-animation" data-os-animation="fadeInUpBig" data-os-animation-delay="2s" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<h1>Alert Title 30 characters Max</h1>
 		<p>Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120</p>
 		<p><a href="#" class="btn">Read More</a></p>
 	</div><!-- /.alert -->
-
 </div><!-- /.main-wrap -->
 
 
