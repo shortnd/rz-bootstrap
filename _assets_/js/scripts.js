@@ -1,7 +1,8 @@
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: SiteName
-	Author Design: Samir Alley @samiralley | Tom Gooden @good3n
+	Front-end developer: Richard Opiniano | Kevin Nowalski | Collin O'Connell | DeMarc Johnson
+	Author Design: Samir Alley @samiralley | Kat Wiard | Nasryn Abou-Arabi | Alex Parent
 	Author URI: http://www.revize.com/
 	Date: MONTH DAY, 2015
 
@@ -42,6 +43,29 @@
 	});
 
 	$window.ready(function(){
+		
+		
+		// If template is freeform, add flyout background
+		if ($('#flyout-wrap').length){
+			$('main').css('position','relative');
+			$('<div id="flyout-background"></div>').prependTo('main').css({
+				
+			});
+		}
+		
+		// Fill sides script
+		function fillSide(){
+            var mainWidth = $('body').outerWidth();
+            var pixelValue = (mainWidth - $('.container').width()) / 2;
+			$('#flyout-wrap').css({
+				'margin-left': -pixelValue,
+				'padding-left': pixelValue
+			});
+			
+			$('#flyout-background').width($('#flyout-wrap').outerWidth());
+		}
+        fillSide();
+        $window.resize(fillSide);
 
 		/*
 		* E-Notify Auto submit
@@ -116,15 +140,6 @@
 			}
 		});
 
-		// Add Class To Nav Items + Icons if Needed
-		$('#nav> li:nth-child(1) >a, #nav> li:nth-child(1) >span').addClass('nav-item-one').prepend();
-		$('#nav> li:nth-child(2) >a, #nav> li:nth-child(2) >span').addClass('nav-item-two').prepend();
-		$('#nav> li:nth-child(3) >a, #nav> li:nth-child(3) >span').addClass('nav-item-three').prepend();
-		$('#nav> li:nth-child(4) >a, #nav> li:nth-child(4) >span').addClass('nav-item-four').prepend();
-		$('#nav> li:nth-child(5) >a, #nav> li:nth-child(5) >span').addClass('nav-item-five').prepend();
-		$('#nav> li:nth-child(6) >a, #nav> li:nth-child(6) >span').addClass('nav-item-six').prepend();
-		$('#nav> li:nth-child(7) >a, #nav> li:nth-child(7) >span').addClass('nav-item-seven').prepend();
-
 		// Flyout
 		var flyout = $('#flyout'),
 			flyoutwrap = $('#flyout-wrap');
@@ -174,16 +189,44 @@
 				}
 			});
 		}
+		
+		if ( typeof $.fn.sociafeed !== "undefinded"){
+			$('.social-feed-container').socialfeed({
+				// Facebook
+				facebook:{
+					accounts: ['@teslamotors','!teslamotors'],  //Array: Specify a list of accounts from which to pull wall posts
+					limit: 2,                                   //Integer: max number of posts to load
+					access_token: 'YOUR_FACEBOOK_ACCESS_TOKEN'  //String: "APP_ID|APP_SECRET"
+				},
 
-		// Mega Footer Toggle
-		$('.header-toggle').click(function () {
-			var inner = $(this).next('.inner-toggle');
-			if (inner.is(':hidden')) {
-				inner.slideDown('200');
-			} else {
-				inner.slideUp('200');
-			}
-		});
+				// Twitter
+				twitter:{
+					accounts: ['@spacex'],                       //Array: Specify a list of accounts from which to pull tweets
+					limit: 2,                                    //Integer: max number of tweets to load
+					consumer_key: 'YOUR_CONSUMER_KEY',           //String: consumer key. make sure to have your app read-only
+					consumer_secret: 'YOUR_CONSUMER_SECRET_KEY', //String: consumer secret key. make sure to have your app read-only
+					tweet_mode: 'compatibility'                  //String: change to "extended" to show the whole tweet
+				 },
+
+				// Instagram
+				instagram:{
+					accounts: ['@teslamotors','#teslamotors'],  //Array: Specify a list of accounts from which to pull posts
+					limit: 2,                                   //Integer: max number of posts to load
+					client_id: 'YOUR_INSTAGRAM_CLIENT_ID',       //String: Instagram client id (option if using access token)
+					access_token: 'YOUR_INSTAGRAM_ACCESS_TOKEN' //String: Instagram access token
+				},
+
+				// General settings
+				length:400,
+				show_media:true,
+				media_min_width: 300,
+				update_period: 5000,
+				template: "template.html",
+				callback: function() {
+					console.log("All posts collected!");
+				}
+			});
+		}
 
 		// Tabs
 		$('#tabs li a').click(function(e){
@@ -219,35 +262,6 @@
 				auto:($('.bxslider').children().length < 2) ? false : true,
 				pager: false
 			});
-		}
-
-		// Twitter Feed
-		if(typeof $.fn.tweet !== "undefined"){
-			$("#twitterfeed").tweet({
-				modpath: '_assets_/plugins/twitter/',
-				username: "RevizeSoftware",
-				join_text: "auto",
-				avatar_size: 0,
-				count: 1,
-				auto_join_text_default: "",
-				auto_join_text_ed: "",
-				auto_join_text_ing: "",
-				auto_join_text_reply: "",
-				auto_join_text_url: "",
-				loading_text: "Loading Tweet..."
-			});
-		}
-
-		// Instafeed Feed
-		if(typeof $.fn.Instafeed !== "undefined"){
-			var userFeed = new Instafeed({
-				get: 'user',
-				resolution:'standard_resolution',
-				limit:9,
-				userId: 223202806,
-				accessToken: '303202123.f7e9b72.27c687fbd9c24ecbb29dc92951cdf724'
-			});
-			userFeed.run();
 		}
 
 		// Sticky
@@ -352,22 +366,7 @@
 
 		};
 		$('.v-align').flexVerticalCenter();
-
-
-		// Remove matchHeight on document center pages
-		if($('#RZdocument_center').length){
-			$('.aside,.entry').matchHeight({remove:true});
-
-			if(window.matchMedia("(min-width: 992px)").matches){
-				setInterval(function(){
-					if($('.post').outerHeight() + 300 > $('.entry').outerHeight()){
-						$('.aside').css('height',$('.entry').outerHeight() + 'px');
-					}
-				}, 200);
-			}
-		}
-
-
+		
 	}); // Ready
 
 })(jQuery);
