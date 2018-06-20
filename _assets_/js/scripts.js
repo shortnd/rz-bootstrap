@@ -104,39 +104,46 @@
 		$("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 
 		// Menu Toggles
-		$("#nav >li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle">');
-		$("#nav li li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle2">');
-
+		$("#nav >li>ul,#flyout >li>ul").addClass('first-level');
+		$("#nav  li ul ul").addClass('second-level');
+		$("#nav >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+		$("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2" tabindex="0">');
+		$("#flyout >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+		$("#flyout-2 >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
 		function addNavClass() {
 			if ($window.width() < 992) {
-				$("#nav >li>ul").addClass('first-level');
-				$("#nav  li ul ul").addClass('second-level');
-
+				$("body").addClass('mobile');
+				$("body").removeClass('desktop');
 			} else{
-					$("#nav >li>ul").removeClass('first-level').css('display','');
-					$("#nav  li ul ul").removeClass('second-level').css('display','');
+				$("body").addClass('mobile');
+				$("body").removeClass('desktop');
 			}
 		}
 		addNavClass();
 		$window.resize(addNavClass);
 
-		$(".toggle").click(function(e) {
-				e.preventDefault();
-			if($(this).parent().next('.first-level').is(":visible")){
-				$(this).parent().next('.first-level').slideUp();
+		$(".toggle").on("click keypress",function(e) {
+			e.preventDefault();
+		var $parent = $(this).parent();
+		var $parentLi = $parent.parent();
+		$parentLi.toggleClass('opened');
+			if($parent.addClass('active').next('.first-level').is(":visible")){
+				$parent.next('.first-level').slideUp();
 			} else {
 				$(".first-level").slideUp("slow");
-				$(this).parent().next('.first-level').slideToggle();
+				$parent.removeClass('active').next('.first-level').slideToggle();
 			}
 		});
-
-		$(".toggle2").click(function(e) {
-				e.preventDefault();
-			if($(this).parent().next('.second-level').is(":visible")){
-				$(this).parent().next('.second-level').slideUp();
+		$(".toggle2").on("click keypress",function(e) {
+			e.preventDefault();
+		var $parent = $(this).parent();
+		var $parentLi = $parent.parent();
+		$parentLi.toggleClass('opened2');
+			if($parent.next('.second-level').is(":visible")){
+				$parent.next('.second-level').slideUp();
 			} else {
 				$(".second-level").slideUp("slow");
-				$(this).parent().next('.second-level').slideToggle();
+				$parent.next('.second-level').slideToggle();
 			}
 		});
 

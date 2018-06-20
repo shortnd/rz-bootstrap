@@ -204,7 +204,6 @@ header{position:relative;z-index:200}
 #flyout a,#flyout span{text-decoration:none;padding:15px 20px;display:block;border-bottom:1px solid #000}
 #flyout ul{display:none;position:absolute;top:0;left:100%;margin:0;padding:0;background:#aaa}
 #flyout ul a,#flyout ul span{font-size:13px;padding:10px 15px;width:180px}
-#flyout li:hover>ul{display:block}
 .breadcrumbs{font-size:13px;text-transform:capitalize}
 .breadcrumbs p{margin:0}
 .breadcrumbs a{text-decoration:none}
@@ -269,10 +268,15 @@ header{position:relative;z-index:200}
 #nav li{display:inline-block}
 /*! traditional dropdown menu */
 /*!
+	#nav .fa.fa-angle-down{display:none}
 	#nav ul{background:#222;width:220px;position:absolute}
 	#nav ul a:hover,#nav ul span:hover{background:rgba(0,0,0,.15)}
 */
-
+/*! Flyout */
+#flyout li:hover>ul{display:block}
+/*! Screen Reader  */
+#flyout .focused .toggle,#nav .focused .toggle,#nav .focused .toggle2{display:inline-block;margin-left:8px}
+#flyout .focused .toggle,#nav .focused .toggle2{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
 }
 @media only screen and (max-width:991px){
 /*! for edit forms */
@@ -287,6 +291,11 @@ header{position:relative;z-index:200}
 #nav li{list-style:none;position:relative}
 #nav a,#nav span{padding:15px!important;border-bottom:1px solid rgba(0,0,0,.15);line-height:1;color:#fff;font-size:14px!important}
 #nav ul{background:rgba(0,0,0,.15);display:none}
+/*! Navigation and Flyout  */
+#flyout,#nav{display:none}
+/*! traditional mobile toggles */
+#toggles{position:absolute;right:15px;top:15px;z-index:9999}
+#nav-toggle,#search-toggle{font-size:20px;cursor:pointer;color:#fff;width:45px;line-height:45px;border:1px solid rgba(255,255,255,.2);border-radius:4px;margin-left:10px;text-align:center}
 }
 /*! All Mobile Sizes (devices and browser) */
 @media only screen and (max-width:767px){
