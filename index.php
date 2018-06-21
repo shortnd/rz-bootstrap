@@ -6,10 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 
-	<title>SiteName</title>
+	<title>Website name</title>
 	<meta name="description" content="">
 	<meta name="robots" content="index, follow">
-
+	<meta name="author" content="Collin O'Connell">
+	
 	<link rel="stylesheet" href="_assets_/plugins/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="_assets_/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="_assets_/css/animate.min.css">
@@ -116,6 +117,14 @@
 						<button>Go</button>
 					</form>
 				</div><!-- /#search -->
+				<div id="google-translate" class="control hidden-sm hidden-xs">
+					<script type="text/javascript">
+						function googleTranslateElementInit() {
+						  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google-translate');
+						}
+					</script>
+					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				</div>
 			</div>
 		</div>
 	</div>

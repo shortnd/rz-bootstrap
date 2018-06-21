@@ -1,10 +1,13 @@
 /*!-----------------------------------------------------------------------------------
-	Theme Name: SiteName
-	Front-end developer: Richard Opiniano | Kevin Nowalski | Collin O'Connell | DeMarc Johnson
+	Theme Name: Website name
+	Front-end developer: Collin O'Connell
 	Author Design: Samir Alley @samiralley | Kat Wiard | Nasryn Abou-Arabi | Alex Parent
 	Author URI: http://www.revize.com/
 	Date: mm/dd/yy
 -----------------------------------------------------------------------------------*/
+/*! -----------------------------------------
+#fonts
+-----------------------------------------*/
 /*! -----------------------------------------
 #basic styles
 -----------------------------------------*/
@@ -196,6 +199,16 @@ header{position:relative;z-index:200}
 .pos-r{position:relative}
 .pos-s{position:static}
 .pos-f{position:fixed}
+/*! removes styling from the translate */
+#google-translate .goog-te-gadget-simple{border:0}
+#google-translate .goog-te-menu-value{margin:0}
+#google-translate .goog-te-menu-value>*{display:none}
+#google-translate .goog-te-menu-value>span:first-of-type{display:block;font-size:0}
+/*! for adding an icon before the alternate text */
+#google-translate .goog-te-menu-value>span:first-of-type:before{content:'\f0ac';font-size:14px;font-family:FontAwesome}
+/*! for changing the text in the translate */
+#google-translate .goog-te-menu-value>span:first-of-type:after{content:'Translate';font-size:14px}
+#google-translate img{display:none}
 /*! -----------------------------------------
 #inner
 -----------------------------------------*/
@@ -204,10 +217,10 @@ header{position:relative;z-index:200}
 #flyout a,#flyout span{text-decoration:none;padding:15px 20px;display:block;border-bottom:1px solid #000}
 #flyout ul{display:none;position:absolute;top:0;left:100%;margin:0;padding:0;background:#aaa}
 #flyout ul a,#flyout ul span{font-size:13px;padding:10px 15px;width:180px}
-.breadcrumbs{font-size:13px;text-transform:capitalize}
-.breadcrumbs p{margin:0}
-.breadcrumbs a{text-decoration:none}
-.breadcrumbs i{font-size:13px;margin:0 4px}
+#flyout li:hover>ul{display:block}
+#breadcrumbs{font-size:14px;color:#222}
+#breadcrumbs a{text-decoration:none;color:#222}
+#breadcrumbs a:after{content:'\f0da';font-family:FontAwesome}
 /*! -----------------------------------------
 #share widget
 -----------------------------------------*/
@@ -257,9 +270,11 @@ header{position:relative;z-index:200}
 .bx-wrapper .bx-next:hover,.bx-wrapper .bx-prev:hover{opacity:1}
 /*! -----------------------------------------
 #media queries
-
 -----------------------------------------*/
 @media only screen and (min-width:992px){
+/*! for screen readers */
+#flyout .focused .toggle,#nav .focused .toggle,#nav .focused .toggle2{display:inline-block;margin-left:8px}
+#flyout .focused .toggle,#nav .focused .toggle2{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
 /*! for mega-menu */
 #nav>li>ul{column-count:3;-webkit-column-count:3;-moz-column-count:3;column-gap:30px;-webkit-column-gap:30px;-moz-column-gap:30px;position:absolute;left:0;right:0;top:100%;padding:30px;display:none}
 #flyout,#nav{display:block!important}
@@ -268,15 +283,9 @@ header{position:relative;z-index:200}
 #nav li{display:inline-block}
 /*! traditional dropdown menu */
 /*!
-	#nav .fa.fa-angle-down{display:none}
 	#nav ul{background:#222;width:220px;position:absolute}
 	#nav ul a:hover,#nav ul span:hover{background:rgba(0,0,0,.15)}
 */
-/*! Flyout */
-#flyout li:hover>ul{display:block}
-/*! Screen Reader  */
-#flyout .focused .toggle,#nav .focused .toggle,#nav .focused .toggle2{display:inline-block;margin-left:8px}
-#flyout .focused .toggle,#nav .focused .toggle2{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
 }
 @media only screen and (max-width:991px){
 /*! for edit forms */
@@ -291,11 +300,6 @@ header{position:relative;z-index:200}
 #nav li{list-style:none;position:relative}
 #nav a,#nav span{padding:15px!important;border-bottom:1px solid rgba(0,0,0,.15);line-height:1;color:#fff;font-size:14px!important}
 #nav ul{background:rgba(0,0,0,.15);display:none}
-/*! Navigation and Flyout  */
-#flyout,#nav{display:none}
-/*! traditional mobile toggles */
-#toggles{position:absolute;right:15px;top:15px;z-index:9999}
-#nav-toggle,#search-toggle{font-size:20px;cursor:pointer;color:#fff;width:45px;line-height:45px;border:1px solid rgba(255,255,255,.2);border-radius:4px;margin-left:10px;text-align:center}
 }
 /*! All Mobile Sizes (devices and browser) */
 @media only screen and (max-width:767px){
@@ -309,12 +313,10 @@ header{position:relative;z-index:200}
 /*! Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width:480px) and (max-width:767px){
 /*! Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-
 }
 /*! Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width:479px){
 /*! Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-
 }
 @media print{
 #breadcrumbs,#flyout-wrap,.e-notify,header{display:none!important}

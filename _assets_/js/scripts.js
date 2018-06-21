@@ -1,10 +1,10 @@
 /*-----------------------------------------------------------------------------------
 
-	Theme Name: SiteName
+	Theme Name: Website name
 	Front-end developer: Richard Opiniano | Kevin Nowalski | Collin O'Connell | DeMarc Johnson
 	Author Design: Samir Alley @samiralley | Kat Wiard | Nasryn Abou-Arabi | Alex Parent
 	Author URI: http://www.revize.com/
-	Date: MONTH DAY, 2015
+	Date: mm/dd/yy
 
 -----------------------------------------------------------------------------------*/
 
@@ -43,23 +43,68 @@
 	});
 
 	$window.ready(function(){
+
+		// Skip to Content
+		$('#skip').on('click', function(e){
+			e.preventDefault();
+			$('#main').focus();
+		});
 		
+		// Keyboard Navigation: Nav, flyout
+		var isClick = false;
+		$("#nav li a, #flyout  li a, a, button, .toggle, .toggle2").on('focusin', function(e) {
+			console.log(isClick);
+			if( isClick === false ) {
+				$(".focused").removeClass("focused");
+				$(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
+				$(".opened:not(.focused) ul:visible,.opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
+			} else {
+				$(".focused").removeClass("focused");
+				isClick = false;
+			}
+		});
+
+		// prevent focused class changes on click - This way arrows wont pop when clicking nav links
+		$("#nav a,#flyout a").on('mousedown',function(){
+			isClick = true;
+		});
 		
-		// If template is freeform, add flyout background
+		// If template is freeform, add flyout background and position the main tag relative
 		if ($('#flyout-wrap').length){
-			$('main').css('position','relative');
+			$('main').css({ 
+				// The freeform template should always have a main tag wrapping the flyout-wrap and the entry
+				'position':'relative',
+				'z-index':'1'
+			});
 			$('<div id="flyout-background"></div>').prependTo('main').css({
-				
+				'position':'absolute',
+				'top':'0',
+				'bottom':'0',
+				'left':'0',
+				'z-index':'0-1',
+				'background':'#000' // change background-color of flyout-background here
 			});
 		}
 		
 		// Fill sides script
 		function fillSide(){
-            var mainWidth = $('body').outerWidth();
-            var pixelValue = (mainWidth - $('.container').width()) / 2;
-			$('#flyout-wrap').css({
+            var windowWidth = $('body').outerWidth();
+            var pixelValue = (windowWidth - $('.container').width()) / 2;
+			$('.fillLeft').css({
+				'margin-left': -pixelValue
+			});
+			
+			$('.fillRight').css({
+				'margin-right': -pixelValue
+			});
+			$('.fillLeft.withPadding').css({
 				'margin-left': -pixelValue,
 				'padding-left': pixelValue
+			});
+			
+			$('.fillRight.withPadding').css({
+				'margin-right': -pixelValue,
+				'padding-right': pixelValue
 			});
 			
 			$('#flyout-background').width($('#flyout-wrap').outerWidth());
@@ -109,7 +154,7 @@
 		$("#nav >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
 		$("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2" tabindex="0">');
 		$("#flyout >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
-		$("#flyout-2 >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+
 		function addNavClass() {
 			if ($window.width() < 992) {
 				$("body").addClass('mobile');
@@ -123,36 +168,53 @@
 		$window.resize(addNavClass);
 
 		$(".toggle").on("click keypress",function(e) {
-			e.preventDefault();
-		var $parent = $(this).parent();
-		var $parentLi = $parent.parent();
-		$parentLi.toggleClass('opened');
-			if($parent.addClass('active').next('.first-level').is(":visible")){
-				$parent.next('.first-level').slideUp();
-			} else {
-				$(".first-level").slideUp("slow");
-				$parent.removeClass('active').next('.first-level').slideToggle();
-			}
-		});
-		$(".toggle2").on("click keypress",function(e) {
-			e.preventDefault();
-		var $parent = $(this).parent();
-		var $parentLi = $parent.parent();
-		$parentLi.toggleClass('opened2');
-			if($parent.next('.second-level').is(":visible")){
-				$parent.next('.second-level').slideUp();
-			} else {
-				$(".second-level").slideUp("slow");
-				$parent.next('.second-level').slideToggle();
-			}
-		});
+				e.preventDefault();
+		  var $parent = $(this).parent();
+		  var $parentLi = $parent.parent();
+		  $parentLi.toggleClass('opened');
+	      if($parent.addClass('active').next('.first-level').is(":visible")){
+	        $parent.next('.first-level').slideUp();
+	      } else {
+	        $(".first-level").slideUp("slow");
+	        $parent.removeClass('active').next('.first-level').slideToggle();
+	      }
+	    });
 
+	    $(".toggle2").on("click keypress",function(e) {
+				e.preventDefault();
+		  var $parent = $(this).parent();
+		  var $parentLi = $parent.parent();
+		  $parentLi.toggleClass('opened2');
+	      if($parent.next('.second-level').is(":visible")){
+	        $parent.next('.second-level').slideUp();
+	      } else {
+	        $(".second-level").slideUp("slow");
+	        $parent.next('.second-level').slideToggle();
+	      }
+	    });
+
+	    //collapse nav if left
+	    $(".desktop *").focus(function(e){
+    		var $opened = $(".opened");
+    		var $opened2 = $(".opened2");
+	    	if( $opened.length > 0 || $opened2.length > 0 ) {
+		    	if( $(".opened :focus").length < 1 ){
+		    		$opened.children("ul").slideUp();
+		    		$opened.removeClass("opened");
+		    		$(".opened2").removeClass("opened2");
+		    	}
+		    	if( $(".opened2 :focus").length < 1 ){
+		    		$opened2.children("ul").slideUp();
+		    		$opened2.removeClass("opened2");
+		    	}
+		    }
+	    });
 		// Flyout
 		var flyout = $('#flyout'),
 			flyoutwrap = $('#flyout-wrap');
 
 		if (flyout.text().length){
-			flyoutwrap.prepend('<div id="flyout-toggle"><i class="fa fa-bars"></i> Sub Menu</div>');
+			flyoutwrap.prepend('<div id="flyout-toggle" class="hidden-lg hidden-md"><i class="fa fa-bars"></i> Sub Menu</div>');
 		}
 
 		$("#flyout-toggle").on("click", function(){
@@ -160,20 +222,9 @@
 			$(this).toggleClass("active");
 		});
 
-		$("#flyout li:has(ul)").children("a,span").append('<i class="fa fa-angle-down toggle-children">');
 		$("#flyout ul").addClass('flyout-children');
 
 		var flyoutChildren = $('.flyout-children');
-
-		$(".toggle-children").click(function(e) {
-				e.preventDefault();
-			if($(this).parent().next(flyoutChildren).is(":visible")){
-				$(this).parent().next(flyoutChildren).slideUp();
-			} else {
-				$(flyoutChildren).slideUp("slow");
-				$(this).parent().next(flyoutChildren).slideToggle();
-			}
-		});
 
 		// revizeWeather
 		if( typeof $.fn.revizeWeather !== "undefined" ){
@@ -201,26 +252,25 @@
 			$('.social-feed-container').socialfeed({
 				// Facebook
 				facebook:{
-					accounts: ['@teslamotors','!teslamotors'],  //Array: Specify a list of accounts from which to pull wall posts
-					limit: 2,                                   //Integer: max number of posts to load
-					access_token: 'YOUR_FACEBOOK_ACCESS_TOKEN'  //String: "APP_ID|APP_SECRET"
+					accounts: ['@facebook'],
+					limit: 2,
+					access_token: 'YOUR_FACEBOOK_ACCESS_TOKEN'
 				},
 
 				// Twitter
 				twitter:{
-					accounts: ['@spacex'],                       //Array: Specify a list of accounts from which to pull tweets
-					limit: 2,                                    //Integer: max number of tweets to load
-					consumer_key: 'YOUR_CONSUMER_KEY',           //String: consumer key. make sure to have your app read-only
-					consumer_secret: 'YOUR_CONSUMER_SECRET_KEY', //String: consumer secret key. make sure to have your app read-only
-					tweet_mode: 'compatibility'                  //String: change to "extended" to show the whole tweet
+					accounts: ['@spacex'],
+					limit: 2,
+					consumer_key: 'YOUR_CONSUMER_KEY',
+					consumer_secret: 'YOUR_CONSUMER_SECRET_KEY',
+					tweet_mode: 'compatibility'
 				 },
 
 				// Instagram
 				instagram:{
-					accounts: ['@teslamotors','#teslamotors'],  //Array: Specify a list of accounts from which to pull posts
-					limit: 2,                                   //Integer: max number of posts to load
-					client_id: 'YOUR_INSTAGRAM_CLIENT_ID',       //String: Instagram client id (option if using access token)
-					access_token: 'YOUR_INSTAGRAM_ACCESS_TOKEN' //String: Instagram access token
+					accounts: ['&facebook'],
+					limit: 2,
+					access_token: 'YOUR_INSTAGRAM_ACCESS_TOKEN'
 				},
 
 				// General settings
