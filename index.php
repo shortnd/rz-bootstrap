@@ -41,7 +41,7 @@
 
 <header>
 	<div id="toggles" class="hidden-lg hidden-md">
-		<label for="search-input" id="search-toggle" class="fa fa-search"><span class="sr-only">Search toggle</span></label>
+		<div id="search-toggle" class="fa fa-search"></div>
 		<div id="nav-toggle" class="fa fa-bars"></div>
 	</div><!--/#toggles.hiddne-lg.hidden-md-->
 	<div class="container">
