@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------
 
 	Theme Name: Website name
-	Front-end developer: Richard Opiniano | Kevin Nowalski | Collin O'Connell | DeMarc Johnson
+	Front-end developer: Collin O'Connell
 	Author Design: Samir Alley @samiralley | Kat Wiard | Nasryn Abou-Arabi | Alex Parent
 	Author URI: http://www.revize.com/
 	Date: mm/dd/yy
