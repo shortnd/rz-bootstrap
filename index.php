@@ -36,10 +36,8 @@
 
 </head>
 <body id="homepage">
-
-<div id="loader-wrapper"><img src="_assets_/images/ripple.gif" alt="Loading..."></div><!-- /.loader-wrapper -->
-
 <header>
+	<a href="#main" id="skip">SKIP TO CONTENT</a>
 	<div id="toggles" class="hidden-lg hidden-md">
 		<div id="search-toggle" class="fa fa-search"></div>
 		<div id="nav-toggle" class="fa fa-bars"></div>
@@ -47,69 +45,7 @@
 	<div class="container">
 		<div class="row">
 			<nav class="col-md-8">
-				<ul id="nav">
-					<li><a href="">Home</a></li>
-					<li><a href="">Departments</a>
-						<ul>
-							<li><a href="">Management</a>
-								<ul>
-									<li><a href="">Management</a></li>
-									<li><a href="">Finance</a></li>
-									<li><a href="">Planning</a></li>
-									<li><a href="">Public Works</a></li>
-									<li><a href="">Police</a></li>
-									<li><a href="">Fire / EMS</a></li>
-									<li><a href="">Libraries</a></li>
-									<li><a href="">Education</a></li>
-									<li><a href="">Parks &amp; Recreation</a></li>
-									<li><a href="">Information Technology</a></li>
-								</ul>
-							</li>
-							<li><a href="">Finance</a></li>
-							<li><a href="">Planning</a></li>
-							<li><a href="">Public Works</a></li>
-							<li><a href="">Police</a></li>
-							<li><a href="">Fire / EMS</a></li>
-							<li><a href="">Libraries</a></li>
-							<li><a href="">Education</a></li>
-							<li><a href="">Parks &amp; Recreation</a></li>
-							<li><a href="">Information Technology</a></li>
-						</ul>
-					</li>
-					<li><a href="">About</a>
-						<ul>
-							<li><a href="">About The Area</a></li>
-							<li><a href="">Maps</a></li>
-							<li><a href="">Links</a></li>
-							<li><a href="">Photos</a></li>
-						</ul>
-					</li>
-					<li><span>Information</span>
-						<ul>
-							<li><span>How Do I?</span>
-								<ul>
-									<li><a href="">Management</a></li>
-									<li><a href="">Finance</a></li>
-									<li><a href="">Planning</a></li>
-									<li><a href="">Public Works</a></li>
-									<li><a href="">Police</a></li>
-									<li><a href="">Fire / EMS</a></li>
-									<li><a href="">Libraries</a></li>
-									<li><a href="">Education</a></li>
-									<li><a href="">Parks &amp; Recreation</a></li>
-									<li><a href="">Information Technology</a></li>
-								</ul>
-							</li>
-							<li><a href="">Contact Us</a></li>
-							<li><a href="">News</a></li>
-							<li><a href="">Announcements</a></li>
-							<li><a href="">Jobs</a></li>
-							<li><a href="">Minutes</a></li>
-							<li><a href="">RFP's</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
+				
 			<div class="col-md-4">
 				<div id="search">
 					<form class="search-form" method="get" action="search.php">

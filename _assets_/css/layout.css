@@ -173,7 +173,7 @@ form.loginform label input{display:block;margin-bottom:10px;width:100%;box-sizin
 -----------------------------------------*/
 body{overflow-x:hidden}
 .text-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#nav-toggle,.toggle,.toggle2{display:none}
+.toggle,.toggle2{display:none}
 #calendarEvent{left:0;max-height:500px;overflow-y:auto;margin:0 auto}
 header{position:relative;z-index:200}
 /*! traditional dropdown menu */
@@ -286,6 +286,7 @@ header{position:relative;z-index:200}
 	#nav ul{background:#222;width:220px;position:absolute}
 	#nav ul a:hover,#nav ul span:hover{background:rgba(0,0,0,.15)}
 */
+
 }
 @media only screen and (max-width:991px){
 /*! for edit forms */
@@ -313,10 +314,12 @@ header{position:relative;z-index:200}
 /*! Mobile Landscape Size to Tablet Portrait (devices and browsers) */
 @media only screen and (min-width:480px) and (max-width:767px){
 /*! Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+
 }
 /*! Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width:479px){
 /*! Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+
 }
 @media print{
 #breadcrumbs,#flyout-wrap,.e-notify,header{display:none!important}
