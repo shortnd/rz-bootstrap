@@ -11,7 +11,7 @@ if (typeof Object.create !== 'function') {
 
 
         var defaults = {
-            plugin_folder: '', // a folder in which the plugin is located (with a slash in the end)
+            plugin_folder: '_assets_/plugins/social-feed/', // a folder in which the plugin is located (with a slash in the end)
             template: 'template.html', // a path to the template file
             show_media: false, // show images of attachments if available
             media_min_width: 300,
@@ -289,43 +289,48 @@ if (typeof Object.create !== 'function') {
                     }
                 }
             },
+            // all facebook request are forwareded to self plugin caching at main.php in the plugin folder.
             facebook: {
                 posts: [],
                 graph: 'https://graph.facebook.com/',
                 loaded: false,
                 getData: function(account) {
-                    var proceed = function(request_url){
-                        Utility.request(request_url, Feed.facebook.utility.getPosts);
+                    var proceed = function(request_url, callbackParam){
+                        Utility.request(
+                            options.plugin_folder + "main.php?requestURI="+encodeURIComponent(request_url) + callbackParam,
+                            Feed.facebook.utility.getPosts
+                        );
                     };
                     var fields = '?fields=id,from,name,message,created_time,story,description,link';
                        fields += (options.show_media === true)?',picture,object_id':'';
                     var request_url, limit = '&limit=' + options.facebook.limit,
-                        query_extention = '&access_token=' + options.facebook.access_token + '&callback=?';
+                        query_extention = '&access_token=' + options.facebook.access_token,
+                        callbackParam = '&callback=?';
                     switch (account[0]) {
                         case '@':
                             var username = account.substr(1);
                             Feed.facebook.utility.getUserId(username, function(userdata) {
                                 if (userdata.id !== '') {
                                     request_url = Feed.facebook.graph + 'v2.4/' + userdata.id + '/posts'+ fields + limit + query_extention;
-                                    proceed(request_url);
+                                    proceed(request_url, callbackParam);
                                 }
                             });
                             break;
                         case '!':
                             var page = account.substr(1);
                             request_url = Feed.facebook.graph + 'v2.4/' + page + '/feed'+ fields + limit + query_extention;
-                            proceed(request_url);
+                            proceed(request_url, callbackParam);
                             break;
                         default:
-                            proceed(request_url);
+                            proceed(request_url, callbackParam);
                     }
                 },
                 utility: {
                     getUserId: function(username, callback) {
-                        var query_extention = '&access_token=' + options.facebook.access_token + '&callback=?';
-                        var url = 'https://graph.facebook.com/' + username + '?' + query_extention;
+                        var query_extention = '&access_token=' + options.facebook.access_token;
+                        var url = encodeURIComponent('https://graph.facebook.com/' + username + '?' + query_extention) + '&callback=?';
                         var result = '';
-                        $.get(url, callback, 'json');
+                        $.get(options.plugin_folder + "main.php?requestURI="+url, callback, 'json');
                     },
                     prepareAttachment: function(element) {
                         var image_url = element.picture;
