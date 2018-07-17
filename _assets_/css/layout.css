@@ -297,6 +297,8 @@ header{position:relative;z-index:200}
 #freeform #formwizziwmorf tr table tr{display:table-row!important}
 #freeform #formwizziwmorf tr table td{display:table-cell!important}
 /*! navigation toggles and arrows */
+#toggles{position: absolute;right: 15px;top: 15px}
+#search-toggle,#nav-toggle{font-size:20px;cursor: pointer;color:#fff;width:45px;line-height: 45px;border:1px solid rgba(255, 255, 255, .2);border-radius:4px;margin-left: 10px;text-align: center}
 .down-arrow{display:none}
 .toggle,.toggle2{position:absolute;right:0;top:0;background:rgba(0,0,0,.15);height:45px;width:45px;line-height:45px;text-align:center;display:inline-block;cursor:pointer}
 /*! navigation */
