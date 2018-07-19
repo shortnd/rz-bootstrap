@@ -9,8 +9,7 @@
 	<title>Website name</title>
 	<meta name="description" content="">
 	<meta name="robots" content="index, follow">
-	<meta name="author" content="Collin O'Connell">
-	
+
 	<link rel="stylesheet" href="_assets_/plugins/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="_assets_/fonts/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="_assets_/css/animate.min.css">
@@ -45,7 +44,7 @@
 	<div class="container">
 		<div class="row">
 			<nav class="col-md-8">
-				
+
 			<div class="col-md-4">
 				<div id="search">
 					<form class="search-form" method="get" action="search.php">
