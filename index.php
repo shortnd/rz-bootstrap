@@ -36,7 +36,7 @@
 </head>
 <body id="homepage">
 <header>
-	<a href="#main" id="skip">SKIP TO CONTENT</a>
+	<a href="#main" id="skip" tabindex="0">SKIP TO CONTENT</a>
 	<div id="toggles" class="hidden-lg hidden-md">
 		<div id="search-toggle" class="fa fa-search"></div>
 		<div id="nav-toggle" class="fa fa-bars"></div>
