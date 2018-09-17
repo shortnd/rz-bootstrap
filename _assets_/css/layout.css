@@ -153,6 +153,13 @@ form.loginform label input{display:block;margin-bottom:10px;width:100%;box-sizin
 /*! -----------------------------------------
 #rz edit
 -----------------------------------------*/
+/*! CHANGE TO MATCH COLOR SCHEME OF THE SITE */
+.post .faqs-heading.active{background:#0a3165;border-color:#0a3165;color:#fff}
+.post .faqs-toggle-content{border-color:#0a3165}
+.post .faqs-heading{color:#0a3165;position:relative;background:#f9f9f9}
+.post .faqs-heading:before{content:"\f078"}
+.post .faqs-heading.active:before{content:"\f077";color:#fff}
+.post .faqs-heading:before{font-family:'FontAwesome';position:absolute;left:25px}
 /*! -----------------------------------------
 #loader
 -----------------------------------------*/
