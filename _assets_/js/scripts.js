@@ -151,7 +151,7 @@
 		// Start Calendar Resizer
 		function resizeIframe(height) {
 			var iFrameID = document.getElementById('calendar');
-			if (iFrameId) {
+			if (iFrameID) {
 				iFrameID.height = "";
 				iFrameID.height = height;
 			}
