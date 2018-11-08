@@ -96,29 +96,33 @@
 		}
 		addNavClass();
 		$window.resize(addNavClass);
-		$(".toggle").on("click keypress",function(e) {
-				e.preventDefault();
-		  var $parent = $(this).parent();
-		  var $parentLi = $parent.parent();
-		  $parentLi.toggleClass('opened');
-	      if($parent.addClass('active').next('.first-level').is(":visible")){
-	        $parent.next('.first-level').slideUp();
-	      } else {
-	        $(".first-level").slideUp("slow");
-	        $parent.removeClass('active').next('.first-level').slideToggle();
-	      }
+		$(".toggle").on("click keydown",function(e) {
+			if (e.keyCode === 13 || e.type === 'click') {
+					e.preventDefault();
+					var $parent = $(this).parent();
+					var $parentLi = $parent.parent();
+					$parentLi.toggleClass('opened');
+					if($parent.addClass('active').next('.first-level').is(":visible")){
+						$parent.next('.first-level').slideUp();
+					} else {
+						$(".first-level").slideUp("slow");
+						$parent.removeClass('active').next('.first-level').slideToggle();
+					}
+				}
 	    });
-	    $(".toggle2").on("click keypress",function(e) {
-				e.preventDefault();
-		  var $parent = $(this).parent();
-		  var $parentLi = $parent.parent();
-		  $parentLi.toggleClass('opened2');
-	      if($parent.next('.second-level').is(":visible")){
-	        $parent.next('.second-level').slideUp();
-	      } else {
-	        $(".second-level").slideUp("slow");
-	        $parent.next('.second-level').slideToggle();
-	      }
+	    $(".toggle2").on("click keydown",function(e) {
+				if (e.keyCode === 13 || e.type === 'click') {
+					e.preventDefault();
+					var $parent = $(this).parent();
+					var $parentLi = $parent.parent();
+					$parentLi.toggleClass('opened2');
+					if($parent.next('.second-level').is(":visible")){
+						$parent.next('.second-level').slideUp();
+					} else {
+						$(".second-level").slideUp("slow");
+						$parent.next('.second-level').slideToggle();
+					}
+				}
 			});
 			
 			//collapse nav if left
@@ -190,22 +194,25 @@
 			});
 		}
 		// Mega Footer Toggle
-		$('.header-toggle').click(function(){
-			var inner = $(this).next('.inner-toggle');
-			if (inner.is(':hidden')) {
-				inner.slideDown('200');
-			} else {
-				inner.slideUp('200');
+		$('.header-toggle').on('click keydown', function(e) {
+			if (e.keyCode === 13 || e.type === 'click') {
+				var inner = $(this).next('.inner-toggle');
+				if (inner.is(':hidden')) {
+					inner.slideDown('200');
+				} else {
+					inner.slideUp('200');
+				}
 			}
 		});
 
 		// Tabs
-		$('#tabs li a').click(function(e){
-			$('#tabs li, #tabs-content .current').removeClass('current').removeClass('fadeInLeft');
-			$(this).parent().addClass('current');
-			var currentTab = $(this).attr('href');
-			e.preventDefault();
-			$(currentTab).addClass('current animated fadeInLeft');
+		$('#tabs li a').on('click keydown', function(e) {
+			if (e.keyCode === 13 || e.type === 'click') {
+				e.preventDefault();
+				$('#tabs li, #tabs-content .current').removeClass('current').removeClass('fadeInLeft');
+				$(this).parent().addClass('current');
+				$('#tabs-content .content').eq($(this).parent().index()).addClass('current animated zoomIn').find('h2').focus();
+			}
 		});
 
 		if ( typeof $.fn.sociafeed !== "undefined"){
