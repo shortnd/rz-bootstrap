@@ -187,23 +187,21 @@ header{position:relative;z-index:200}
 #skip{position:fixed;top:150px;left:-100%;transition: all .3s ease-in}
 #skip:focus{left:200px}
 /*! traditional dropdown menu */
-/*!
 #nav{padding:0;margin:0}
 #nav li{position:relative;margin:0}
-#nav a,#nav span{display:block;text-decoration:none;font-size:18px;padding:20px 15px;color:#222}
+#nav a,#nav span{display:block;text-decoration:none;font-size:18px;padding:20px 15px;color:#222;position: relative;}
 #nav ul{padding:0;margin:0;left:0;top:100%;display:none}
 #nav ul li{display:block}
 #nav ul ul{left:100%;top:0}
 #nav ul a,#nav ul span{padding:15px 25px;font-size:16px;border-bottom:1px solid rgba(0,0,0,.15);color:#fff}
 #nav li:last-child>*{border:0}
-*/
 /*! for mega menu */
-#nav{padding:0;margin:0;position:relative}
+/* #nav{padding:0;margin:0;position:relative}
 #nav a,#nav span{display:block;text-decoration:none;font-size:18px;padding:20px 15px;color:#222}
 #nav li{margin:0}
 #nav ul{padding:0;margin:0}
 #nav ul a,#nav ul span{padding:0}
-#nav ul li{display:block}
+#nav ul li{display:block} */
 /*! helper classes */
 .pos-a{position:absolute}
 .pos-r{position:relative}
@@ -282,20 +280,23 @@ header{position:relative;z-index:200}
 #media queries
 -----------------------------------------*/
 @media only screen and (min-width:992px){
+.down-arrow {
+    display: none;
+}
 /*! for screen readers */
-#flyout .focused .toggle,#nav .focused .toggle,#nav .focused .toggle2{display:inline-block;margin-left:8px}
+#flyout .focused .toggle,#nav .focused .toggle,#nav .focused .toggle2{display:inline;margin-left:8px;position: absolute;top: 50%;right: 0;transform: translateY(-50%);}
 #flyout .focused .toggle,#nav .focused .toggle2{-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}
+#nav li> .toggle, #nav ul li> .toggle2, #flyout li> .toggle, #flyout ul li > .toggle2{display: inline;padding: 0;position: absolute;top: 50%;right: 0;transform: translateY(-50%);line-height: 1;}
 /*! for mega-menu */
-#nav>li>ul{column-count:3;-webkit-column-count:3;-moz-column-count:3;column-gap:30px;-webkit-column-gap:30px;-moz-column-gap:30px;position:absolute;left:0;right:0;top:100%;padding:30px;display:none}
+/* #nav>li>ul{column-count:3;-webkit-column-count:3;-moz-column-count:3;column-gap:30px;-webkit-column-gap:30px;-moz-column-gap:30px;position:absolute;left:0;right:0;top:100%;padding:30px;display:none} */
 #flyout,#nav{display:block!important}
 /*! menu - other */
 #nav li:hover>ul{display:block}
 #nav li{display:inline-block}
 /*! traditional dropdown menu */
-/*!
 	#nav ul{background:#222;width:220px;position:absolute}
 	#nav ul a:hover,#nav ul span:hover{background:rgba(0,0,0,.15)}
-*/
+
 
 }
 @media only screen and (max-width:991px){

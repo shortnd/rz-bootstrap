@@ -57,7 +57,8 @@
 		if( isClick === false ) {
 			$(".focused").removeClass("focused");
 			$(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
-			$(".opened:not(.focused) ul:visible,.opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
+			// $(".opened:not(.focused) ul:visible,.opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
+			$('.opened:not(.focused) ul:visible, .opened2:not(.focused) ul:visible').slideUp().removeClass('opened opened2');
 		} else {
 			$(".focused").removeClass("focused");
 			isClick = false;
@@ -80,11 +81,17 @@
 		// Menu Arrows
 		$("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 		// Menu Toggles
-		$("#nav >li>ul,#flyout >li>ul").addClass('first-level');
+		$("#nav >li>ul,#flyout >li>ul").addClass('first-level').attr({'aria-labelledby': 'dropdown-toggle'});
 		$("#nav  li ul ul").addClass('second-level');
-		$("#nav >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
-		$("#nav li li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle2" tabindex="0">');
-		$("#flyout >li:has(ul)").find("a:first").append('<i class="fa fa-angle-down toggle" tabindex="0">');
+		$("#nav>li:has(ul)").each(function(){
+			$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		});
+		$('#nav li li:has(ul)').each(function() {
+			$('<a href="#" class="fa fa-angle-down toggle2" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		});
+		$('#flyout >li:has(ul)').each(function() {
+			$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Show Flyout for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		});
 		function addNavClass() {
 			if ($window.width() < 992) {
 				$("body").addClass('mobile');
@@ -101,27 +108,54 @@
 					e.preventDefault();
 					var $parent = $(this).parent();
 					var $parentLi = $parent.parent();
-					$parentLi.toggleClass('opened');
-					if($parent.addClass('active').next('.first-level').is(":visible")){
-						$parent.next('.first-level').slideUp();
+					$parent.toggleClass('opened');
+					console.log($parent.addClass('active').next('.first-level').is(':visible'));
+					if($parent.addClass('active') && $(this).next('.first-level').is(":visible")){
+						$(this).next('.first-level').slideUp();
+						$parent.removeClass('active');
+						$(this).attr({'aria-expanded': 'false'});
 					} else {
+						$(this).attr({'aria-expanded': 'true'});
 						$(".first-level").slideUp("slow");
-						$parent.removeClass('active').next('.first-level').slideToggle();
+						$parent.addClass('active');
+						$(this).next('.first-level').slideToggle();
 					}
 				}
-	    });
+			});
 	    $(".toggle2").on("click keydown",function(e) {
 				if (e.keyCode === 13 || e.type === 'click') {
 					e.preventDefault();
 					var $parent = $(this).parent();
 					var $parentLi = $parent.parent();
-					$parentLi.toggleClass('opened2');
-					if($parent.next('.second-level').is(":visible")){
-						$parent.next('.second-level').slideUp();
+					$parent.toggleClass('opened2');
+					if($parent.addClass('active') && $(this).next('.second-level').is(":visible")){
+						$(this).next('.second-level').slideUp();
+						$parent.removeClass('active');
+						$(this).attr({'aria-expanded': 'false'});
 					} else {
+						$(this).attr({'aria-expanded': 'true'});
 						$(".second-level").slideUp("slow");
-						$parent.next('.second-level').slideToggle();
+						$parent.addClass('active');
+						$(this).next('.second-level').slideToggle();
 					}
+				}
+			});
+
+			$('#nav>li:last-child, #nav ul>li:last-child, #flyout li:last-child, #flyout ul>li:last-child').keydown(function(e) {
+				if (e.which === 9 && e.shiftKey) {
+					// Do Nothing
+				} else if (e.which === 9) {
+					$(this).parent().parent().find('.toggle').attr({'aria-expanded': 'false'});
+					$(this).parent().slideToggle('200');
+				}
+			});
+			$('.accessibility-menu ul>li:last-child').keydown(function(e) {
+				if (e.which === 9 && e.shiftKey) {
+					// Do nothing
+				} else if (e.which === 9) {
+					$('.accessibility-wrap').removeClass('visible');
+					$('.accessibility-menu a').attr('tabindex', '-1');
+					$('#accessibility-button').attr({'aria-expanded': 'false'});
 				}
 			});
 			

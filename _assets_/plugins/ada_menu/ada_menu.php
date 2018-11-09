@@ -1,8 +1,8 @@
 <div class="accessibility-wrap">
   <div class="accessible-btn">
-    <a href="#" class="fa fa-wheelchair" aria-label="accessibility button" data-target="accessibility-menu" data-toggle="false"></a>
+    <a href="#" class="fa fa-wheelchair" id="accessibility-button" aria-label="accessibility button" data-target="accessibility-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
   </div><!--/.accessible-btn-->
-  <div class="accessibility-menu">
+  <div class="accessibility-menu" aria-labelledby="accessibility-button">
     <ul>
       <li>
         <a id="font-size" href="#" tabindex="-1">Increase Font Size</a>
