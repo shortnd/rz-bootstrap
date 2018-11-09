@@ -149,6 +149,14 @@
 					$(this).parent().slideToggle('200');
 				}
 			});
+			$('#nav>li:first-child, #nav ul>li:first-child, #flyout li:first-child, #flyout ul>li:first-child').keydown(function(e) {
+				if (e.which === 9 && e.shiftKey) {
+					$(this).parent().parent().find('.toggle').attr({'aria-expanded': 'false'});
+					$(this).parent().slideToggle('200');
+				} else if (e.which === 9) {
+					// Do nothing continue on
+				}
+			})
 			$('.accessibility-menu ul>li:last-child').keydown(function(e) {
 				if (e.which === 9 && e.shiftKey) {
 					// Do nothing
