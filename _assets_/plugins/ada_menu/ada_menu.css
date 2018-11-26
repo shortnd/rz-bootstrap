@@ -2,11 +2,10 @@
 .accessibility-menu a{display:block;padding:5px 10px;border:1px solid rgba(0,0,0,.2);border-radius:13px;text-decoration:none;color:#333!important}
 .accessibility-menu a:focus,.accessibility-menu a:hover{text-decoration:underline;background:rgba(0,0,0,.6);color:#fff!important}
 .yellowlinks .accessibility-menu a:focus,.yellowlinks .accessibility-menu a:hover{color:#555!important}
-.yellowlinks .explore-birmingham span{background:#ff0;color:#000}
 .accessibility-wrap{position:fixed;z-index:250;top:150px;left:0;transition:all .2s ease;left:-250px}
 .accessibility-wrap.visible{left:0!important}
 .accessible-btn{/*!z-index: 250;position: fixed;left: 0;top: 150px;*/float:right}
 .accessible-btn a{color:#fff!important;font-size:3.6rem;text-decoration:none;padding:10px;background:#3b5998!important}
 .accessibility-menu{background:#fff;float:left;transition:all .5s ease;position:relative;width:250px}
 .accessibility-menu.active{padding-left:auto;display:block}
-/* .accessibility-wrap:not(.visible) .accessibility-menu a{display:none} */
+.accessibility-wrap:not(.visible) .accessibility-menu a{display:none}

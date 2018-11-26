@@ -14,7 +14,7 @@
         <a id="yellowlinks" href="#" tabindex="-1">Yellow Links</a>
       </li>
       <li>
-        <a href="#" id="greyscale" tabindex="-1">Grey Scale</a>
+        <a href="#" id="grayscale" tabindex="-1">Gray Scale</a>
       </li>
       <li>
         <a href="#" id="underline-links" tabindex="-1">Underline Links</a>
