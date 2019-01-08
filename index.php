@@ -190,8 +190,8 @@
 <script src="_assets_/plugins/revizeWeather/js/revizeWeather.min.js"></script>
 <script src="_assets_/plugins/waypoints/waypoints.min.js"></script>
 <script src="_assets_/plugins/cookies.js/cookies.js"></script>
-<script src="_assets_/plugins/ada_menu/ada_menu.js"></script>
 <script src="_assets_/js/scripts.js"></script>
+<script src="_assets_/plugins/ada_menu/ada_menu.js"></script>
 
 </body>
 </html>
