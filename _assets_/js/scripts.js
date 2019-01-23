@@ -323,7 +323,7 @@
 		function setCookie(cookieName, cookieValue, expdays)  {
 			var date = new Date();
 			date.setTime(date.getTime() + (expdays * 24 * 60 * 60 * 1000));
-			var expires = "expires="+d.toUTCString();
+			var expires = "expires="+date.toUTCString();
 			document.cookie = cookieName + "=" + cookieValue + ";" + expires +";path=/";
 		}
 
