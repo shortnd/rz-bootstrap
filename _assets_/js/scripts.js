@@ -48,7 +48,9 @@
 	// Skip to Content
 	$('#skip').on('click', function(e){
 		e.preventDefault();
+		$('#main').attr({'tabindex': '-1'});
 		$('#main').focus();
+		$('#main').removeAttr('tabindex');
 	});
 	// Keyboard Navigation: Nav, flyout
 	var isClick = false;
@@ -79,7 +81,7 @@
 			$(this).toggleClass("active");
 		});
 		// Menu Arrows
-		$("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
+		// $("#nav > li:has(ul)").addClass('first-parent').children("a,span").append('<i class="fa fa-angle-down down-arrow">');
 		// Menu Toggles
 		$("#nav >li>ul,#flyout >li>ul").addClass('first-level').attr({'aria-labelledby': 'dropdown-toggle'});
 		$("#nav  li ul ul").addClass('second-level');
