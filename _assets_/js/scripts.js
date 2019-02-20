@@ -168,7 +168,7 @@
 					$('#accessibility-button').attr({'aria-expanded': 'false'});
 				}
 			});
-			
+
 			//collapse nav if left
 			$(".desktop *").focus(function(e){
 			var $opened = $(".opened");
@@ -311,6 +311,14 @@
 		}
 		// Owl Slider
 		if (typeof $.fn.owlCarousel !== "undefined") {
+			function resOwl(quickLinkCount, count) {
+				return {
+					items: (quickLinkCount >= count ? count : quickLinkCount),
+					nav: (quickLinkCount > count ? true : false),
+					mouseDrag: (quickLinkCount > count ? true : false),
+					touchDrag: (quickLinkCount > count ? true : false)
+				};
+			}
 			$("#owl-slider").owlCarousel();
 		}
 		// Preloader
