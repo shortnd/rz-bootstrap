@@ -1,39 +1,27 @@
 $(window).ready(function() {
   $("html").css("font-size", "62.5%");
   // ADA button
-  if (Cookies.get("highcontrast") === "on") {
+  if (getCookie('highcontrast')) {
     $("html").addClass("highcontrast");
     $(".highcontrast #flyout li:has(ul)>a").css({ color: "#fff" });
     $("#highcontrast").text("High Contrast Off");
   }
-  if (Cookies.get("yellowlinks") === "on") {
+  if (getCookie('yellowlinks')) {
     $("html").addClass("yellowlinks");
     $("#yellowlinks").text("Yellow Links Off");
   }
-  if (Cookies.get("greyscale") === "on") {
+  if (getCookie('greyscale')) {
     $("html").addClass("greyscale");
     $("#greyscale").text("Grey Scale Off");
   }
-  if (Cookies.get("underline-links") === "on") {
+  if (getCookie('underline-links')) {
     $("html").addClass("underline-links");
     $("#underline-links").text("Underline Links Off");
   }
-  if (Cookies.get("font-increased") === "on") {
+  if (getCookie('font-size')) {
     $("html").css("font-size", "+=5%");
     $("#font-size").text("Decrease Font Size");
   }
-  // $(".accessible-btn button").on("click keydown", function(e) {
-  //   if (e.keyCode === 13 || e.type === 'click') {
-  //     e.preventDefault();
-  //     if($(this).parent().parent().toggleClass("visible")){
-  //       $(this).attr('aria-expanded', 'true');
-  //       $('.accessibility-menu a').attr('tabindex', '0');
-  //     } else {
-  //       $(this).attr('aria-expanded', 'false');
-  //       $('.accessibility-menu a').attr('tabindex', '-1');
-  //     }
-  //   }
-  // });
 $('#accessibility-button').on('click', function(e) {
   if ($(this).parent().parent().hasClass('visible')) {
     $(this).parent().parent().removeClass('visible');
@@ -59,87 +47,73 @@ $('.accessibility-menu ul>li:last-child').keydown(function(e) {
   $("#highcontrast").on("click keydown", function(e) {
     if (e.keyCode === 13 || e.type === 'click') {
       e.preventDefault();
-      if (Cookies.get("highcontrast")) {
-        Cookies.remove("highcontrast");
-      } else {
-        Cookies.set("highcontrast", "on", { expires: 7 });
+      if(getCookie("highcontrast")) {
+        removeCookie("highcontrast");
+        $("html").removeClass('highcontrast');
+        $(this).text('high Contrast');
+        return false;
       }
-      if (Cookies.get("highcontrast") == "on") {
-        $("html").addClass("highcontrast");
-        $(this).text("High Contrast Off");
-      } else {
-        $("html").removeClass("highcontrast");
-        $(this).text("High Contrast");
-      }
+      setCookie("highcontrast", "on", 7);
+      $("html").addClass("highcontrast");
+      $(this).text("High Contrast Off");
     }
   });
   $("#yellowlinks").on("click keydown", function(e) {
     if (e.keyCode === 13 || e.type === 'click') {
       e.preventDefault();
-      if (Cookies.get("yellowlinks")) {
-        Cookies.remove("yellowlinks");
-      } else {
-        Cookies.set("yellowlinks", "on", { expires: 7 });
-      }
-      if (Cookies.get("yellowlinks") == "on") {
-        $("html").addClass("yellowlinks");
-        $(this).text("Yellow Links Off");
-      } else {
+      if(getCookie("yellowlinks")){
+        removeCookie("yellowlinks");
         $("html").removeClass("yellowlinks");
-        $(this).text("Yellow Links");
+        $(this).text('Yellow Links');
+        return false;
       }
+      setCookie("yellowlinks", "on", 7);
+      $("html").addClass("yellowlinks");
+      $(this).text("Yellow Links Off");
     }
   });
   $("#greyscale").on("click keydown", function(e) {
     if (e.keyCode === 13 || e.type === 'click') {
       e.preventDefault();
-      if (Cookies.get("greyscale")) {
-        Cookies.remove("greyscale");
-      } else {
-        Cookies.set("greyscale", "on", { expires: 7 });
-      }
-      if (Cookies.get("greyscale") == "on") {
-        $("html").addClass("greyscale");
-        $(this).text("Greyscale Off");
-      } else {
+      if (getCookie("greyscale")) {
+        removeCookie("greyscale");
         $("html").removeClass("greyscale");
         $(this).text("Grey Scale");
+        return false;
       }
+      setCookie("greyscale", "on", 7);
+      $("html").addClass("greyscale");
+      $(this).text("Grey Scale Off");
     }
   });
   $("#underline-links").on("click keydown", function(e) {
     if (e.keyCode === 13 || e.type === 'click') {
       e.preventDefault();
-      if (Cookies.get("underline-links")) {
-        Cookies.remove("underline-links");
-      } else {
-        Cookies.set("underline-links", "on", { expires: 7 });
-      }
-      if (Cookies.get("underline-links") == "on") {
-        $("html").addClass("underline-links");
-        $(this).text("Underline Links Off");
-      } else {
+      if(getCookie("underline-links")) {
+        removeCookie("underline-links");
         $("html").removeClass("underline-links");
         $(this).text("Underline Links");
+        return false;
       }
+      setCookie("underline-links", "on", 7);
+      $("html").addClass("underline-links");
+      $(this).text("Underline Links Off");
     }
   });
   $("#font-size").on("click keydown", function(e) {
     if (e.keyCode === 13 || e.type === 'click') {
       e.preventDefault();
-      if (Cookies.get("font-increased")) {
-        Cookies.remove("font-increased");
-      } else {
-        Cookies.set("font-increased", "on", { expires: 7 });
-      }
-      if (Cookies.get("font-increased")) {
-        $("html").css("font-size", "+=5%");
-        $(window).resize();
-        $(this).text("Decrease Font Size");
-      } else {
+      if(getCookie("font-increase")) {
+        removeCookie("font-increase");
         $("html").css("font-size", "62.5%");
         $(this).text("Increase Font Size");
+        $(window).resize();
+        return false;
       }
+      setCookie("font-increase", "on", 7);
+      $("html").css("font-size", "+=%5");
+      $(window).resize();
+      $(this).text("Decrease Font Size");
     }
   });
 });

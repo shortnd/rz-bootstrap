@@ -353,6 +353,12 @@
 			}
 			return "";
 		}
+		function removeCookie(cookieName) {
+			var date = new Date();
+			date.setTime(date.getTime() - (1000 * 60 * 60 * 24));
+			var expires = "expires=" + date.toUTCString();
+			document.cookie = cookieName + "=;" + expires + ";path=/";
+		}
 		// Cookies
 
 	$window.ready(function(){
