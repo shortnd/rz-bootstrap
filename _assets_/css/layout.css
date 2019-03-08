@@ -207,6 +207,8 @@ header{position:relative;z-index:200}
 .pos-r{position:relative}
 .pos-s{position:static}
 .pos-f{position:fixed}
+.hidden-desktop{display:none;}
+.hidden-mobile{display:none;}
 /*! removes styling from the translate */
 #google-translate .goog-te-gadget-simple{border:0}
 #google-translate .goog-te-menu-value{margin:0}
@@ -280,6 +282,8 @@ header{position:relative;z-index:200}
 #media queries
 -----------------------------------------*/
 @media only screen and (min-width:992px){
+/*! HELPER  */
+.hidden-desktop{display:none;}
 .down-arrow {
     display: none;
 }
@@ -300,6 +304,8 @@ header{position:relative;z-index:200}
 
 }
 @media only screen and (max-width:991px){
+/*! HELPER */
+.hidden-mobile{display:none;}
 /*! for edit forms */
 #freeform #formwizziwmorf tr,#freeform #formwizziwmorf tr td{display:block!important}
 #freeform #formwizziwmorf tr table tr{display:table-row!important}

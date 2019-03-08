@@ -40,7 +40,7 @@
 	<a href="#main" id="skip" tabindex="0">SKIP TO CONTENT</a>
 	<!-- Enable or disable if client wants menu -->
 	<?php include('_assets_/plugins/ada_menu/ada_menu.php'); ?>
-	<div id="toggles" class="hidden-lg hidden-md">
+	<div id="toggles" class="hidden-desktop">
 		<div id="search-toggle" class="fa fa-search"></div>
 		<div id="nav-toggle" class="fa fa-bars"></div>
 	</div><!--/#toggles.hidden-lg.hidden-md-->
