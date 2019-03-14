@@ -114,9 +114,11 @@
 	</div>
 </footer>
 
-<div class="alert alert-dismissible floating-alert fade in os-animation" data-os-animation="fadeInUpBig" data-os-animation-delay="2s" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<h6>Alert Title 30 characters Max</h6>
+<div class="alert alert-dismissible floating-alert fade show in os-animation" data-os-animation="fadeInUpBig" data-os-animation-delay="2s" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<h3>Alert Title 30 characters Max</h3>
 	<p>Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120 characters Max 120</p>
 	<p><a href="#" class="btn">Read More</a></p>
 </div><!-- /.alert -->
@@ -131,8 +133,8 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
+				<h3 class="modal-title" id="myModalLabel">Share this page</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h6 class="modal-title" id="myModalLabel">Share this page</h6>
 			</div>
 			<div class="modal-body">
 				<div class="copylink">
@@ -145,25 +147,25 @@
 						<div class="col-md-3 col-xs-6">
 							<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-facebook" onclick="return !window.open(this.href, 'facebook ', 'width=500,height=500')"
 							target="_blank">
-								<i class="fa fa-facebook"></i> Facebook
+								<i class="fab fa-facebook-f"></i> Facebook
 							</a>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<a href="https://www.twitter.com/home?status=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-twitter" onclick="return !window.open(this.href, 'twitter ', 'width=500,height=500')"
 							target="_blank">
-								<i class="fa fa-twitter"></i> Twitter
+								<i class="fab fa-twitter"></i> Twitter
 							</a>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<a href="https://www.plus.google.com/share?url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-google" onclick="return !window.open(this.href, 'google ', 'width=500,height=500')"
 							target="_blank">
-								<i class="fa fa-google-plus"></i> Google Plus
+								<i class="fab fa-google-plus"></i> Google Plus
 							</a>
 						</div>
 						<div class="col-md-3 col-xs-6">
 							<a href="https://www.reddit.com/submit?url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-reddit" onclick="return !window.open(this.href, 'redit ', 'width=500,height=500')"
 							target="_blank">
-								<i class="fa fa-reddit"></i> Reddit
+								<i class="fab fa-reddit"></i> Reddit
 							</a>
 						</div>
 					</div><!-- /.row -->

@@ -147,9 +147,10 @@ form.loginform label input{display:block;margin-bottom:10px;width:100%;box-sizin
 #rz alert
 -----------------------------------------*/
 .floating-alert{position:fixed;z-index:99999;bottom:10px;margin:0;right:10px;border:3px solid #fff;background:#000;background:rgba(0,0,0,.9);box-shadow:0 0 10px rgba(0,0,0,.2);color:#fff;padding:30px;font-size:14px;width:350px}
-.floating-alert h6{color:#ffc140;margin:0 0 10px;font-family:sans-serif;font-weight:700;text-transform:uppercase;font-size:18px}
+.floating-alert h3{color:#ffc140;margin:0 0 10px;font-family:sans-serif;font-weight:700;text-transform:uppercase;font-size:18px}
+.floating-alert p:last-of-type{margin-bottom:0}
 .floating-alert .btn{padding:8px 10px;margin:20px 0 0 0!important}
-.floating-alert .close{padding:0;background:0 0!important;color:#fff!important;opacity:1;margin-right:20px}
+.floating-alert .close{/* padding:0; */background:0 0!important;color:#fff!important;opacity:1;/* margin-right:20px; */}
 /*! -----------------------------------------
 #rz edit
 -----------------------------------------*/
