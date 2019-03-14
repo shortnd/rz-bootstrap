@@ -11,7 +11,7 @@
 	<meta name="robots" content="index, follow">
 
 	<link rel="stylesheet" href="_assets_/plugins/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="_assets_/fonts/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="_assets_/css/animate.min.css">
 	<link rel="stylesheet" href="_assets_/plugins/owl.carousel/owl-carousel/owl.carousel.css">
 	<link rel="stylesheet" href="_assets_/plugins/ada_menu/ada_menu.css">
@@ -39,7 +39,7 @@
 <header>
 	<a href="#main" id="skip" tabindex="0">SKIP TO CONTENT</a>
 	<!-- Enable or disable if client wants menu -->
-	<?php include('_assets_/plugins/ada_menu/ada_menu.php'); ?>
+	<?php include('./_assets_/plugins/ada_menu/ada_menu.php') ?>
 	<div id="toggles" class="hidden-desktop">
 		<div id="search-toggle" class="fa fa-search"></div>
 		<div id="nav-toggle" class="fa fa-bars"></div>
@@ -191,7 +191,6 @@
 <script src="_assets_/plugins/waypoints/waypoints.min.js"></script>
 <script src="_assets_/plugins/cookies.js/cookies.js"></script>
 <script src="_assets_/js/scripts.js"></script>
-<script src="_assets_/plugins/ada_menu/ada_menu.js"></script>
 
 </body>
 </html>
