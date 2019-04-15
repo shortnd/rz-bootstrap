@@ -259,6 +259,35 @@
 			}
 		});
 
+		if (typeof $.fn.tweet !== "undefined") {
+			$('#twitterfeed').tweet({
+				modpath: '_assets_/plugins/twitter',
+				username: "RevizeSoftware",
+				join_text: "auto",
+				avatar_size: 0,
+				count: 1,
+				auto_join_text_default: "",
+				auto_join_text_ed: "",
+				auto_join_text_ing: "",
+				auto_join_text_reply: "",
+				auto_join_text_url: "",
+				loading_text: "Loading Tweet..."
+			});
+		}
+
+		// Instafeed Feed
+		if(typeof $.fn.Instafeed !== "undefined"){
+			var userFeed = new Instafeed({
+				get: 'user',
+				resolution:'standard_resolution',
+				limit:9,
+				userId: 223202806,
+				accessToken: '303202123.f7e9b72.27c687fbd9c24ecbb29dc92951cdf724'
+			});
+			userFeed.run();
+		}
+
+
 		if ( typeof $.fn.sociafeed !== "undefined"){
 			$('.social-feed-container').socialfeed({
 				// Facebook
@@ -321,6 +350,7 @@
 			}
 			$("#owl-slider").owlCarousel();
 		}
+
 		// Preloader
 		$window.load(function() {
 			setTimeout(function(){
@@ -328,6 +358,9 @@
 					$('#loader-wrapper').fadeOut();
 			}, 600);
 		});
+
+		$('.post table').not('.layout-table').not('.not-responsive').wrap('<div class"table-responsive"></div>');
+		$('.layout-table').attr({"role": "table"});
 
 		// Cookies
 		function setCookie(cookieName, cookieValue, expDays) {
