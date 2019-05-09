@@ -5,7 +5,9 @@
 	Author URI: http://www.revize.com/
 	Date: mm/dd/yy
 -----------------------------------------------------------------------------------*/
-
+if ($.fn.foundation !== "undefinded") {
+	$(document).foundation()
+}
 (function($) {
 	'use strict';
 	var $window = $(window),
@@ -352,12 +354,12 @@
 		}
 
 		// Preloader
-		$window.load(function() {
-			setTimeout(function(){
-				$body.addClass('loaded');
-					$('#loader-wrapper').fadeOut();
-			}, 600);
-		});
+		// $window.load(function() {
+		// 	setTimeout(function(){
+		// 		$body.addClass('loaded');
+		// 			$('#loader-wrapper').fadeOut();
+		// 	}, 600);
+		// });
 
 		$('.post table').not('.layout-table').not('.not-responsive').wrap('<div class"table-responsive"></div>');
 		$('.layout-table').attr({"role": "table"});
@@ -394,7 +396,7 @@
 		}
 		// Cookies
 
-	$window.ready(function(){
+	// $window.ready(function(){
 
 		// If template is freeform, add flyout background and position the main tag relative
 		if ($('#flyout-wrap').length){
@@ -514,4 +516,4 @@
 		};
 		$('.v-align').flexVerticalCenter();
 	}); // Ready
-})(jQuery);
+// })(jQuery);
