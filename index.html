@@ -4,11 +4,26 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
-    <link rel="stylesheet" href="./_assets_/plugins/foundations/css/foundation.min.css">
-    <link rel="stylesheet" href="./_assets_/plugins/foundations/css/app.css">
+    <title>Website Name</title>
+    <link rel="stylesheet" href="_assets_/plugins/foundations/css/foundation.min.css">
+    <link rel="stylesheet" href="_assets_/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="_assets_/css/animate.min.css">
+    <link rel="stylesheet" href="_assets_/plugins/owl.carousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="_assets_/css/layout.css">
+
+    <link rel="shortcut icon" href="_assets_/images/favicon.ico">
+    <link rel="apple-touch-icon" href="_assets_/images/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="_assets_/images/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="_assets_/images/touch-icon-iphone4.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="_assets_/images/touch-icon-ipad2.png">
+
   </head>
-  <body>
+  <body id="homepage">
+    <a href="#main" id="skip" tabindex="0">Skip to Content</a>
+    <div id="toggles" class="hide-toggles">
+      <button id="search-toggle" class="fa fa-search"></button>
+      <button id="nav-toggle" class="fa fa-bars"></button>
+    </div><!--/#toggles-->
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
@@ -163,15 +178,60 @@
       </div>
     </div>
 
-    <p><button class="button" data-open="exampleModal11">Click me for a modal</button></p>
-
-<div class="reveal" id="exampleModal11" aria-labelledby="exampleModalHeader11" data-reveal>
-  <h1 id="exampleModalHeader11">Label for the Modal!</h1>
-  <p class="lead">I am even more accessible than the other modals.</p>
-  <button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
-    <span aria-hidden="true">&times;</span>
+<!-- Share widget make into an include file -->
+  <button type="button" class="share-btn floating-share-btn" data-open="shareModal">
+    <i class="fa fa-share-alt"></i>
+    <span>SHARE</span>
   </button>
-</div>
+
+  <div class="modal fade reveal large" id="shareModal" role="dialog" data-reveal aria-labelledby="shareModal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+          <button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6 class="modal-title" id="myModalLabel">Share this page</h6>
+        </div>
+        <div class="modal-body">
+          <div class="copylink">
+            <p>Copy and paste this code into your website.</p>
+            <pre>&lt;a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">Your Link Name&lt;/a&gt;</pre>
+          </div><!-- /.copylink -->
+          <p>Share this page on your favorite Social network</p>
+          <div class="share-btns grid-x grid-padding-x">
+              <div class="cell medium-6 large-3">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-facebook" onclick="return !window.open(this.href, 'facebook ', 'width=500,height=500')"
+                target="_blank">
+                  <i class="fa fa-facebook"></i> Facebook
+                </a>
+              </div>
+              <div class="cell medium-6 large-3">
+                <a href="https://www.twitter.com/home?status=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-twitter" onclick="return !window.open(this.href, 'twitter ', 'width=500,height=500')"
+                target="_blank">
+                  <i class="fa fa-twitter"></i> Twitter
+                </a>
+              </div>
+              <div class="cell medium-6 large-3">
+                <a href="https://www.plus.google.com/share?url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-google" onclick="return !window.open(this.href, 'google ', 'width=500,height=500')"
+                target="_blank">
+                  <i class="fa fa-google-plus"></i> Google Plus
+                </a>
+              </div>
+              <div class="cell medium-6 large-3">
+                <a href="https://www.reddit.com/submit?url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" class="btn-reddit" onclick="return !window.open(this.href, 'redit ', 'width=500,height=500')"
+                target="_blank">
+                  <i class="fa fa-reddit"></i> Reddit
+                </a>
+              </div>
+          </div><!-- /.share-btns -->
+          <button type="button" class="btn btn-success btn-lg close-button" data-close aria-label="Close Accessible Modal">Close</button>
+        </div><!-- /.modal-body -->
+      </div>
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <!-- Share widget make into an include file -->
 
     <script src="_assets_/plugins/foundations/js/vendor/jquery.js"></script>
     <script src="_assets_/plugins/foundations/js/vendor/what-input.js"></script>
