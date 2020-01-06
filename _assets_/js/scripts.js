@@ -31,44 +31,59 @@
 		); document.querySelector('head').appendChild(msViewportStyle);
 	}
 
-	/*
-	* E-Notify Auto submit
-	*/
-	$.urlParam=function(n){var e=new RegExp("[?&]"+n+"=([^]*)").exec(window.location.href);return null==e?null:e[1]||0};
-	var $enotify = $('iframe[src*="/revize/plugins/notify/notify.jsp"]');
-	if( $enotify.length > 0 ){
-		var emailStr = $.urlParam("email");
-		if( emailStr != null ){
-			$enotify.attr("src", $enotify.attr("src") + "&email=" + emailStr);
+	// RZ Class
+	if(typeof RZ !== "undefined"){
+		if(RZ.login){
+			$body.addClass("user-logged-in");
+		} else{
+			$body.addClass("user-not-logged-in");
 		}
 	}
 
-	// RZ Class
-	if(typeof RZ !== "undefined"){
-	 if(RZ.login){
-	  $body.addClass("user-logged-in");
-	 } else{
-		 $body.addClass("user-not-logged-in");
-	 }
-	}
+	// Font resizer
+	function textResizer() {
+        var  $dec, $inc;
+        $inc = $('#increase-font');
+        $dec = $('#decrease-font');
+        $inc.on('click', function(e) {
+            return $('body').css({
+                'font-size': '+=1.5'
+            });
+        });
+        $dec.on('click', function(e) {
+            return $('body').css({
+                'font-size': '-=1.5'
+            });
+        });
+        return $('#font-resizer a').on('click', function(e) {
+            return e.preventDefault();
+        });
+    };
+    textResizer();
 
-		// Keyboard Navigation: Nav, flyout
-		var isClick = false;
-		$("#nav li a, #flyout  li a, a, button, .toggle, .toggle2").on('focusin', function(e) {
-			console.log(isClick);
-			if( isClick === false ) {
-				$(".focused").removeClass("focused");
-				$(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
-				$('.opened:not(.focused) ul:visible, .opened2:not(.focused) ul:visible').slideUp().removeClass('opened opened2');
-			} else {
-				$(".focused").removeClass("focused");
-				isClick = false;
-			}
-		});
-		// prevent focused class changes on click - This way arrows wont pop when clicking nav links
-		$("#nav a,#flyout a").on('mousedown',function(){
-			isClick = true;
-		});
+	// Clone icons to each navigation link/span
+	$('#navicons li').each(function(){
+		var navIconIndex = $(this).index();
+		$(this).find('img').prependTo($('#nav>li').eq(navIconIndex).children('a,span'));
+	});
+
+	// Keyboard Navigation: Nav, flyout
+	var isClick = false;
+	$("#nav li a, #flyout  li a, a, button, .toggle, .toggle2").on('focusin', function(e) {
+		if( isClick === false ) {
+			$(".focused").removeClass("focused");
+			$(e.currentTarget).parents("#nav li, #flyout li").addClass("focused");
+			$(".opened:not(.focused) ul:visible,.opened2:not(.focused) ul:visible").slideUp().parent().removeClass("opened opened2");
+		} else {
+			$(".focused").removeClass("focused");
+			isClick = false;
+		}
+	});
+
+	// prevent focused class changes on click - This way arrows wont pop when clicking nav links
+	$("#nav a,#flyout a").on('mousedown',function(){
+		isClick = true;
+	});
 
 	// Search Toggle
 	$('#search-toggle').on('click',function(e){
@@ -79,27 +94,24 @@
 	// Navigation Toggle
 	$("#nav-toggle").on("click", function(){
 		$("#nav").stop().slideToggle();
-		$(this).toggleClass("active");
+		$(this).toggleClass("fa-bars fa-close");
 	});
-	// Menu Arrows
-		// Menu Toggles
-		$("#nav >li>ul,#flyout >li>ul").addClass('first-level')
-		$("#nav  li ul ul").addClass('second-level');
-		$("#nav>li:has(ul)").each(function(){
-			$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdown-toggle-'+$(this).index()+'" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
-			$(this).find('ul:first').attr('aria-labelledby', 'dropdown-toggle-'+$(this).index());
-		});
-		$('#nav li ul>li:has(ul)').each(function(index) {
-			// var subindex = 0;
-			console.log(index);
-			$('<a href="#" class="fa fa-angle-down toggle2" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sub-dropdown-toggle-'+index+'" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
-			$(this).find('ul:first').attr('aria-labelledby', 'sub-dropdown-toggle-'+index);
-			// subindex++;
-		});
-		$('#flyout >li:has(ul)').each(function() {
-			$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="flyout-dropdown-toggle-'+$(this).index()+'" aria-label="Show Flyout for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
-			$(this).find('ul:first').attr('aria-labelledby', 'flyout-dropdown-toggle-'+$(this).index());
-		});
+
+	// Menu Arrows and Toggles
+	$("#nav >li>ul,#flyout >li>ul").addClass('first-level');
+	$("#nav  li ul ul").addClass('second-level');
+	$("#nav>li:has(ul)").each(function(){
+		$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" aria-haspopup="true" aria-expanded="false" id="dropdown-toggle-'+$(this).index()+'" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		$(this).find('ul:first').attr('aria-labelledby', 'dropdown-toggle-'+$(this).index());
+	});
+	$('#nav li ul>li:has(ul)').each(function(index) {
+		$('<a href="#" class="fa fa-angle-down toggle2" tabindex="0" aria-haspopup="true" aria-expanded="false" id="sub-dropdown-toggle-'+index+'" aria-label="Show Dropdown for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		$(this).find('ul:first').attr('aria-labelledby', 'sub-dropdown-toggle-'+index);
+	});
+	$('#flyout >li:has(ul)').each(function() {
+		$('<a href="#" class="fa fa-angle-down toggle" tabindex="0" aria-haspopup="true" aria-expanded="false" id="flyout-dropdown-toggle-'+$(this).index()+'" aria-label="Show Flyout for '+ $(this).find('a:first').text() +'"></a>').insertAfter($(this).find('a:first'));
+		$(this).find('ul:first').attr('aria-labelledby', 'flyout-dropdown-toggle-'+$(this).index());
+	});
 
 	function addNavClass() {
 		if ($window.width() < 992) {
@@ -114,42 +126,93 @@
 
 	$(".toggle").on("click keydown",function(e) {
 		if (e.keyCode === 13 || e.type === 'click') {
-				e.preventDefault();
-				var $parent = $(this).parent();
-				var $parentLi = $parent.parent();
-				$parent.toggleClass('opened');
-				console.log($parent.addClass('active').next('.first-level').is(':visible'));
-				if($parent.addClass('active') && $(this).next('.first-level').is(":visible")){
-					$(this).next('.first-level').slideUp();
-					$parent.removeClass('active');
-					$(this).attr({'aria-expanded': 'false'});
-				} else {
-					$(this).attr({'aria-expanded': 'true'});
-					$(".first-level").slideUp("slow");
-					$parent.addClass('active');
-					$(this).next('.first-level').slideToggle();
-				}
+			e.preventDefault();
+			var $parent = $(this).parent();
+			var $parentLi = $parent.parent();
+			$parent.toggleClass('opened');
+			if($parent.addClass('active') && $(this).next('.first-level').is(":visible")){
+				$(this).next('.first-level').slideUp();
+				$parent.removeClass('active');
+				$(this).attr({'aria-expanded': 'false'});
+			} else {
+				$(this).attr({'aria-expanded': 'true'});
+				$(".first-level").slideUp("slow");
+				$parent.addClass('active');
+				$(this).next('.first-level').slideToggle();
 			}
-		});
-		$(".toggle2").on("click keydown",function(e) {
-			if (e.keyCode === 13 || e.type === 'click') {
-				e.preventDefault();
-				var $parent = $(this).parent();
-				var $parentLi = $parent.parent();
-				$parent.toggleClass('opened2');
-				if($parent.addClass('active') && $(this).next('.second-level').is(":visible")){
-					$(this).next('.second-level').slideUp();
-					$parent.removeClass('active');
-					$(this).attr({'aria-expanded': 'false'});
-				} else {
-					$(this).attr({'aria-expanded': 'true'});
-					$(".second-level").slideUp("slow");
-					$parent.addClass('active');
-					$(this).next('.second-level').slideToggle();
-				}
+		}
+	});
+	$(".toggle2").on("click keydown",function(e) {
+		if (e.keyCode === 13 || e.type === 'click') {
+			e.preventDefault();
+			var $parent = $(this).parent();
+			var $parentLi = $parent.parent();
+			$parent.toggleClass('opened2');
+			if($parent.addClass('active') && $(this).next('.second-level').is(":visible")){
+				$(this).next('.second-level').slideUp();
+				$parent.removeClass('active');
+				$(this).attr({'aria-expanded': 'false'});
+			} else {
+				$(this).attr({'aria-expanded': 'true'});
+				$(".second-level").slideUp("slow");
+				$parent.addClass('active');
+				$(this).next('.second-level').slideToggle();
 			}
-		});
+		}
+	});
 
+	// close nav if left
+	$(".desktop *").focus(function(e){
+		var $opened = $(".opened");
+		var $opened2 = $(".opened2");
+		if( $opened.length > 0 || $opened2.length > 0 ) {
+			if( $(".opened :focus").length < 1 ){
+				$opened.children("ul").slideUp();
+				$opened.removeClass("opened");
+				$(".opened2").removeClass("opened2");
+			}
+			if( $(".opened2 :focus").length < 1 ){
+				$opened2.children("ul").slideUp();
+				$opened2.removeClass("opened2");
+			}
+		}
+	});
+
+	// Flyout
+	var flyout = $('#flyout'),
+		flyoutwrap = $('#flyout-wrap');
+
+	if (flyout.text().length){
+		flyoutwrap.prepend('<div id="flyout-toggle" class="hidden-lg hidden-md"><i class="fa fa-bars"></i> Sub Menu</div>');
+	}
+
+	$("#flyout-toggle").on("click", function(){
+		flyout.slideToggle();
+		$(this).toggleClass("active");
+	});
+
+
+	function fillSide(){
+		var whiteSpace = parseFloat($('.container').css('margin-right')) + 15;
+		$('.fillLeft').css('margin-left',-whiteSpace);
+		$('.fillLeft.withPadding').css('padding-left',whiteSpace);
+		$('.fillRight').css('margin-right',-whiteSpace);
+		$('.fillRight.withPadding').css('padding-right',whiteSpace);
+	}
+	fillSide();
+	$window.resize(fillSide);
+
+	/*
+	* E-Notify Auto submit
+	*/
+	$.urlParam=function(n){var e=new RegExp("[?&]"+n+"=([^]*)").exec(window.location.href);return null==e?null:e[1]||0};
+	var $enotify = $('iframe[src*="/revize/plugins/notify/notify.jsp"]');
+	if( $enotify.length > 0 ){
+		var emailStr = $.urlParam("email");
+		if( emailStr != null ){
+			$enotify.attr("src", $enotify.attr("src") + "&email=" + emailStr);
+		}
+	}
 
 	// Make sure all calendars have unique ids
 	$('iframe[name="calendar"]').each(function (index, calendar) {
@@ -162,7 +225,6 @@
 			frameElement.height = "";
 			frameElement.height = height;
 		}
-		console.log(frameElement.id + ' Height to: ' + height);
 	}
 
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -171,7 +233,12 @@
 	eventHandler(messageEvent, function (e) {
 		if ( Array.isArray(e.data) ) {
 			if( e.data[0] === "setCalHeight" || e.data[0] === "setNotifyHeight") {
-				resizeIframe(e.data[1], e.source.frameElement);
+				var frames = document.querySelectorAll('iframe');
+				for( var i = 0; i < frames.length; i++ ) {
+					if( frames[i].contentWindow === e.source ){
+						resizeIframe(e.data[1], frames[i]);
+					}
+				}
 			}
 		}
 	});
@@ -199,18 +266,6 @@
 		});
 	}
 
-	// Mega Footer Toggle
-	$('.header-toggle').on('click keydown', function(e) {
-		if (e.keyCode === 13 || e.type === 'click') {
-			var inner = $(this).next('.inner-toggle');
-			if (inner.is(':hidden')) {
-				inner.slideDown('200');
-			} else {
-				inner.slideUp('200');
-			}
-		}
-	});
-
 	// Tabs
 	$('#tabs li a').on('click keypress', function(e) {
 		if (e.keyCode === 13 || e.type === 'click') {
@@ -223,6 +278,33 @@
 			$(currentTab).addClass('current animated fadeInLeft');
 			$(currentTab).find('h2').focus();
 		}
+	});
+
+	var $translateButton = $('#translate-button');
+	$translateButton.on('keydown click', function(e){
+		if (e.keyCode === 13 || e.type === 'click') {
+			$('#translation-links ul').stop().fadeToggle();
+			$translateButton.attr('aria-expanded', !('true' === $translateButton.attr('aria-expanded')));
+		}
+	});
+
+	$('#translation-links ul').on('mouseleave',function(){
+		$(this).fadeOut();
+		$translateButton.attr('aria-expanded', false);
+	});
+
+	var translateURL = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+
+	 // Translate Script
+	$.getScript(translateURL);
+	$('#translation-links a').click(function() {
+		var lang = $(this).data('lang');
+		var $frame = $('.goog-te-menu-frame:first');
+		if (!$frame.size()) {
+			return false;
+		}
+		$frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+		return false;
 	});
 
 	// Twitter Feed
@@ -242,32 +324,46 @@
 		});
 	}
 
-	// Instafeed Feed
-	if(typeof $.fn.Instafeed !== "undefined"){
-		var userFeed = new Instafeed({
-			get: 'user',
-			resolution:'standard_resolution',
-			limit:9,
-			userId: 223202806,
-			accessToken: '303202123.f7e9b72.27c687fbd9c24ecbb29dc92951cdf724'
+	// Facebook and Instagram feeds
+	if ( typeof $.fn.socialfeed !== "undefined"){
+		$('#facebook-feed').socialfeed({
+			// Facebook
+			facebook:{
+				accounts: ['@GadsdenCountyBOCC'],
+				limit: 5,
+				access_token: 'EAAFsTjd21XMBAE9NQVHsxSxe1SpyV3KTQ2dX38YB3F5ZCHXp3ZBWamxKbdLA5W0Q41TmqKGBZApgeyRSEQnnIldb1mpjdjlT1tV2ujleHSBqKyCtp8FmvuBQCVG0jBkoluV8IMWoC5MQVZCZCVYfRojLVnBeNX96udhZCswPyXtQZDZD'
+			},
+			template: "_assets_/templates/template.html",
+			length: 70,
+			show_media: true
 		});
-		userFeed.run();
-	}
+		$('#instagram-feed').socialfeed({
+			// Instagram
+			instagram:{
+			accounts: ['&251086740'],
+			limit: 2,
+			access_token: '251086740.1677ed0.e1c9d6d2c0e747518b4d5dccec71a1bd'
+			},
 
-	// Sticky
-	if(typeof $.fn.sticky !== "undefined"){
-		$("#sticky").sticky({
-			topSpacing:0
+			// General settings
+			length:120,
+			show_media:true,
+			media_min_width: 300,
+			template: "_assets_/templates/template.html",
+			callback: function() {
+			}
 		});
 	}
-
 
 	// bxSlider
 	if(typeof $.fn.bxSlider !== "undefined"){
-		$('.bxslider').bxSlider({
-			mode:'fade',
-			auto:($('.bxslider').children().length < 2) ? false : true,
-			pager: false
+		$('.bxslider').each(function(i, el){
+			$(el).bxSlider({
+				mode: 'fade',
+				auto: ($(el).children().length < 2) ? false : true,
+				pager: true,
+				pause: 8000
+			});
 		});
 	}
 
@@ -275,14 +371,6 @@
 	if(typeof $.fn.owlCarousel !== "undefined"){
 		$("#owl-slider").owlCarousel();
 	}
-
-	// Skip to Content
-	$('#skip').click(function(e){
-		e.preventDefault();
-		$("#main").attr("tabindex","-1");
-		$("#main").focus();
-		$("#main").removeAttr("tabindex");
-	});
 
 	// Responsive Tables
 	$('.post table:not(.layout-table):not(.not-responsive)').wrap('<div class="table-responsive"></div>');
@@ -339,35 +427,25 @@
 		onScrollInit($('.os-animation'));
 
 		//#Smooth Scrolling
-		$('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
-				if (
-					location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-					&&
-					location.hostname == this.hostname
-				) {
-					// Figure out element to scroll to
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-					// Does a scroll target exist?
-					if (target.length) {
-						// Only prevent default if animation is actually gonna happen
-						event.preventDefault();
-						$('html, body').animate({
-							scrollTop: target.offset().top
-						}, 1000, function() {
-							// Callback after animation
-							// Must change focus!
-							var $target = $(target);
+		$('a[href*="#"]').not('[href="#"]').not('[href*="#collapse"]').click(function(event) {
+			if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: target.offset().top
+					}, 1000, function() {
+						var $target = $(target);
+						$target.focus();
+						if ($target.is(":focus")) {
+							return false;
+						} else {
+							$target.attr('tabindex','-1');
 							$target.focus();
-							if ($target.is(":focus")) { // Checking if the target was focused
-								return false;
-							} else {
-								$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-								$target.focus(); // Set focus again
-								$target.removeAttr('tabindex'); // Remove the tabindex so it doesn't show up in Macs Screen Reader Form Controls
-							};
-						});
-					}
+							$target.removeAttr('tabindex');
+						};
+					});
 				}
 			});
 
@@ -419,16 +497,5 @@
 		};
 		$('.v-align').flexVerticalCenter();
 
-		// Remove matchHeight on document center pages
-		if($('#RZdocument_center').length){
-			$('.aside,.entry').matchHeight({remove:true});
-			if(window.matchMedia("(min-width: 992px)").matches){
-				setInterval(function(){
-					if($('.post').outerHeight() + 300 > $('.entry').outerHeight()){
-						$('.aside').css('height',$('.entry').outerHeight() + 'px');
-					}
-				}, 200);
-			}
-		}
 	}); // Ready
 })(jQuery);
